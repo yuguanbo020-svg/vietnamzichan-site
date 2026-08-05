@@ -1,0 +1,39 @@
+name: Validate listing feed
+
+on:
+  push:
+    paths:
+      - 'data/listings.json'
+      - 'scripts/publish_feed.py'
+      - '.github/workflows/validate-feed.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate current feed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/listings.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert isinstance(d, dict)
+          assert isinstance(d.get('items'), list)
+          ids=set()
+          for i,x in enumerate(d['items']):
+              assert isinstance(x, dict), i
+              assert x.get('id'), i
+              assert x['id'] not in ids, x['id']
+              ids.add(x['id'])
+              assert x.get('score') in {'A','B'}, x.get('id')
+              assert x.get('section') in {'property','cooperation'}, x.get('id')
+              assert str(x.get('source_url','')).startswith(('http://','https://')), x.get('id')
+              assert x.get('publish_status') in {'published','hidden'}, x.get('id')
+          print(f'validated {len(d["items"])} items')
+          PY
