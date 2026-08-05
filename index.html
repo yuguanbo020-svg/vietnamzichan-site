@@ -1,1 +1,54 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VietnamZiChan 越南资产网</title><meta name="description" content="越南房产资产信息门户"><style>body{font-family:Arial,sans-serif;margin:0;background:#f6f7f8;color:#16202a}header{background:#063b35;color:white;padding:34px 22px}main{max-width:980px;margin:auto;padding:24px}.card{background:white;border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 2px 10px #0001}a{color:#067a6f}</style></head><body><header><h1>VietnamZiChan 越南资产网</h1><p>越南房产资产信息门户</p></header><main><div class="card"><h2>Contact / Inquiry</h2><p>This site is connected for GitHub + Netlify automation.</p><p>Domain: vietnamzichan.com</p></div><div class="card"><h2>Automation status</h2><p>OK: base deployment package generated.</p></div></main></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VietnamZiChan 越南资产网</title>
+  <meta name="description" content="越南房产、厂房、土地、酒店、农场与东南亚合作机会信息">
+  <style>
+    :root{--green:#063b35;--green2:#0b6d61;--bg:#f4f6f5;--text:#17211f;--muted:#66736f;--line:#dce4e1}
+    *{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:var(--text)}
+    header{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:34px 18px}header .wrap,main{max-width:1120px;margin:auto}
+    h1{margin:0 0 8px;font-size:30px}.sub{margin:0;opacity:.9}.status{margin-top:14px;font-size:13px;opacity:.85}
+    main{padding:22px 14px 50px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.toolbar button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;cursor:pointer}.toolbar button.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:0 2px 10px #00000008}.card h2{font-size:18px;margin:8px 0}.meta{font-size:13px;color:var(--muted);line-height:1.7}.price{font-size:20px;font-weight:700;color:var(--green2);margin:12px 0}.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:#e8f4f1;color:var(--green)}.badge.pending{background:#fff4d8;color:#7d5b00}.summary{line-height:1.65}.source{margin-top:14px;font-size:13px}.source a{color:var(--green2);word-break:break-all}.empty{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px;text-align:center;color:var(--muted)}
+    footer{max-width:1120px;margin:0 auto 35px;padding:0 14px;color:var(--muted);font-size:12px}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><h1>VietnamZiChan 越南资产网</h1><p class="sub">越南房产、工业地产、酒店、土地、农场与东南亚合作机会</p><div class="status" id="status">正在读取最新数据…</div></div></header>
+<main>
+  <div class="toolbar" id="filters">
+    <button class="active" data-filter="all">全部</button>
+    <button data-filter="property">房产资产</button>
+    <button data-filter="cooperation">合作机会</button>
+  </div>
+  <div class="grid" id="list"></div>
+</main>
+<footer>信息来自公开来源并经自动清洗。发布内容不代表交易承诺，价格、状态和合作条件以原始发布方最新确认为准。</footer>
+<script>
+const listEl=document.getElementById('list');const statusEl=document.getElementById('status');let items=[];
+function safe(v,f='未注明'){return v===undefined||v===null||v===''?f:String(v)}
+function money(x){if(!x.price&&!x.budget)return '价格面议';const p=x.price||x.budget;return `${safe(p)} ${safe(x.currency,'')}`.trim()}
+function render(filter='all'){
+ const shown=items.filter(x=>filter==='all'||x.section===filter);
+ if(!shown.length){listEl.innerHTML='<div class="empty">暂无符合条件的已清洗信息</div>';return}
+ listEl.innerHTML=shown.map(x=>`<article class="card">
+   <span class="badge ${x.verification_status==='待进一步核实'?'pending':''}">${safe(x.verification_status,'公开信息')}</span>
+   <h2>${safe(x.title_zh||x.title)}</h2>
+   <div class="meta">${safe(x.country)} · ${safe(x.city_region)} · ${safe(x.category)} · ${safe(x.direction)}</div>
+   <div class="price">${money(x)}</div>
+   <div class="summary">${safe(x.summary_zh||x.summary)}</div>
+   <div class="meta">面积：${safe(x.area)}<br>用途：${safe(x.purpose)}<br>发布时间：${safe(x.published_at)}</div>
+   <div class="source">来源：${safe(x.source_platform)}${x.source_url?` · <a href="${x.source_url}" target="_blank" rel="noopener noreferrer">查看原始来源</a>`:''}</div>
+ </article>`).join('')
+}
+fetch('./data/listings.json?ts='+Date.now()).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(data=>{
+ items=Array.isArray(data.items)?data.items.filter(x=>x.publish_status!=='hidden'):[];
+ statusEl.textContent=`最近更新：${safe(data.updated_at)} · 已发布 ${items.length} 条`;
+ render();
+}).catch(e=>{statusEl.textContent='数据读取失败';listEl.innerHTML=`<div class="empty">暂时无法读取数据：${e.message}</div>`});
+document.getElementById('filters').addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');render(e.target.dataset.filter)});
+</script>
+</body>
+</html>
