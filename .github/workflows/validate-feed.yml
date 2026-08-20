@@ -5,6 +5,8 @@ on:
     paths:
       - 'data/listings.json'
       - 'scripts/publish_feed.py'
+      - 'tests/**'
+      - 'docs/content-contract-v0.1.md'
       - '.github/workflows/validate-feed.yml'
   workflow_dispatch:
 
@@ -37,3 +39,5 @@ jobs:
               assert x.get('publish_status') in {'published','hidden'}, x.get('id')
           print(f'validated {len(d["items"])} items')
           PY
+      - name: Run feed normalization smoke tests
+        run: python -m unittest discover -s tests -v

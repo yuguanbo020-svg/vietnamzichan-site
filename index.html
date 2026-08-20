@@ -29,18 +29,20 @@
 <script>
 const listEl=document.getElementById('list');const statusEl=document.getElementById('status');let items=[];
 function safe(v,f='未注明'){return v===undefined||v===null||v===''?f:String(v)}
+function esc(v,f='未注明'){return safe(v,f).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function pageUrl(x){const id=String(x.id||'item').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'item';return `./listings/zh/${id}/`}
 function money(x){if(!x.price&&!x.budget)return '价格面议';const p=x.price||x.budget;return `${safe(p)} ${safe(x.currency,'')}`.trim()}
 function render(filter='all'){
  const shown=items.filter(x=>filter==='all'||x.section===filter);
  if(!shown.length){listEl.innerHTML='<div class="empty">暂无符合条件的已清洗信息</div>';return}
  listEl.innerHTML=shown.map(x=>`<article class="card">
-   <span class="badge ${x.verification_status==='待进一步核实'?'pending':''}">${safe(x.verification_status,'公开信息')}</span>
-   <h2>${safe(x.title_zh||x.title)}</h2>
-   <div class="meta">${safe(x.country)} · ${safe(x.city_region)} · ${safe(x.category)} · ${safe(x.direction)}</div>
-   <div class="price">${money(x)}</div>
-   <div class="summary">${safe(x.summary_zh||x.summary)}</div>
-   <div class="meta">面积：${safe(x.area)}<br>用途：${safe(x.purpose)}<br>发布时间：${safe(x.published_at)}</div>
-   <div class="source">来源：${safe(x.source_platform)}${x.source_url?` · <a href="${x.source_url}" target="_blank" rel="noopener noreferrer">查看原始来源</a>`:''}</div>
+   <span class="badge ${x.verification_status==='待进一步核实'?'pending':''}">${esc(x.verification_status,'公开信息')}</span>
+   <h2>${esc(x.title_zh||x.title)}</h2>
+   <div class="meta">${esc(x.country)} · ${esc(x.city_region)} · ${esc(x.category)} · ${esc(x.direction)}</div>
+   <div class="price">${esc(money(x))}</div>
+   <div class="summary">${esc(x.summary_zh||x.summary)}</div>
+   <div class="meta">面积：${esc(x.area)}<br>用途：${esc(x.purpose)}<br>发布时间：${esc(x.published_at)}</div>
+   <div class="source"><a href="${pageUrl(x)}">查看详情与核实说明</a> · 来源：${esc(x.source_platform)}${x.source_url?` · <a href="${esc(x.source_url)}" target="_blank" rel="noopener noreferrer">原始来源</a>`:''}</div>
  </article>`).join('')
 }
 fetch('./data/listings.json?ts='+Date.now()).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(data=>{
