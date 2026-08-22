@@ -1,0 +1,25 @@
+{
+  "version":"0.1",
+  "mode":"private_first",
+  "default_controller":"jan",
+  "default_council":"carbon_council",
+  "default_coder":"qwen3-coder:30b",
+  "executor":"openhands",
+  "browser_executor":"openclaw",
+  "cloud_ai_default":false,
+  "codex_enabled":false,
+  "project":"VietnamZiChan",
+  "goal":"mature portal -> real traffic -> real inquiries",
+  "queue":[
+    {"id":"SITE-001","priority":1,"task":"maintain mature multilingual portal structure and internal links","acceptance":"zh/vi/en core pages open and cross-link correctly"},
+    {"id":"SITE-002","priority":2,"task":"expand verified city/category landing pages from keyword matrix","acceptance":"no fake listings; each page has title description canonical schema FAQ and inquiry CTA"},
+    {"id":"SITE-003","priority":3,"task":"ingest verified feed items and generate listing/detail pages","acceptance":"source retained; duplicate rejected; hidden by default until gate"},
+    {"id":"SITE-004","priority":4,"task":"collect search indexing traffic click and inquiry metrics","acceptance":"daily local metrics snapshot and 7-day comparison"},
+    {"id":"SITE-005","priority":5,"task":"improve pages based on real metrics rather than model self-rating","acceptance":"changes record reason before/after metric and rollback reference"}
+  ],
+  "human_gates":["payment","identity_declaration","otp","captcha","biometric","final_sensitive_submit"],
+  "failure_policy":"record_real_failure_and_requeue",
+  "memory":"local",
+  "logs":"local",
+  "results":"local"
+}
