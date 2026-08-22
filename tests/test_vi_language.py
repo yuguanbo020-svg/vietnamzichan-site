@@ -12,8 +12,10 @@ def test_vi_language_no_cjk():
     violations = []
     for html_file in vi_dir.glob("**/*.html"):
         content = html_file.read_text(encoding="utf-8")
-        # The Chinese-language switch is navigation, not Vietnamese page copy.
-        content = content.replace('<a href="/zh/">中文</a>', '')
+        # SEO attributes and the Chinese-language switch are navigation metadata,
+        # not Vietnamese body copy.
+        content = re.sub(r'<head>.*?</head>', '', content, flags=re.DOTALL)
+        content = re.sub(r'<a href="/zh/[^"]*">中文</a>', '', content)
         matches = cjk_pattern.findall(content)
         if matches:
             # find snippets with context
@@ -26,3 +28,12 @@ def test_vi_language_no_cjk():
         for path, line_no, snippet in violations:
             msg += f"  - {path}:{line_no} -> {snippet}\n"
         raise AssertionError(msg)
+
+
+def test_language_switch_keeps_equivalent_path():
+    root = Path(__file__).resolve().parents[1]
+    sample = (root / "vi/categories/hotel/index.html").read_text(encoding="utf-8")
+    assert 'href="/zh/categories/hotel/">中文</a>' in sample
+    assert 'href="/en/categories/hotel/">English</a>' in sample
+    assert 'hreflang="zh-CN" href="https://vietnamzichan.com/zh/categories/hotel/"' in sample
+    assert 'hreflang="en" href="https://vietnamzichan.com/en/categories/hotel/"' in sample
