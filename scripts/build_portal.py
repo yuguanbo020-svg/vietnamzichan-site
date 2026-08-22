@@ -28,6 +28,12 @@ CITIES = {
 }
 LANGS = {"zh": ("zh-CN", "中文"), "en": ("en", "English"), "vi": ("vi-VN", "Tiếng Việt")}
 
+SEO_TYPES = {
+    "factory-for-rent": ("厂房出租", "Nhà xưởng cho thuê", "factory", "现成厂房、生产厂房、园区标准厂房", "nhà xưởng xây sẵn, nhà máy sản xuất, xưởng trong khu công nghiệp"),
+    "industrial-land": ("工业土地", "Đất công nghiệp", "industrial-land", "工业园土地、长期租赁、制造业项目用地", "đất khu công nghiệp, thuê đất dài hạn, địa điểm dự án sản xuất"),
+    "warehouse-for-rent": ("仓库出租", "Kho cho thuê", "warehouse", "物流仓库、保税仓、配送中心与厂区仓储", "kho logistics, trung tâm phân phối, kho trong khu công nghiệp"),
+}
+
 CSS = r'''
 :root{--ink:#12221f;--muted:#63716d;--green:#073f37;--green2:#0b7566;--mint:#e9f5f1;--gold:#c69442;--paper:#f7f9f8;--white:#fff;--line:#dce6e2}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}.top{background:#052f2a;color:#d9eae6;font-size:13px}.top .wrap,.nav{display:flex;align-items:center;justify-content:space-between;gap:18px}.top .wrap{min-height:34px}.lang a{margin-left:12px}.nav{min-height:72px}.nav-shell{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}.brand{font-size:21px;font-weight:850;color:var(--green);line-height:1.1}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:600}.links{display:flex;gap:22px;font-size:14px}.action,.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;border-radius:10px;padding:11px 17px;font-weight:750;border:0;cursor:pointer}.hero{color:#fff;background:radial-gradient(circle at 80% 25%,#178c78 0,transparent 34%),linear-gradient(120deg,#052f2a,#086458);padding:68px 0 58px}.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:42px}.kicker{color:#b8e1d8;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h1{font-size:clamp(38px,5vw,62px);line-height:1.05;letter-spacing:-.035em;margin:14px 0 18px}.hero p{font-size:18px;color:#e1efec;max-width:720px}.search{display:grid;grid-template-columns:1fr 180px auto;background:#fff;padding:8px;border-radius:14px;margin-top:28px;box-shadow:0 18px 45px #001b1640}.search input,.search select{border:0;padding:12px;background:#fff;min-width:0}.search input{border-right:1px solid var(--line)}.proof{align-self:end;background:#ffffff13;border:1px solid #ffffff2c;border-radius:18px;padding:24px}.proof b{display:block;font-size:30px}.proof div+div{border-top:1px solid #ffffff24;margin-top:15px;padding-top:15px}.section{padding:54px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.head h2{font-size:30px;line-height:1.2;margin:0}.head p{margin:7px 0 0;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#a9cdc5;box-shadow:0 12px 30px #0b4e4010}.card .arrow{color:var(--green2);font-weight:800}.card h3{margin:10px 0 6px;font-size:20px}.card p{color:var(--muted);margin:0}.eyebrow{font-size:12px;color:var(--green2);font-weight:800;text-transform:uppercase}.industrial{background:var(--green);color:#fff}.industrial p{color:#c9ded9}.industrial .card{background:#ffffff0d;border-color:#ffffff24}.industrial .card p{color:#c9ded9}.industrial .arrow{color:#aee2d7}.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{padding:9px 13px;background:#fff;border:1px solid var(--line);border-radius:999px;font-size:14px}.listing-layout{display:grid;grid-template-columns:260px 1fr;gap:22px}.filters{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;height:max-content}.filters label{display:block;font-size:13px;font-weight:800;margin:12px 0 5px}.filters input,.filters select,.form input,.form select,.form textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px;background:#fff}.empty{background:#fff;border:1px dashed #afc6c0;border-radius:16px;padding:44px;text-align:center}.empty h3{margin-top:0}.notice{background:#fff7e7;border:1px solid #ead3a7;border-radius:12px;padding:14px;color:#70521e}.steps{counter-reset:s}.step:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--mint);color:var(--green);font-weight:850}.cta{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;background:linear-gradient(120deg,#073f37,#0b7566);color:#fff;border-radius:20px;padding:34px}.cta h2{margin:0}.cta p{color:#d9ece7}.cta .btn{background:#fff;color:var(--green)}.form{max-width:820px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.form label{font-size:13px;font-weight:800}.form textarea{min-height:130px}.full{grid-column:1/-1}.footer{background:#062e29;color:#c5d9d5;margin-top:55px;padding:42px 0 25px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px}.footer h3{color:#fff}.footer a{display:block;margin:7px 0}.fine{border-top:1px solid #ffffff1e;margin-top:28px;padding-top:18px;font-size:12px}.breadcrumb{font-size:13px;color:var(--muted);margin:22px 0}.page-hero{background:#eaf4f1;padding:46px 0}.page-hero h1{font-size:42px;line-height:1.1;margin:8px 0}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.fact{background:#fff;border-radius:12px;padding:16px}.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:10px 0}.faq summary{font-weight:800;cursor:pointer}.mobile-menu{display:none}@media(max-width:850px){.links{display:none}.hero-grid,.listing-layout{grid-template-columns:1fr}.proof{display:none}.grid{grid-template-columns:repeat(2,1fr)}.hero{padding:48px 0}.search{grid-template-columns:1fr}.search input{border-right:0;border-bottom:1px solid var(--line)}.facts{grid-template-columns:1fr}.mobile-menu{display:block}.footer-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.grid,.form-grid,.footer-grid{grid-template-columns:1fr}.cta{grid-template-columns:1fr}.section{padding:40px 0}.page-hero h1{font-size:34px}.top .wrap>span{display:none}.hero h1{font-size:40px}}
 '''
@@ -50,6 +56,11 @@ def cards(items, base, lang="zh"):
 def home(lang="zh"):
     copy={"zh":("越南资产，从发现到核验","搜索越南厂房、工业土地、仓库、酒店与跨境合作机会。按城市与资产类型组织公开信息，保留来源并提供统一询盘入口。","搜索厂房、土地、仓库或合作需求"),"en":("Vietnam assets, from discovery to verification","Explore factories, industrial land, warehouses, hotels and cross-border opportunities. Source-led discovery with a clear verification path.","Search assets or opportunities"),"vi":("Tài sản Việt Nam, từ tìm kiếm đến xác minh","Khám phá nhà xưởng, đất công nghiệp, kho vận, khách sạn và cơ hội hợp tác với nguồn thông tin minh bạch.","Tìm tài sản hoặc cơ hội")}[lang]
     body=f'''<header class="hero"><div class="wrap hero-grid"><div><span class="kicker">Industrial property · Commercial assets · Cooperation</span><h1>{copy[0]}</h1><p>{copy[1]}</p><form class="search" data-search><input name="q" aria-label="关键词" placeholder="{copy[2]}"><select name="city" aria-label="城市"><option value="">全部重点城市</option>{''.join(f'<option value="{v[0]}">{v[0]}</option>' for v in CITIES.values())}</select><button class="btn">搜索</button></form></div><aside class="proof"><div><b>6 类</b>核心资产入口</div><div><b>7 地</b>重点产业城市</div><div><b>100%</b>来源与核验状态保留</div></aside></div></header><main><section class="section"><div class="wrap"><div class="head"><div><h2>按资产类型进入</h2><p>围绕真实业务问题组织，不做杂乱信息堆积。</p></div><a class="arrow" href="/{lang}/listings/">查看全部 →</a></div>{cards(CATEGORIES,'categories',lang)}</div></section><section class="section industrial"><div class="wrap"><div class="head"><div><h2>工业地产重点</h2><p>制造业选址、现成厂房、工业土地和仓储物流。</p></div></div>{cards(dict(list(CATEGORIES.items())[:3]),'categories',lang)}</div></section><section class="section"><div class="wrap"><div class="head"><div><h2>重点城市与产业走廊</h2><p>用城市专题承接区域比较、选址知识与最新公开信息。</p></div></div>{cards(CITIES,'cities',lang)}</div></section><section class="section"><div class="wrap"><div class="cta"><div><h2>告诉我们你在越南要找什么</h2><p>提交城市、面积、预算、用途和时间表。AI 匹配入口已预留，目前由规则筛选与人工核验承接。</p></div><a class="btn" href="/{lang}/contact/">提交需求</a></div></div></section></main>'''
+    if lang in ("vi", "zh"):
+        market_title = "越南工业地产热门搜索" if lang == "zh" else "Nhu cầu bất động sản công nghiệp nổi bật"
+        market_text = "按城市和资产类型进入中文关键词专题，直接提交选址与资产需求。" if lang == "zh" else "Tìm theo tỉnh thành và loại tài sản, sau đó gửi trực tiếp yêu cầu vị trí và giao dịch."
+        market_cta = "查看中文关键词导航" if lang == "zh" else "Xem nhu cầu theo khu vực"
+        body = body.replace('</main>', f'<section class="section"><div class="wrap"><div class="cta"><div><h2>{market_title}</h2><p>{market_text}</p></div><a class="btn" href="/{lang}/market/">{market_cta}</a></div></div></section></main>')
     schema={"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"VietnamZiChan","url":SITE},{"@type":"WebSite","name":"VietnamZiChan","url":f"{SITE}/{lang}/","potentialAction":{"@type":"SearchAction","target":f"{SITE}/{lang}/listings/?q={{search_term_string}}","query-input":"required name=search_term_string"}}]}
     return shell(copy[0],copy[1],f"{body}",f"/{lang}/",lang,schema)
 
@@ -70,13 +81,45 @@ def simple_page(name,path,content,lang="zh"):
     body+='</div></section></main>'
     return shell(name,content,body,f"/{lang}/{path}/",lang)
 
+def seo_market_landing(lang, city_slug, city, type_slug, asset):
+    city_name = city[0] if lang == "zh" else city[2]
+    asset_name = asset[0] if lang == "zh" else asset[1]
+    details = asset[3] if lang == "zh" else asset[4]
+    if lang == "zh":
+        title = f"{city_name}{asset_name}｜越南工业地产与选址需求对接"
+        description = f"寻找{city_name}{asset_name}：{details}。提交面积、预算、用途、电力、消防和交付时间，进入越南资产需求匹配。"
+        kicker, lead = "越南工业地产关键词专题", f"面向正在寻找{city_name}{asset_name}的企业和投资者，集中整理区域判断、技术条件、核验步骤与询盘入口。"
+        labels = ("为什么关注这个区域", "采购方需要准备", "如何开始", "产业与物流条件", "用途、面积与预算", "提交需求并安排核验", "提交中文需求")
+    else:
+        title = f"{asset_name} tại {city_name} | Bất động sản công nghiệp"
+        description = f"Tìm {asset_name.lower()} tại {city_name}: {details}. Gửi diện tích, ngân sách, mục đích, điện, PCCC và thời gian bàn giao."
+        kicker, lead = "Tìm bất động sản công nghiệp Việt Nam", f"Dành cho doanh nghiệp đang tìm {asset_name.lower()} tại {city_name}, với tiêu chí kỹ thuật, quy trình xác minh và kênh gửi yêu cầu rõ ràng."
+        labels = ("Vì sao nên xem khu vực này", "Thông tin cần chuẩn bị", "Bước tiếp theo", "Cụm công nghiệp và logistics", "Mục đích, diện tích và ngân sách", "Gửi yêu cầu để sắp xếp xác minh", "Gửi yêu cầu")
+    path = f"/{lang}/market/{city_slug}/{type_slug}/"
+    body = f'''<main><div class="page-hero"><div class="wrap"><div class="breadcrumb"><a href="/{lang}/">VietnamZiChan</a> / {city_name} / {asset_name}</div><span class="kicker">{kicker}</span><h1>{title}</h1><p>{lead}</p><div class="facts"><div class="fact"><b>{labels[0]}</b><br><span>{labels[3]}</span></div><div class="fact"><b>{labels[1]}</b><br><span>{labels[4]}</span></div><div class="fact"><b>{labels[2]}</b><br><span>{labels[5]}</span></div></div></div></div><section class="section"><div class="wrap listing-layout"><aside class="filters"><span class="eyebrow">{city_name} · {asset_name}</span><h3>{labels[1]}</h3><p>{details}</p><p>• Location / vị trí / 位置<br>• Area / diện tích / 面积<br>• Power / điện / 电力<br>• PCCC / 消防<br>• Budget / ngân sách / 预算<br>• Timeline / thời gian / 时间</p><a class="btn" href="/{lang}/contact/">{labels[6]}</a></aside><div><div class="head"><div><h2>{city_name}{' ' if lang == 'vi' else ''}{asset_name}</h2><p>{description}</p></div></div><div class="grid"><div class="card"><span class="eyebrow">Location</span><h3>{labels[3]}</h3><p>Đánh giá kết nối cảng, sân bay, đường cao tốc, lao động và chuỗi cung ứng phù hợp với dự án.</p></div><div class="card"><span class="eyebrow">Technical fit</span><h3>{labels[4]}</h3><p>Điện, tải sàn, chiều cao, PCCC, môi trường và giấy phép phải khớp với mục đích sử dụng.</p></div><div class="card"><span class="eyebrow">Verification</span><h3>{labels[5]}</h3><p>Thông tin công khai chỉ là điểm bắt đầu; điều kiện thực tế, pháp lý và khả năng bàn giao cần được xác minh.</p></div></div><div class="cta" style="margin-top:22px"><div><h2>{title}</h2><p>{description}</p></div><a class="btn" href="/{lang}/contact/">{labels[6]}</a></div></div></div></section></main>'''
+    schema={"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":title,"description":description,"url":f"{SITE}{path}","inLanguage":LANGS[lang][0]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":f"{title}?","acceptedAnswer":{"@type":"Answer","text":description}}]}]}
+    return shell(title,description,body,path,lang,schema)
+
+def seo_hub(lang):
+    zh = lang == "zh"
+    title = "越南厂房、工业土地与仓库城市导航" if zh else "Nhà xưởng, đất công nghiệp và kho theo tỉnh thành"
+    desc = "按北宁、平阳、同奈、海防、河内、胡志明市和岘港查找越南工业地产。" if zh else "Tìm nhà xưởng, đất công nghiệp và kho tại Bắc Ninh, Bình Dương, Đồng Nai, Hải Phòng, Hà Nội, TP.HCM và Đà Nẵng."
+    links=[]
+    for city_slug,city in CITIES.items():
+        city_name=city[0] if zh else city[2]
+        for type_slug,asset in SEO_TYPES.items():
+            asset_name=asset[0] if zh else asset[1]
+            links.append(f'<a class="card" href="/{lang}/market/{city_slug}/{type_slug}/"><span class="eyebrow">{city_name}</span><h3>{city_name}{"" if zh else " · "}{asset_name}</h3><p>{asset[3] if zh else asset[4]}</p><span class="arrow">{"查看专题" if zh else "Xem nhu cầu"} →</span></a>')
+    body=f'<main><div class="page-hero"><div class="wrap"><span class="kicker">Vietnam industrial property</span><h1>{title}</h1><p>{desc}</p></div></div><section class="section"><div class="wrap"><div class="grid">{"".join(links)}</div></div></section></main>'
+    return shell(title,desc,body,f"/{lang}/market/",lang)
+
 def write(path, text):
     target=ROOT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_text(text+"\n",encoding="utf-8")
 
 def build():
     write("assets/site.css",CSS); write("assets/site.js",JS)
     write(".portal-built.json", json.dumps({"schema_version":"1.0","runtime":"static-local"}, ensure_ascii=False))
-    write("index.html",'<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/zh/"><link rel="canonical" href="https://vietnamzichan.com/zh/"><title>VietnamZiChan</title></head><body><a href="/zh/">进入越南资产网</a></body></html>')
+    write("index.html",'<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/vi/"><link rel="canonical" href="https://vietnamzichan.com/vi/"><title>VietnamZiChan</title></head><body><a href="/vi/">Vào VietnamZiChan</a></body></html>')
     urls=["/"]
     for lang in LANGS:
         write(f"{lang}/index.html",home(lang)); urls.append(f"/{lang}/")
@@ -85,6 +128,11 @@ def build():
             for slug,data in dataset.items(): write(f"{lang}/{kind}/{slug}/index.html",landing(kind,slug,data,lang)); urls.append(f"/{lang}/{kind}/{slug}/")
         for slug,name,desc in (("listings","资产搜索与筛选","搜索已通过发布门槛的越南资产与合作信息。"),("contact","发布资产 / 提交询盘","结构化提交资产、选址或跨境合作需求。"),("trust","案例与信任","了解信息来源、核验门槛、AI 使用边界与案例发布原则。"),("opportunities","跨境合作机会","连接中国企业与越南本地资产、供应链及合作资源。")):
             write(f"{lang}/{slug}/index.html",simple_page(name,slug,desc,lang)); urls.append(f"/{lang}/{slug}/")
+        if lang in ("vi", "zh"):
+            write(f"{lang}/market/index.html",seo_hub(lang)); urls.append(f"/{lang}/market/")
+            for city_slug,city in CITIES.items():
+                for type_slug,asset in SEO_TYPES.items():
+                    write(f"{lang}/market/{city_slug}/{type_slug}/index.html",seo_market_landing(lang,city_slug,city,type_slug,asset)); urls.append(f"/{lang}/market/{city_slug}/{type_slug}/")
     sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{SITE}{u}</loc></url>\n' for u in urls)+'</urlset>'
     write("sitemap.xml",sitemap); write("robots.txt",f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml")
     return len(urls)
