@@ -1,2 +1,16 @@
 [build]
   publish = "."
+  command = "python3 scripts/build_portal.py && python3 scripts/generate_site.py --languages zh && python3 scripts/health_check.py"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'"
+
+[[redirects]]
+  from = "/zh/search"
+  to = "/zh/listings/"
+  status = 301

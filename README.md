@@ -22,6 +22,19 @@ Run the minimum smoke suite with:
 python3 -m unittest discover -s tests -v
 ```
 
+Build the complete portal before generating approved feed detail pages:
+
+```sh
+python3 scripts/build_portal.py
+python3 scripts/generate_site.py --languages zh
+python3 scripts/health_check.py
+```
+
+The portal build is deterministic and uses only the Python standard library. It
+does not require Codex, OpenAI, a cloud model, an API key, or network access at
+runtime. AI matching is a reserved interface only; current search is local,
+feed-backed filtering. Netlify detects the inquiry form during deployment.
+
 Generate static SEO/AEO pages after human approval changes items to
 `publish_status: published`:
 

@@ -13,6 +13,18 @@ def check(root: Path = ROOT) -> list[str]:
         path = root / relative
         if not path.is_file() or path.stat().st_size == 0:
             failures.append(f"missing_or_empty:{relative}")
+    if (root / ".portal-built.json").is_file():
+        for relative in ("zh/index.html", "en/index.html", "vi/index.html", "zh/listings/index.html",
+                         "zh/contact/index.html", "zh/trust/index.html", "assets/site.css", "assets/site.js"):
+            if not (root / relative).is_file():
+                failures.append(f"missing_portal_page:{relative}")
+        try:
+            sitemap = (root / "sitemap.xml").read_text(encoding="utf-8")
+            for url in ("/zh/", "/en/", "/vi/", "/zh/categories/factory/", "/zh/cities/bac-ninh/"):
+                if url not in sitemap:
+                    failures.append(f"missing_sitemap_url:{url}")
+        except OSError as exc:
+            failures.append(f"invalid_sitemap:{exc}")
     try:
         feed = json.loads((root / "data/listings.json").read_text(encoding="utf-8"))
         if feed.get("schema_version") != "0.1":

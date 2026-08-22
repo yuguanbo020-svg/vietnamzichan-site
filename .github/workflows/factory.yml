@@ -23,7 +23,9 @@ jobs:
       - name: Run unit and smoke tests
         run: PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
       - name: Generate static discovery files and pages
-        run: python scripts/generate_site.py --languages zh
+        run: |
+          python scripts/build_portal.py
+          python scripts/generate_site.py --languages zh
       - name: Health check generated site
         run: python scripts/health_check.py
       - name: Preserve generated preview for human review

@@ -145,9 +145,14 @@ def generate(feed: dict[str, Any], output: Path, languages: list[str], translato
             written.append(str(relative)); urls.append(url)
             log("page_generated", item_id=item["id"], language=language, path=str(relative),
                 provider=translated.provider)
+    sitemap_path = output / "sitemap.xml"
+    portal_urls = []
+    if sitemap_path.exists():
+        portal_urls = re.findall(r"<loc>([^<]+)</loc>", sitemap_path.read_text(encoding="utf-8"))
+    all_urls = list(dict.fromkeys(portal_urls + urls))
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
-              "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in urls) + "\n</urlset>\n"
-    (output / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+              "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in all_urls) + "\n</urlset>\n"
+    sitemap_path.write_text(sitemap, encoding="utf-8")
     (output / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
     for relative in sorted(set(previous) - set(written)):
         candidate = (output / relative).resolve()
