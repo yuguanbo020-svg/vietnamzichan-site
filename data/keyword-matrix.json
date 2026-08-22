@@ -1,0 +1,31 @@
+{
+  "version":"0.1",
+  "updated_at":"2026-08-22",
+  "primary":[
+    "越南厂房出租","越南工业土地","越南仓库出租","越南工业地产","越南酒店出售","越南房产","越南投资","中国企业越南设厂",
+    "Vietnam factory for rent","Vietnam industrial land","Vietnam warehouse for rent","Vietnam industrial property"
+  ],
+  "city_clusters":{
+    "胡志明":["胡志明厂房出租","胡志明仓库出租","胡志明工业地产"],
+    "河内":["河内厂房出租","河内工业地产","河内仓库出租"],
+    "北宁":["北宁厂房出租","北宁工业园","北宁工业土地"],
+    "平阳":["平阳厂房出租","平阳工业土地","平阳仓库出租"],
+    "同奈":["同奈厂房出租","同奈工业土地","同奈仓库"],
+    "海防":["海防厂房出租","海防工业园","海防仓库"],
+    "岘港":["岘港工业地产","岘港仓库出租","岘港商业地产"]
+  },
+  "asset_clusters":{
+    "factory":["越南现成厂房","越南标准厂房","越南生产厂房","factory for rent Vietnam"],
+    "warehouse":["越南物流仓库","越南仓库租赁","warehouse Vietnam"],
+    "industrial_land":["越南工业用地","越南工业园土地","industrial land Vietnam"],
+    "hotel":["越南酒店出售","越南酒店投资","hotel for sale Vietnam"],
+    "cooperation":["越南找中国合作","越南项目找中国投资","越南找中国货源","Vietnam China business cooperation"]
+  },
+  "aeo_questions":[
+    "中国企业去越南设厂先找什么？",
+    "越南哪里厂房和工业土地最集中？",
+    "北宁和平阳哪个更适合制造业设厂？",
+    "在越南租厂房需要核实哪些信息？",
+    "越南工业土地和现成厂房怎么选择？"
+  ]
+}
