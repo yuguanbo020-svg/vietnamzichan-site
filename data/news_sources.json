@@ -1,0 +1,50 @@
+{
+  "edition_date": "2026-08-24",
+  "items": [
+    {
+      "slug": "bac-ninh-ngoc-chau-industrial-cluster-2026",
+      "category": "工业地产",
+      "keywords": ["越南工业地产", "北宁工业园", "越南厂房", "越南仓库"],
+      "source_name": "越南政府新闻网",
+      "source_url": "https://cms.baochinhphu.vn/khoi-cong-cum-cong-nghiep-ngoc-chau-tai-bac-ninh-102260804154707124.htm",
+      "source_date": "2026-08-04",
+      "verified_facts": [
+        "北宁省玉州工业集群于2026年8月4日举行开工仪式。",
+        "项目规划规模约75公顷，总投资接近1万亿越南盾。",
+        "一期已完成35公顷征地，计划于2027年完成施工、验收并投入使用。",
+        "规划吸引纺织、制药、材料、机械、电子、汽车、家具、配套工业，以及仓储和厂房服务。"
+      ],
+      "image": "/assets/news/bac-ninh-industrial.svg"
+    },
+    {
+      "slug": "vietnam-fdi-first-seven-months-2026",
+      "category": "投资观察",
+      "keywords": ["越南投资", "越南FDI", "越南制造业", "越南房地产"],
+      "source_name": "河内高科技园官方英文信息",
+      "source_url": "https://hhtp.gov.vn/en/tin-tuc/fdi-increases-469-in-the-first-seven-months-1401.html",
+      "source_date": "2026-08-19",
+      "verified_facts": [
+        "该官方页面援引越南统计总局数据称，截至2026年7月20日，相关外商直接投资超过129亿美元。",
+        "页面称该指标同比增长46.9%。",
+        "加工制造业吸引约56亿美元，占所述资金的64.7%。",
+        "房地产领域约9.862亿美元，占11.3%。"
+      ],
+      "image": "/assets/news/vietnam-fdi.svg"
+    },
+    {
+      "slug": "vietnam-investment-law-2025-effective-2026",
+      "category": "政策解读",
+      "keywords": ["越南投资法", "越南工业园投资", "越南投资政策", "中越贸易"],
+      "source_name": "越南政府新闻网英文版",
+      "source_url": "https://en.baochinhphu.vn/viet-nams-law-on-investment-2025-111260731145214387.htm",
+      "source_date": "2026-07-31",
+      "verified_facts": [
+        "越南《2025年投资法》自2026年3月1日起施行。",
+        "官方英文文本涉及工业园、高科技园和集中式数字技术区内的投资项目。",
+        "法律文本同时涉及部分数字技术、半导体和人工智能数据中心投资项目。",
+        "具体项目适用条件仍需结合项目所在地、行业和后续实施规定逐项核验。"
+      ],
+      "image": "/assets/news/vietnam-policy.svg"
+    }
+  ]
+}
