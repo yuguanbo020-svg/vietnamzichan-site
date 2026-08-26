@@ -2,3 +2,11 @@
 .netlify
 __pycache__/
 *.pyc
+AGENTS.md
+CLAW_TEST.txt
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+openclaw-workspace-state.json
