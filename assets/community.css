@@ -1,0 +1,33 @@
+/* VietnamZiChan 社区组件样式：复用 site.css 里的 --ink/--green/--mint/--line 等变量，
+   class 名字和 SoulEntropy 保持一致，这样 community-core.js 不用为不同站点改代码。 */
+.auth-state{font-size:13px;color:var(--muted);white-space:nowrap}
+.auth-state a{color:var(--green2);font-weight:700}
+.cta-join{color:var(--green2)!important;font-weight:800}
+.community-form{display:grid;gap:12px;max-width:640px}
+.community-form input,.community-form textarea,.community-form select{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;background:#fff;font:inherit}
+.community-form textarea{min-height:110px;resize:vertical}
+.community-form button{justify-self:start;background:var(--green);color:#fff;border:0;border-radius:9px;padding:11px 20px;font-weight:750;cursor:pointer}
+.community-form button:disabled{opacity:.5;cursor:default}
+.msg{font-size:13px;min-height:1.1em}
+.msg.err{color:#b3432f}
+.msg.ok{color:#0b7566}
+.post-list{display:grid;gap:14px;margin-top:16px}
+.post-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.post-item h3{margin:0 0 6px;font-size:16px}
+.post-body{margin:0;line-height:1.7;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
+.post-meta{margin-top:8px;font-size:12px;color:var(--muted)}
+.post-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag-pill{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+.post-actions{margin-left:8px}
+.post-action{background:none;border:0;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer;padding:0;margin-left:10px}
+.post-action:hover{color:var(--ink)}
+.post-action:disabled{opacity:.5;cursor:default;text-decoration:none}
+.category-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.category-tabs button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:13px;cursor:pointer}
+.category-tabs button.active{background:var(--green);color:#fff;border-color:var(--green)}
+.search-box{display:flex;gap:8px;max-width:420px;margin-bottom:16px}
+.search-box input{flex:1;padding:11px;border:1px solid var(--line);border-radius:9px}
+.post-replies{margin-top:10px;font-size:13px}
+.post-replies summary{cursor:pointer;color:var(--green2);font-weight:700}
+.post-replies form{margin-top:10px}
+.empty{background:#fff;border:1px dashed #afc6c0;border-radius:16px;padding:30px;text-align:center;color:var(--muted)}

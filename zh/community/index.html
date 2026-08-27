@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>社区 · 求租求购出租出售与合作 | VietnamZiChan</title>
+    <meta name="description" content="VietnamZiChan 社区：真实用户发布的求租/求购/出租/出售/厂房/工业地/农业/酒店/找合作/中国资源合作信息，可评论可回复。" />
+    <link rel="canonical" href="https://vietnamzichan.com/zh/community/" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/">中文</a><a href="/vi/">Tiếng Việt</a><a href="/en/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/zh/">VietnamZiChan<small>越南资产网 · Vietnam Assets</small></a><div class="links"><a href="/zh/categories/factory/">工业地产</a><a href="/zh/cities/">城市</a><a href="/zh/listings/">资产列表</a><a href="/zh/opportunities/">合作机会</a><a href="/zh/trust/">案例与信任</a><a href="/zh/community/">社区</a></div><span class="auth-state" id="authState">加载中…</span><a class="action" href="/zh/contact/">提交询盘</a></nav></div>
+    <main>
+      <div class="page-hero">
+        <div class="wrap">
+          <div class="breadcrumb"><a href="/zh/">首页</a> / 社区</div>
+          <h1>社区</h1>
+          <p>真实用户发布的求租、求购、出租、出售和合作需求。登录后可以发帖、评论、编辑或删除自己发的内容。</p>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="search-box"><input type="text" id="communitySearch" placeholder="搜索标题或内容…"></div>
+
+          <div class="category-tabs" id="categoryTabs">
+            <button type="button" data-cat="" class="active">全部</button>
+            <button type="button" data-cat="求租">求租</button>
+            <button type="button" data-cat="求购">求购</button>
+            <button type="button" data-cat="出租">出租</button>
+            <button type="button" data-cat="出售">出售</button>
+            <button type="button" data-cat="厂房">厂房</button>
+            <button type="button" data-cat="工业地">工业地</button>
+            <button type="button" data-cat="农业">农业</button>
+            <button type="button" data-cat="酒店">酒店</button>
+            <button type="button" data-cat="找合作">找合作</button>
+            <button type="button" data-cat="中国资源合作">中国资源合作</button>
+          </div>
+
+          <div class="head">
+            <div>
+              <h2>发一条</h2>
+              <p>登录后可以发布，未登录也可以先浏览下面的真实信息。</p>
+            </div>
+          </div>
+          <form class="community-form" id="postForm">
+            <select id="postCategory" required>
+              <option value="">选择分类…</option>
+              <option value="求租">求租</option>
+              <option value="求购">求购</option>
+              <option value="出租">出租</option>
+              <option value="出售">出售</option>
+              <option value="厂房">厂房</option>
+              <option value="工业地">工业地</option>
+              <option value="农业">农业</option>
+              <option value="酒店">酒店</option>
+              <option value="找合作">找合作</option>
+              <option value="中国资源合作">中国资源合作</option>
+            </select>
+            <input id="postTitle" type="text" placeholder="一句话标题，比如「平阳求租2000平米厂房」" required maxlength="80" />
+            <textarea id="postBody" placeholder="具体说明：面积、城市、预算、时间表、怎么联系你（Telegram/邮箱等）" required maxlength="3000"></textarea>
+            <input id="postTags" type="text" placeholder="标签，逗号分隔，比如：平阳,厂房,长期租赁（可选）" />
+            <button type="submit">发布</button>
+            <p class="msg" id="postMsg"></p>
+          </form>
+
+          <div class="head" style="margin-top:30px">
+            <div>
+              <h2>大家发布的信息</h2>
+              <p data-count>正在加载…</p>
+            </div>
+          </div>
+          <div class="post-list" id="postList"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap fine">公开信息不构成交易、投资或法律建议。价格、产权、可用状态与合作条件须向发布方及专业顾问复核。举报入口在每条内容下方。</div>
+    </footer>
+
+    <script type="module">
+      import { renderAuthState, fetchPosts, renderPostList, wirePostForm, submitPost } from '/js/community.js';
+      renderAuthState('authState');
+
+      let currentCategory = '';
+      let currentQuery = '';
+
+      async function refresh() {
+        const posts = await fetchPosts({ kind: 'post', category: currentCategory || null, q: currentQuery || null });
+        const countEl = document.querySelector('[data-count]');
+        countEl.textContent = posts.length ? `共 ${posts.length} 条` : '暂时没有信息';
+        renderPostList('postList', posts, { emptyText: '这个分类下还没有信息，来发第一条吧。', showTitle: true });
+        wireReplies(posts);
+      }
+
+      function wireReplies(posts) {
+        posts.forEach((p) => {
+          const article = document.querySelector(`[data-post-id="${p.id}"]`);
+          if (!article || article.querySelector('.post-replies')) return;
+          const target = `post:${p.id}`;
+          const box = document.createElement('details');
+          box.className = 'post-replies';
+          box.innerHTML = `<summary>回复</summary>
+            <form class="community-form" id="replyForm-${p.id}">
+              <textarea id="postBody" placeholder="回复…" required maxlength="1000"></textarea>
+              <button type="submit">回复</button>
+              <p class="msg" id="replyMsg-${p.id}"></p>
+            </form>
+            <div class="post-list" id="replyList-${p.id}"></div>`;
+          article.appendChild(box);
+          async function refreshReplies() {
+            const replies = await fetchPosts({ kind: 'comment', target });
+            renderPostList(`replyList-${p.id}`, replies, { emptyText: '还没有回复。' });
+          }
+          wirePostForm({ formId: `replyForm-${p.id}`, msgId: `replyMsg-${p.id}`, kind: 'comment', target, onSuccess: refreshReplies });
+          refreshReplies();
+        });
+      }
+
+      document.getElementById('categoryTabs').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-cat]');
+        if (!btn) return;
+        currentCategory = btn.dataset.cat;
+        document.querySelectorAll('#categoryTabs button').forEach((b) => b.classList.toggle('active', b === btn));
+        refresh();
+      });
+
+      let searchTimer;
+      document.getElementById('communitySearch').addEventListener('input', (e) => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => { currentQuery = e.target.value.trim(); refresh(); }, 300);
+      });
+
+      const postForm = document.getElementById('postForm');
+      const postMsg = document.getElementById('postMsg');
+      postForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        postMsg.textContent = ''; postMsg.className = 'msg';
+        const category = document.getElementById('postCategory').value;
+        const title = document.getElementById('postTitle').value.trim();
+        const body = document.getElementById('postBody').value.trim();
+        const tags = document.getElementById('postTags').value.split(',').map((t) => t.trim()).filter(Boolean);
+        if (!category || !title || !body) return;
+        const btn = postForm.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        try {
+          await submitPost({ kind: 'post', category, title, body, tags });
+          postForm.reset();
+          postMsg.textContent = '已发布。';
+          postMsg.className = 'msg ok';
+          refresh();
+        } catch (err) {
+          if (err && err.message === 'NEED_LOGIN') {
+            postMsg.textContent = '请先登录或注册后再发布。';
+          } else {
+            postMsg.textContent = '发布失败：' + (err && err.message ? err.message : String(err));
+          }
+          postMsg.className = 'msg err';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      refresh();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>加入社区 · VietnamZiChan</title>
+    <link rel="canonical" href="https://vietnamzichan.com/zh/signup/" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+    <style>
+      main.auth{width:min(26rem,calc(100% - 3rem));margin:60px auto;display:grid;gap:20px}
+      main.auth h1{margin:0;font-size:32px}
+      .switch{font-size:13px;color:var(--muted)}
+      .switch a{color:var(--green2);font-weight:700}
+      .hint{font-size:12px;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/">中文</a><a href="/vi/">Tiếng Việt</a><a href="/en/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/zh/">VietnamZiChan<small>越南资产网 · Vietnam Assets</small></a><div class="links"><a href="/zh/categories/factory/">工业地产</a><a href="/zh/cities/">城市</a><a href="/zh/listings/">资产列表</a><a href="/zh/opportunities/">合作机会</a><a href="/zh/trust/">案例与信任</a><a href="/zh/community/">社区</a></div><span class="auth-state" id="authState">加载中…</span><a class="action" href="/zh/contact/">提交询盘</a></nav></div>
+    <main class="auth">
+      <h1>加入社区</h1>
+      <p class="hint">Google / Apple / Facebook 一键登录，或用邮箱验证码，不需要设密码，可以用昵称参与。</p>
+
+      <div class="community-form" style="gap:10px">
+        <button type="button" id="oauthGoogle">使用 Google 继续</button>
+        <button type="button" id="oauthApple">使用 Apple 继续</button>
+        <button type="button" id="oauthFacebook">使用 Facebook 继续</button>
+        <p class="msg" id="oauthMsg"></p>
+      </div>
+      <p class="hint" style="text-align:center">或使用邮箱验证码（备用）</p>
+
+      <form class="community-form" id="step1Form">
+        <label class="hint" for="displayName">昵称</label>
+        <input id="displayName" name="displayName" type="text" required maxlength="40" />
+        <label class="hint" for="email">邮箱</label>
+        <input id="email" name="email" type="email" required />
+        <button type="submit" id="step1Btn">发送验证码</button>
+        <p class="msg" id="step1Msg"></p>
+      </form>
+
+      <form class="community-form" id="step2Form" style="display:none">
+        <p class="hint">验证码已发送到邮箱，5-10分钟内有效。</p>
+        <label class="hint" for="code">6位验证码</label>
+        <input id="code" name="code" type="text" inputmode="numeric" required maxlength="8" />
+        <button type="submit" id="step2Btn">验证并加入</button>
+        <p class="msg" id="step2Msg"></p>
+      </form>
+
+      <p class="switch">已经有账号？<a href="/zh/login/">去登录</a></p>
+    </main>
+    <script type="module">
+      import { supabase } from '/js/supabase-client.js';
+      import { renderAuthState } from '/js/community.js';
+      renderAuthState('authState');
+
+      document.getElementById('oauthGoogle').addEventListener('click', () => oauthSignIn('google'));
+      document.getElementById('oauthApple').addEventListener('click', () => oauthSignIn('apple'));
+      document.getElementById('oauthFacebook').addEventListener('click', () => oauthSignIn('facebook'));
+      async function oauthSignIn(provider) {
+        const msg = document.getElementById('oauthMsg');
+        msg.textContent = ''; msg.className = 'msg';
+        const { error } = await supabase.auth.signInWithOAuth({ provider, options: { redirectTo: window.location.origin + '/zh/' } });
+        if (error) { msg.textContent = '登录失败：' + error.message; msg.className = 'msg err'; }
+      }
+
+      let pendingEmail = '';
+      const step1Form = document.getElementById('step1Form');
+      const step2Form = document.getElementById('step2Form');
+      const step1Msg = document.getElementById('step1Msg');
+      const step2Msg = document.getElementById('step2Msg');
+
+      step1Form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        step1Msg.textContent = ''; step1Msg.className = 'msg';
+        const btn = document.getElementById('step1Btn');
+        btn.disabled = true;
+        const displayName = document.getElementById('displayName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const { error } = await supabase.auth.signInWithOtp({
+          email,
+          options: { shouldCreateUser: true, data: { display_name: displayName } },
+        });
+        btn.disabled = false;
+        if (error) {
+          step1Msg.textContent = '发送失败：' + error.message;
+          step1Msg.className = 'msg err';
+          return;
+        }
+        pendingEmail = email;
+        step1Msg.textContent = '验证码已发送，请查收邮箱。';
+        step1Msg.className = 'msg ok';
+        step2Form.style.display = 'grid';
+      });
+
+      step2Form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        step2Msg.textContent = ''; step2Msg.className = 'msg';
+        const btn = document.getElementById('step2Btn');
+        btn.disabled = true;
+        const code = document.getElementById('code').value.trim();
+        const { error } = await supabase.auth.verifyOtp({ email: pendingEmail, token: code, type: 'email' });
+        btn.disabled = false;
+        if (error) {
+          step2Msg.textContent = '验证失败：' + error.message;
+          step2Msg.className = 'msg err';
+          return;
+        }
+        step2Msg.textContent = '加入成功！正在跳转…';
+        step2Msg.className = 'msg ok';
+        setTimeout(() => { window.location.href = '/zh/community/'; }, 800);
+      });
+    </script>
+  </body>
+</html>
