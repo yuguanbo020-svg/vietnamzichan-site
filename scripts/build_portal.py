@@ -112,11 +112,29 @@ JS = r'''
 const pageLang=document.documentElement.lang.slice(0,2);const form=document.querySelector('[data-search]');if(form){form.addEventListener('submit',e=>{e.preventDefault();const q=form.querySelector('[name=q]').value.trim(),city=form.querySelector('[name=city]').value,lang=document.documentElement.lang.slice(0,2);location.href='/'+lang+'/listings/?q='+encodeURIComponent(q)+'&city='+encodeURIComponent(city)})}const list=document.querySelector('[data-list]');if(list){const p=new URLSearchParams(location.search),q=(p.get('q')||'').toLowerCase(),city=(p.get('city')||'').toLowerCase();document.querySelectorAll('[data-filter-field]').forEach(x=>{if(p.has(x.name))x.value=p.get(x.name)});fetch('/data/listings.json').then(r=>r.json()).then(d=>{let xs=(d.items||[]).filter(x=>x.publish_status==='published');xs=xs.filter(x=>!q||JSON.stringify(x).toLowerCase().includes(q)).filter(x=>!city||JSON.stringify(x).toLowerCase().includes(city));const count=document.querySelector('[data-count]');if(count)count.textContent=String(xs.length);if(!xs.length)return;list.innerHTML=xs.map(x=>`<article class="card"><span class="eyebrow">${esc(x.city_region||'Việt Nam')} · ${esc(x.category||'Tài sản')}</span><h3>${esc(pageLang==='zh'?(x.title_zh||x.title):pageLang==='en'?(x.title_en||x.title):(x.title_vi||x.title))}</h3><p>${esc(pageLang==='zh'?(x.summary_zh||x.summary):pageLang==='en'?(x.summary_en||x.summary):(x.summary_vi||x.summary))}</p></article>`).join('')}).catch(()=>{});}function esc(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function slug(v){return String(v||'item').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'item'}
 '''
 
+HOME_MARKET_CTA = {
+    "zh": '<section class="section"><div class="wrap"><div class="cta"><div><h2>越南工业地产热门搜索</h2><p>按城市和资产类型进入中文关键词专题，直接提交选址与资产需求。</p></div><a class="btn" href="/zh/market/">查看中文关键词导航</a></div></div></section>',
+    "vi": '<section class="section"><div class="wrap"><div class="cta"><div><h2>Nhu cầu bất động sản công nghiệp nổi bật</h2><p>Xem nhanh các từ khóa theo tỉnh thành và loại tài sản để gửi yêu cầu kết nối nhanh chóng.</p></div><a class="btn" href="/vi/market/">Xem từ khóa theo khu vực</a></div></div></section>',
+    "en": "",
+}
+
+HOME_NEWS_TEASER = {
+    "zh": '<section class="section" data-carbon-news-entry="1">\n  <div class="wrap">\n    <div class="head">\n      <div>\n        <span class="eyebrow">LATEST INSIGHTS</span>\n        <h2>越南资产与工业地产资讯</h2>\n        <p>持续更新越南厂房、工业土地、仓库、酒店、商业资产与跨境合作信息。</p>\n      </div>\n      <a class="arrow" href="/news/">查看最新资讯 →</a>\n    </div>\n    <div class="cta">\n      <div>\n        <h2>越南资产与工业地产资讯</h2>\n        <p>持续更新越南厂房、工业土地、仓库、酒店、商业资产与跨境合作信息。</p>\n      </div>\n      <a class="btn" href="/news/">查看最新资讯</a>\n    </div>\n  </div>\n</section>\n',
+    "vi": '<section class="section" data-carbon-news-entry="1">\n  <div class="wrap">\n    <div class="head">\n      <div>\n        <span class="eyebrow">LATEST INSIGHTS</span>\n        <h2>Tin tức tài sản & bất động sản công nghiệp Việt Nam</h2>\n        <p>Cập nhật nhà xưởng, đất công nghiệp, kho vận, tài sản thương mại và cơ hội hợp tác tại Việt Nam.</p>\n      </div>\n      <a class="arrow" href="/news/">Xem tin mới nhất →</a>\n    </div>\n    <div class="cta">\n      <div>\n        <h2>Tin tức tài sản & bất động sản công nghiệp Việt Nam</h2>\n        <p>Cập nhật nhà xưởng, đất công nghiệp, kho vận, tài sản thương mại và cơ hội hợp tác tại Việt Nam.</p>\n      </div>\n      <a class="btn" href="/news/">Xem tin mới nhất</a>\n<p style="font-size: 12px; color: #666; margin-top: 5px;">Cập nhật thông tin tài sản Việt Nam liên tục</p>\n    </div>\n  </div>\n</section>\n',
+    "en": '<section class="section" data-carbon-news-entry="1">\n  <div class="wrap">\n    <div class="head">\n      <div>\n        <span class="eyebrow">LATEST INSIGHTS</span>\n        <h2>Vietnam Asset & Industrial Property News</h2>\n        <p>Updates on factories, industrial land, warehouses, commercial assets and cross-border opportunities in Vietnam.</p>\n      </div>\n      <a class="arrow" href="/news/">Latest insights →</a>\n    </div>\n    <div class="cta">\n      <div>\n        <h2>Vietnam Asset & Industrial Property News</h2>\n        <p>Updates on factories, industrial land, warehouses, commercial assets and cross-border opportunities in Vietnam.</p>\n      </div>\n      <a class="btn" href="/news/">Latest insights</a>\n    </div>\n  </div>\n</section>\n',
+}
+
+CONTACT_QR_HTML = {
+    "zh": '<section class="section"><div class="wrap"><div class="head"><div><h2>直接联系</h2><p>扫码或直接留言，我们在工作时间内回复。</p></div></div><div class="grid"><div class="card"><span class="eyebrow">微信</span><h3>微信</h3><img src="/assets/contact/wechat_qr.jpg" alt="微信联系二维码" loading="lazy" width="140" height="140"><p>扫码添加</p></div><div class="card"><span class="eyebrow">Zalo</span><h3>Zalo</h3><img src="/assets/contact/zalo_qr.jpg" alt="Zalo联系二维码" loading="lazy" width="140" height="140"><p>扫码，或<a href="http://zaloapp.com/qr/p/u7qwhu2ybke9" target="_blank" rel="noopener">点击直接开聊</a></p></div><div class="card"><span class="eyebrow">WhatsApp</span><h3>WhatsApp</h3><img src="/assets/contact/whatsapp_qr.jpg" alt="WhatsApp联系二维码" loading="lazy" width="140" height="140"><p>扫码，或<a href="https://wa.me/qr/U75I34THOJQ4I1" target="_blank" rel="noopener">点击直接开聊</a></p></div></div></div></section>',
+    "vi": '<section class="section"><div class="wrap"><div class="head"><div><h2>Liên hệ trực tiếp</h2><p>Quét mã hoặc nhắn tin trực tiếp — đội ngũ phản hồi trong giờ làm việc.</p></div></div><div class="grid"><div class="card"><span class="eyebrow">WeChat</span><h3>微信</h3><img src="/assets/contact/wechat_qr.jpg" alt="Mã QR WeChat" loading="lazy" width="140" height="140"><p>Quét mã để kết bạn</p></div><div class="card"><span class="eyebrow">Zalo</span><h3>Zalo</h3><img src="/assets/contact/zalo_qr.jpg" alt="Mã QR Zalo" loading="lazy" width="140" height="140"><p>Quét mã, hoặc <a href="http://zaloapp.com/qr/p/u7qwhu2ybke9" target="_blank" rel="noopener">nhắn tin trực tiếp</a></p></div><div class="card"><span class="eyebrow">WhatsApp</span><h3>WhatsApp</h3><img src="/assets/contact/whatsapp_qr.jpg" alt="Mã QR WhatsApp" loading="lazy" width="140" height="140"><p>Quét mã, hoặc <a href="https://wa.me/qr/U75I34THOJQ4I1" target="_blank" rel="noopener">nhắn tin trực tiếp</a></p></div></div></div></section>',
+    "en": '<section class="section"><div class="wrap"><div class="head"><div><h2>Direct Contact</h2><p>Scan to message us directly — we reply during business hours.</p></div></div><div class="grid"><div class="card"><span class="eyebrow">WeChat</span><h3>WeChat</h3><img src="/assets/contact/wechat_qr.jpg" alt="WeChat contact QR code" loading="lazy" width="140" height="140"><p>Scan to add</p></div><div class="card"><span class="eyebrow">Zalo</span><h3>Zalo</h3><img src="/assets/contact/zalo_qr.jpg" alt="Zalo contact QR code" loading="lazy" width="140" height="140"><p>Scan, or <a href="http://zaloapp.com/qr/p/u7qwhu2ybke9" target="_blank" rel="noopener">chat now</a></p></div><div class="card"><span class="eyebrow">WhatsApp</span><h3>WhatsApp</h3><img src="/assets/contact/whatsapp_qr.jpg" alt="WhatsApp contact QR code" loading="lazy" width="140" height="140"><p>Scan, or <a href="https://wa.me/qr/U75I34THOJQ4I1" target="_blank" rel="noopener">chat now</a></p></div></div></div></section>',
+}
+
 UI = {
     "vi": {
         "top_info": "Thông tin bất động sản Việt Nam · Lưu giữ nguồn gốc · Xác minh trước khi giao dịch",
         "brand_sub": "Cổng thông tin tài sản Việt Nam",
-        "nav": ("BĐS công nghiệp", "Khu vực", "Danh sách", "Hợp tác", "Tin cậy", "Liên hệ"),
+        "nav": ("BĐS công nghiệp", "Khu vực", "Danh sách", "Hợp tác", "Tin cậy", "Liên hệ", "Tin tức"),
         "footer_desc": "Cổng thông tin khám phá bất động sản công nghiệp, tài sản thương mại và hợp tác xuyên biên giới tại Việt Nam. Lưu giữ nguồn gốc và đối chiếu kỹ lưỡng trước mọi quyết định.",
         "assets_title": "Tài sản",
         "services_title": "Dịch vụ",
@@ -194,7 +212,7 @@ UI = {
     "zh": {
         "top_info": "Vietnam property intelligence · Sources retained · Verify before transaction",
         "brand_sub": "越南资产网 · Vietnam Assets",
-        "nav": ("工业地产", "城市", "资产列表", "合作机会", "案例与信任", "提交询盘"),
+        "nav": ("工业地产", "城市", "资产列表", "合作机会", "案例与信任", "提交询盘", "资讯"),
         "footer_desc": "越南工业地产、商业资产与跨境合作的公开信息发现入口。保留来源，关键条件再次核验。",
         "assets_title": "资产",
         "services_title": "服务",
@@ -272,7 +290,7 @@ UI = {
     "en": {
         "top_info": "Vietnam property intelligence · Sources retained · Verify before transaction",
         "brand_sub": "VietnamZiChan · Vietnam Assets",
-        "nav": ("Industrial", "Cities", "Listings", "Opportunities", "Trust", "Enquire"),
+        "nav": ("Industrial", "Cities", "Listings", "Opportunities", "Trust", "Enquire", "News"),
         "footer_desc": "Public information portal for industrial real estate, commercial assets and cross-border cooperation in Vietnam. Sources retained and verified.",
         "assets_title": "Assets",
         "services_title": "Services",
@@ -350,16 +368,23 @@ UI = {
 }
 
 def shell(title: str, description: str, body: str, path: str, lang: str = "zh", schema: dict | None = None) -> str:
+    # 五站共享社区底座第一阶段：目前只有 zh 上线了 /zh/community/ /zh/signup/ /zh/login/，
+    # 所以社区入口只在 lang == "zh" 时注入，避免在还没有对应页面的 vi/en 版本上出现死链接。
+    community_nav = '<a href="/zh/community/">社区</a>' if lang == "zh" else ""
+    auth_state_html = '<span class="auth-state" id="authState">加载中…</span>' if lang == "zh" else ""
+    community_css_link = '<link rel="stylesheet" href="/assets/community.css">' if lang == "zh" else ""
+    community_script = "<script type=\"module\">import { renderAuthState } from '/js/community.js'; renderAuthState('authState');</script>" if lang == "zh" else ""
     locale, _ = LANGS[lang]
     canonical = f"{SITE}{path}"
     graph = schema or {"@context":"https://schema.org","@type":"WebPage","name":title,"url":canonical,"description":description,"inLanguage":locale}
+    graph_json = json.dumps(graph, ensure_ascii=False).replace("</", "<\\/")
     ui = UI[lang]
     nav = ui["nav"]
     zh_label = "ZH" if lang == "vi" else "中文"
     path_tail = path[len(f"/{lang}"):] if path.startswith(f"/{lang}/") else "/"
     zh_href, vi_href, en_href = (f"/zh{path_tail}", f"/vi{path_tail}", f"/en{path_tail}")
     zh_url, vi_url, en_url = (f"{SITE}{zh_href}", f"{SITE}{vi_href}", f"{SITE}{en_href}")
-    return f'''<!doctype html><html lang="{locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | VietnamZiChan</title><meta name="description" content="{html.escape(description, quote=True)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{canonical}"><link rel="alternate" hreflang="zh-CN" href="{zh_url}"><link rel="alternate" hreflang="vi-VN" href="{vi_url}"><link rel="alternate" hreflang="en" href="{en_url}"><meta property="og:title" content="{html.escape(title, quote=True)}"><meta property="og:description" content="{html.escape(description, quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/assets/site.css"><script type="application/ld+json">{json.dumps(graph,ensure_ascii=False).replace('</','<\\/')}</script></head><body><div class="top"><div class="wrap"><span>{ui["top_info"]}</span><span class="lang"><a href="{zh_href}">中文</a><a href="{vi_href}">Tiếng Việt</a><a href="{en_href}">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/{lang}/">VietnamZiChan<small>{ui["brand_sub"]}</small></a><div class="links"><a href="/{lang}/categories/factory/">{nav[0]}</a><a href="/{lang}/cities/">{nav[1]}</a><a href="/{lang}/listings/">{nav[2]}</a><a href="/{lang}/opportunities/">{nav[3]}</a><a href="/{lang}/trust/">{nav[4]}</a></div><a class="action" href="/{lang}/contact/">{nav[5]}</a></nav></div>{body}<footer class="footer"><div class="wrap footer-grid"><div><h3>VietnamZiChan</h3><p>{ui["footer_desc"]}</p></div><div><h3>{ui["assets_title"]}</h3>{''.join(f'<a href="{url}">{name}</a>' for name, url in ui["asset_links"])}</div><div><h3>{ui["services_title"]}</h3>{''.join(f'<a href="{url}">{name}</a>' for name, url in ui["service_links"])}</div></div><div class="wrap fine">{ui["disclaimer"]}</div></footer><script src="/assets/site.js?v=3" defer></script></body></html>'''
+    return f'''<!doctype html><html lang="{locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | VietnamZiChan</title><meta name="description" content="{html.escape(description, quote=True)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{canonical}"><link rel="alternate" hreflang="zh-CN" href="{zh_url}"><link rel="alternate" hreflang="vi-VN" href="{vi_url}"><link rel="alternate" hreflang="en" href="{en_url}"><meta property="og:title" content="{html.escape(title, quote=True)}"><meta property="og:description" content="{html.escape(description, quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/assets/site.css">{community_css_link}<script type="application/ld+json">{graph_json}</script></head><body><div class="top"><div class="wrap"><span>{ui["top_info"]}</span><span class="lang"><a href="{zh_href}">中文</a><a href="{vi_href}">Tiếng Việt</a><a href="{en_href}">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/{lang}/">VietnamZiChan<small>{ui["brand_sub"]}</small></a><div class="links"><a href="/{lang}/categories/factory/">{nav[0]}</a><a href="/{lang}/cities/">{nav[1]}</a><a href="/{lang}/listings/">{nav[2]}</a><a href="/{lang}/opportunities/">{nav[3]}</a><a href="/{lang}/trust/">{nav[4]}</a>{community_nav}<a href="/news/">{nav[6]}</a></div>{auth_state_html}<a class="action" href="/{lang}/contact/">{nav[5]}</a></nav></div>{body}<footer class="footer"><div class="wrap footer-grid"><div><h3>VietnamZiChan</h3><p>{ui["footer_desc"]}</p></div><div><h3>{ui["assets_title"]}</h3>{''.join(f'<a href="{url}">{name}</a>' for name, url in ui["asset_links"])}</div><div><h3>{ui["services_title"]}</h3>{''.join(f'<a href="{url}">{name}</a>' for name, url in ui["service_links"])}</div></div><div class="wrap fine">{ui["disclaimer"]}</div></footer>{community_script}<script src="/assets/site.js?v=3" defer></script></body></html>'''
 
 def cards(items, base, lang="zh"):
     idx = {"vi": 2, "zh": 0, "en": 1}[lang]
@@ -367,11 +392,13 @@ def cards(items, base, lang="zh"):
     return '<div class="grid">' + ''.join(f'<a class="card" href="/{lang}/{base}/{slug}/"><span class="eyebrow">Vietnam market</span><h3>{html.escape(v[idx][0])}</h3><p>{html.escape(v[idx][3])}</p><span class="arrow">{view_text}</span></a>' for slug, v in items.items()) + '</div>'
 
 def home(lang="zh"):
+    home_market_cta = HOME_MARKET_CTA.get(lang, "")
+    home_news_teaser = HOME_NEWS_TEASER.get(lang, "")
     ui = UI[lang]
     c_list = list(CITIES.values())
     idx = {"vi": 2, "zh": 0, "en": 1}[lang]
     city_options = ''.join(f'<option value="{c[idx][0]}">{c[idx][0]}</option>' for c in c_list)
-    body = f'''<header class="hero"><div class="wrap hero-grid"><div><span class="kicker">{ui["hero_kicker"]}</span><h1>{ui["home_title"]}</h1><p>{ui["home_desc"]}</p><form class="search" data-search><input name="q" aria-label="Keyword" placeholder="{ui["search_ph"]}"><select name="city" aria-label="City"><option value="">{ui["city_ph"]}</option>{city_options}</select><button class="btn">{ui["search_btn"]}</button></form></div><aside class="proof"><div><b>{ui["proof"][0][0]}</b>{ui["proof"][0][1]}</div><div><b>{ui["proof"][1][0]}</b>{ui["proof"][1][1]}</div><div><b>{ui["proof"][2][0]}</b>{ui["proof"][2][1]}</div></div></aside></div></header><main><section class="section"><div class="wrap"><div class="head"><div><h2>{ui["sec1_title"]}</h2><p>{ui["sec1_desc"]}</p></div><a class="arrow" href="/{lang}/listings/">{ui["nav"][2]} →</a></div>{cards(CATEGORIES, 'categories', lang)}</div></section><section class="section industrial"><div class="wrap"><div class="head"><div><h2>{ui["sec2_title"]}</h2><p>{ui["sec2_desc"]}</p></div></div>{cards(dict(list(CATEGORIES.items())[:3]), 'categories', lang)}</div></section><section class="section"><div class="wrap"><div class="head"><div><h2>{ui["sec3_title"]}</h2><p>{ui["sec3_desc"]}</p></div></div>{cards(CITIES, 'cities', lang)}</div></section><section class="section"><div class="wrap"><div class="cta"><div><h2>{ui["cta_home_title"]}</h2><p>{ui["cta_home_desc"]}</p></div><a class="btn" href="/{lang}/contact/">{ui["cta_home_btn"]}</a></div></div></section></main>'''
+    body = f'''<header class="hero"><div class="wrap hero-grid"><div><span class="kicker">{ui["hero_kicker"]}</span><h1>{ui["home_title"]}</h1><p>{ui["home_desc"]}</p><form class="search" data-search><input name="q" aria-label="Keyword" placeholder="{ui["search_ph"]}"><select name="city" aria-label="City"><option value="">{ui["city_ph"]}</option>{city_options}</select><button class="btn">{ui["search_btn"]}</button></form></div><aside class="proof"><div><b>{ui["proof"][0][0]}</b>{ui["proof"][0][1]}</div><div><b>{ui["proof"][1][0]}</b>{ui["proof"][1][1]}</div><div><b>{ui["proof"][2][0]}</b>{ui["proof"][2][1]}</div></div></aside></div></header><main><section class="section"><div class="wrap"><div class="head"><div><h2>{ui["sec1_title"]}</h2><p>{ui["sec1_desc"]}</p></div><a class="arrow" href="/{lang}/listings/">{ui["nav"][2]} →</a></div>{cards(CATEGORIES, 'categories', lang)}</div></section><section class="section industrial"><div class="wrap"><div class="head"><div><h2>{ui["sec2_title"]}</h2><p>{ui["sec2_desc"]}</p></div></div>{cards(dict(list(CATEGORIES.items())[:3]), 'categories', lang)}</div></section><section class="section"><div class="wrap"><div class="head"><div><h2>{ui["sec3_title"]}</h2><p>{ui["sec3_desc"]}</p></div></div>{cards(CITIES, 'cities', lang)}</div></section><section class="section"><div class="wrap"><div class="cta"><div><h2>{ui["cta_home_title"]}</h2><p>{ui["cta_home_desc"]}</p></div><a class="btn" href="/{lang}/contact/">{ui["cta_home_btn"]}</a></div></div></section>{home_market_cta}{home_news_teaser}</main>'''
     if lang in ("vi", "zh"):
         body = body.replace('</main>', f'<section class="section"><div class="wrap"><div class="cta"><div><h2>{ui["market_title"]}</h2><p>{ui["market_text"]}</p></div><a class="btn" href="/{lang}/market/">{ui["market_cta"]}</a></div></div></section></main>')
     schema = {"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "VietnamZiChan", "url": SITE}, {"@type": "WebSite", "name": "VietnamZiChan", "url": f"{SITE}/{lang}/", "potentialAction": {"@type": "SearchAction", "target": f"{SITE}/{lang}/listings/?q={{search_term_string}}", "query-input": "required name=search_term_string"}}]}
@@ -403,6 +430,7 @@ def simple_page(name, path, content, lang="zh"):
         body += f'''<div class="listing-layout"><aside class="filters"><form data-search><label>{keyword_label}</label><input name="q" placeholder="{ui["search_ph"]}"><label>{city_label}</label><select name="city"><option value="">{ui["city_ph"]}</option>{city_opts}</select><p><button class="btn" style="margin-top:12px">{ui["search_btn"]}</button></p></form></aside><div><div class="head"><div><h2>{ui["listings_heading"]}</h2><p data-count>{loading_label}</p></div></div><div class="grid" data-list><div class="empty full"><h3>{ui["empty_title"]}</h3><p>{ui["empty_desc"]}</p></div></div></div></div>'''
     elif path == "contact":
         types_opts = ''.join(f'<option>{t}</option>' for t in ui["types"])
+        body += CONTACT_QR_HTML.get(lang, "")
         body += f'''<form class="form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="inquiry"><p hidden><label>Don't fill <input name="bot-field"></label></p><div class="form-grid"><label>{ui["name_label"]}<input name="name" required></label><label>{ui["company_label"]}<input name="company"></label><label>{ui["contact_label"]}<input name="contact" required placeholder="{ui["contact_ph"]}"></label><label>{ui["type_label"]}<select name="type">{types_opts}</select></label><label>{ui["target_city_label"]}<input name="city"></label><label>{ui["budget_label"]}<input name="budget_area"></label><label class="full">{ui["message_label"]}<textarea name="message" required placeholder="{ui["message_ph"]}"></textarea></label><label class="full"><input style="width:auto" type="checkbox" required> {ui["agree_label"]}</label><div class="full"><button class="btn" type="submit">{ui["submit_btn"]}</button></div></div></form>'''
     elif path == "trust":
         cards_html = ''.join(f'<div class="card step"><h3>{c[0]}</h3><p>{c[1]}</p></div>' for c in ui["trust_cards"])
@@ -467,7 +495,22 @@ def build():
     write("assets/site.css", CSS)
     write("assets/site.js", JS)
     write(".portal-built.json", json.dumps({"schema_version": "1.0", "runtime": "static-local"}, ensure_ascii=False))
-    write("index.html", '<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/vi/"><link rel="canonical" href="https://vietnamzichan.com/vi/"><title>VietnamZiChan</title></head><body><a href="/vi/">Vào VietnamZiChan</a></body></html>')
+    write("index.html", '''<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/vi/"><link rel="canonical" href="https://vietnamzichan.com/vi/"><title>VietnamZiChan</title></head><body>
+<p>了解越南厂房、工业土地、仓库及商业资产信息。</p><a href="/vi/">Vào VietnamZiChan</a>
+<section style="max-width:1180px;margin:40px auto;padding:0 24px">
+  <div style="background:#f5f7f4;border:1px solid #dfe7e2;border-radius:18px;padding:28px">
+    <div style="font-size:14px;font-weight:700;color:#087b57;margin-bottom:8px">LATEST INSIGHTS</div>
+    <h2 style="margin:0 0 10px">越南资产与工业地产资讯</h2>
+    <p style="margin:0 0 16px;line-height:1.7;color:#53645d">
+      持续更新越南厂房、工业土地、仓库、酒店、商业资产和跨境合作信息。
+    </p>
+    <a href="/news/" style="display:inline-block;padding:11px 16px;border-radius:10px;background:#087b57;color:white;text-decoration:none;font-weight:700">
+      查看最新资讯
+    </a>
+  </div>
+</section>
+
+</body></html>''')
     for lang in LANGS:
         write(f"{lang}/index.html", home(lang))
         write(f"{lang}/cities/index.html", shell("Các tỉnh thành trọng điểm", "Danh mục tỉnh thành công nghiệp Việt Nam", f'<main><div class="page-hero"><div class="wrap"><div class="breadcrumb"><a href="/{lang}/">{UI[lang]["breadcrumb_home"]}</a> / Cities</div><h1>{UI[lang]["cities_title"]}</h1><p>{UI[lang]["cities_desc"]}</p></div></div><section class="section"><div class="wrap">{cards(CITIES, "cities", lang)}</div></section></main>', f"/{lang}/cities/", lang))
