@@ -1,0 +1,19 @@
+rc=1
+--- stdout ---
+
+--- stderr ---
+VALIDATION_RETRY=bac-ninh-ngoc-chau-industrial-cluster-2026:invented number ['2']
+VALIDATION_RETRY=vietnam-fdi-first-seven-months-2026:invented number ['100']
+VALIDATION_RETRY=vietnam-fdi-first-seven-months-2026:invented number ['100']
+VALIDATION_RETRY=vietnam-investment-law-2025-effective-2026:editorial filler
+Traceback (most recent call last):
+  File "/Users/shangdizhishou/Documents/Codex/2026-08-22/referenced-chatgpt-conversation-this-is-an-3/repo/scripts/news_multilingual_pipeline.py", line 142, in <module>
+    if __name__=="__main__": main()
+                             ~~~~^^
+  File "/Users/shangdizhishou/Documents/Codex/2026-08-22/referenced-chatgpt-conversation-this-is-an-3/repo/scripts/news_multilingual_pipeline.py", line 133, in main
+    completed.extend(validate(packet,ask(packet))["items"])
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shangdizhishou/Documents/Codex/2026-08-22/referenced-chatgpt-conversation-this-is-an-3/repo/scripts/news_multilingual_pipeline.py", line 73, in validate
+    "facts":item["verified_facts"] if lang=="zh" else FACT_TRANSLATIONS[slug][lang],
+                                                      ~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'hung-yen-industrial-parks-expansion-2026'

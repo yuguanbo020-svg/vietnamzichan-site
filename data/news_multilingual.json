@@ -1,5 +1,5 @@
 {
-  "edition_date": "2026-08-24",
+  "edition_date": "2026-08-27",
   "model": "qwen3-coder:30b",
   "items": [
     {
@@ -24,7 +24,7 @@
       "translations": {
         "vi": {
           "title": "Khởi công cụm công nghiệp Ngọc Châu tại Bắc Ninh",
-          "deck": "Dự án đầu tư gần 1 nghìn tỷ đồng, quy mô 75 hecta, tập trung phát triển nhiều ngành công nghiệp.",
+          "deck": "Dự án đầu tư lớn tại Bắc Ninh mở ra cơ hội cho các ngành công nghiệp sản xuất và dịch vụ trong nước và quốc tế.",
           "facts": [
             "Lễ khởi công Cụm công nghiệp Ngọc Châu tại tỉnh Bắc Ninh diễn ra ngày 4 tháng 8 năm 2026.",
             "Dự án có quy mô quy hoạch khoảng 75 ha và tổng vốn đầu tư gần 1 nghìn tỷ đồng.",
@@ -32,28 +32,28 @@
             "Quy hoạch hướng đến các ngành dệt may, dược phẩm, vật liệu, cơ khí, điện tử, ô tô, nội thất, công nghiệp hỗ trợ, cùng dịch vụ kho bãi và nhà xưởng."
           ],
           "impact": [
-            "Tăng cường khả năng cung cấp mặt bằng sản xuất cho các doanh nghiệp trong và ngoài nước tại khu vực phía Bắc Việt Nam.",
-            "Giảm chi phí vận hành và tăng hiệu quả sử dụng đất nhờ quy hoạch tập trung các ngành công nghiệp liên quan.",
-            "Thúc đẩy việc di chuyển các nhà máy từ các tỉnh lân cận hoặc từ Trung Quốc sang khu vực này để tận dụng hạ tầng và chính sách ưu đãi."
+            "Cung cấp không gian sản xuất và lưu trữ cho các doanh nghiệp trong ngành dệt may, hóa chất, cơ khí, điện tử và ô tô.",
+            "Tăng cường khả năng cạnh tranh của khu vực Bắc Ninh trong việc thu hút đầu tư nước ngoài và hỗ trợ chuỗi cung ứng địa phương.",
+            "Giảm chi phí vận hành cho doanh nghiệp nhờ hạ tầng được đầu tư đồng bộ và quy hoạch cụ thể."
           ],
           "cross_border": [
-            "Các doanh nghiệp Trung Quốc có thể chuyển dịch sản xuất sang khu vực này thay vì tiếp tục đầu tư tại Trung Quốc.",
-            "Việc xây dựng cụm công nghiệp sẽ tạo ra một điểm đến mới cho các nhà đầu tư Trung Quốc, đặc biệt trong ngành dệt may và cơ khí.",
-            "Khu vực này có thể trở thành nơi tập trung các nhà máy phụ trợ cho các doanh nghiệp tại Trung Quốc, giảm chi phí vận chuyển."
+            "Các nhà máy sản xuất tại các ngành như dệt may, cơ khí, điện tử có thể tận dụng lợi thế địa lý để phục vụ thị trường Trung Quốc.",
+            "Khu vực này có thể trở thành điểm kết nối giữa các nhà đầu tư Việt Nam và Trung Quốc trong lĩnh vực công nghiệp.",
+            "Các doanh nghiệp Trung Quốc có thể mở rộng sản xuất tại đây để tiếp cận thị trường nội địa Việt Nam."
           ],
           "watch": [
-            "Sự tiến độ thực hiện các hạng mục xây dựng trong năm 2026 sẽ ảnh hưởng đến thời điểm khai thác dự án.",
-            "Mức độ thu hút các nhà đầu tư nước ngoài trong giai đoạn đầu sẽ cho thấy tiềm năng phát triển của cụm công nghiệp.",
-            "Các chính sách ưu đãi thuế và đất đai dành cho doanh nghiệp tại cụm công nghiệp có thể thay đổi theo thời gian."
+            "Sự tiến độ thực hiện các hạng mục xây dựng trong năm 2026 sẽ ảnh hưởng đến thời điểm khai thác của dự án.",
+            "Mức độ hoàn thành quy hoạch và việc thu hút các doanh nghiệp lớn sẽ cho thấy tiềm năng phát triển của cụm công nghiệp.",
+            "Tỷ lệ chuyển đổi đất nông nghiệp sang mục đích công nghiệp tại khu vực này có thể phản ánh sự thay đổi trong chiến lược phát triển vùng."
           ],
-          "base_case": "Dự án hoàn thành đúng tiến độ, thu hút các nhà đầu tư trong và ngoài nước, tạo ra việc làm và thúc đẩy phát triển kinh tế khu vực.",
-          "upside_case": "Các doanh nghiệp Trung Quốc chuyển dịch sản xuất sang cụm công nghiệp, tạo ra lượng lớn đầu tư và lao động tại khu vực.",
-          "downside_case": "Việc chậm tiến độ hoặc không thu hút được nhà đầu tư có thể khiến dự án không đạt hiệu quả như mong đợi.",
-          "seo_description": "Khởi công cụm công nghiệp Ngọc Châu tại Bắc Ninh, quy mô 75 hecta, đầu tư gần 1 nghìn tỷ đồng, tập trung phát triển ngành dệt may, cơ khí và điện tử."
+          "base_case": "Dự án được hoàn thành đúng tiến độ và thu hút các doanh nghiệp lớn trong ngành công nghiệp sản xuất, tạo ra nhu cầu ổn định cho không gian sản xuất và dịch vụ.",
+          "upside_case": "Nếu quy hoạch được thực hiện hiệu quả và thu hút đầu tư mạnh mẽ từ Trung Quốc, cụm công nghiệp có thể trở thành trung tâm sản xuất khu vực.",
+          "downside_case": "Nếu chậm tiến độ hoặc không thu hút được doanh nghiệp lớn, dự án có thể bị lãng phí nguồn lực và không tạo ra giá trị kinh tế rõ rệt.",
+          "seo_description": "Khởi công cụm công nghiệp Ngọc Châu tại Bắc Ninh với quy mô 75 hecta, dự kiến hoàn thành năm 2027, thu hút các ngành như dệt may, cơ khí, điện tử và ô tô."
         },
         "zh": {
-          "title": "北宁启动玉州工业区项目",
-          "deck": "该项目投资近1万亿越南盾，占地75公顷，将发展多个工业领域。",
+          "title": "玉州工业集群在北宁开工",
+          "deck": "该项目投资巨大，为国内外制造业和服务业提供发展机遇。",
           "facts": [
             "北宁省玉州工业集群于2026年8月4日举行开工仪式。",
             "项目规划规模约75公顷，总投资接近1万亿越南盾。",
@@ -61,28 +61,28 @@
             "规划吸引纺织、制药、材料、机械、电子、汽车、家具、配套工业，以及仓储和厂房服务。"
           ],
           "impact": [
-            "增强该地区为国内外企业提供生产用地的能力。",
-            "通过集中规划提高土地使用效率并降低运营成本。",
-            "促使企业从周边省份或中国转移工厂至该区域以利用基础设施和优惠政策。"
+            "为纺织、制药、机械、电子、汽车等行业提供生产与仓储空间。",
+            "提升北宁地区吸引外资的能力，并支持本地供应链发展。",
+            "通过完善的基础设施降低企业运营成本。"
           ],
           "cross_border": [
-            "中国企业可能将生产基地转移到此地，而非继续在中国投资。",
-            "该项目将成为吸引中国投资者的新地点，尤其在纺织和机械行业。",
-            "该地区可成为为中国企业提供配套服务的制造中心，降低运输成本。"
+            "该区域可利用地理优势服务中国制造业市场。",
+            "可能成为越南与中国的工业投资连接点。",
+            "中国企业可在当地扩大生产以进入越南市场。"
           ],
           "watch": [
-            "2026年内建设进度将影响项目投入使用时间。",
-            "初期外资吸引力将反映该工业区的发展潜力。",
-            "针对企业的税收和土地优惠政策可能随时间调整。"
+            "2026年建设进度将影响项目投入使用时间。",
+            "规划完成情况及企业入驻数量反映项目潜力。",
+            "土地用途变更比例显示区域发展策略调整。"
           ],
-          "base_case": "项目按计划完成，吸引国内外投资者，创造就业机会并推动区域经济发展。",
-          "upside_case": "中国企业大规模转移生产，带来大量投资与劳动力。",
-          "downside_case": "若进度延误或未能吸引投资者，则项目可能无法达到预期效果。",
-          "seo_description": "北宁启动玉州工业区项目，占地75公顷，投资近1万亿越南盾，重点发展纺织、机械和电子等行业。"
+          "base_case": "项目按计划完工并吸引大型制造企业入驻，带动本地生产与服务需求。",
+          "upside_case": "若规划执行良好并吸引大量中国投资，该工业区可能成为区域制造中心。",
+          "downside_case": "如进度延误或缺乏大企业入驻，项目可能造成资源浪费且未产生明显经济价值。",
+          "seo_description": "北宁玉州工业集群于2026年8月开工，占地75公顷，预计2027年完工，吸引纺织、机械、电子和汽车等行业。"
         },
         "en": {
-          "title": "Groundbreaking of Ngoc Chau Industrial Cluster in Bac Ninh",
-          "deck": "The project invests nearly 1 trillion VND, covers 75 hectares, and focuses on multiple industrial sectors.",
+          "title": "Ngọc Châu Industrial Cluster Breaks Ground in Bac Ninh",
+          "deck": "A major investment project in Bac Ninh offers opportunities for domestic and international manufacturing and service sectors.",
           "facts": [
             "The groundbreaking ceremony for the Ngoc Chau Industrial Cluster in Bac Ninh Province took place on 4 August 2026.",
             "The project has a planned area of about 75 hectares and total investment of nearly VND 1 trillion.",
@@ -90,24 +90,24 @@
             "The plan targets textiles, pharmaceuticals, materials, machinery, electronics, automotive, furniture and supporting industries, as well as warehouse and factory services."
           ],
           "impact": [
-            "Increases available industrial land for domestic and foreign companies in northern Vietnam.",
-            "Reduces operational costs and improves land use efficiency through centralized planning.",
-            "Encourages relocation of factories from neighboring provinces or China to benefit from infrastructure and incentives."
+            "Provides production and storage space for companies in textiles, chemicals, machinery, electronics, and automotive industries.",
+            "Strengthens Bac Ninh’s capacity to attract foreign direct investment and support local supply chains.",
+            "Reduces operational costs for businesses through integrated infrastructure and clear planning."
           ],
           "cross_border": [
-            "Chinese firms may shift production to this area instead of investing in China.",
-            "The cluster could attract Chinese investors, especially in textiles and machinery industries.",
-            "It may become a hub for supporting industries for Chinese companies, reducing logistics costs."
+            "Manufacturing facilities can leverage geographic proximity to serve the Chinese market.",
+            "The area may become a link between Vietnamese and Chinese industrial investors.",
+            "Chinese companies may expand production here to access Vietnam’s domestic market."
           ],
           "watch": [
             "Construction progress in 2026 will determine when the project becomes operational.",
-            "Early foreign investor attraction indicates development potential of the industrial zone.",
-            "Tax and land policies for businesses may change over time."
+            "Completion of planning and number of large enterprises attracted indicate development potential.",
+            "Land-use conversion rates reflect shifts in regional development strategy."
           ],
-          "base_case": "Project completed on schedule, attracting domestic and international investors, generating jobs and boosting regional economy.",
-          "upside_case": "Chinese firms relocate production, bringing significant investment and labor to the area.",
-          "downside_case": "Delays or lack of investor interest may prevent project from meeting expectations.",
-          "seo_description": "Groundbreaking of Ngoc Chau Industrial Cluster in Bac Ninh, covering 75 hectares with nearly 1 trillion VND investment, focusing on textiles, machinery, and electronics."
+          "base_case": "Project completes on schedule and attracts major manufacturing firms, generating stable demand for production and services.",
+          "upside_case": "If well-executed and attracting strong Chinese investment, the cluster may become a regional manufacturing hub.",
+          "downside_case": "Delays or lack of large enterprises could lead to wasted resources and no clear economic returns.",
+          "seo_description": "The 75-hectare Ngọc Châu Industrial Cluster in Bac Ninh broke ground in August 2026, expected to be completed by 2027, targeting industries such as textiles, machinery, electronics, and automotive."
         }
       }
     },
@@ -133,7 +133,7 @@
       "translations": {
         "vi": {
           "title": "FDI Việt Nam gia tăng 46,9% trong 7 tháng đầu năm 2026",
-          "deck": "Sản xuất chế biến thu hút lớn nhất, bất động sản cũng có sự tăng trưởng đáng kể.",
+          "deck": "Sản xuất chế biến thu hút dòng vốn lớn nhất, bất động sản cũng tiếp tục nhận đầu tư đáng kể.",
           "facts": [
             "Trang thông tin chính thức dẫn số liệu của Tổng cục Thống kê Việt Nam cho biết vốn đầu tư trực tiếp nước ngoài liên quan vượt 12,9 tỷ USD tính đến ngày 20 tháng 7 năm 2026.",
             "Trang này cho biết chỉ tiêu trên tăng 46,9% so với cùng kỳ.",
@@ -141,28 +141,28 @@
             "Lĩnh vực bất động sản thu hút khoảng 986,2 triệu USD, chiếm 11,3%."
           ],
           "impact": [
-            "Sản xuất chế biến thu hút hơn 5,6 tỷ USD, chiếm phần lớn dòng vốn FDI, cho thấy nhu cầu đầu tư vào ngành công nghiệp đang gia tăng.",
-            "Thị trường bất động sản thu hút khoảng 986,2 triệu USD, phản ánh sự quan tâm của nhà đầu tư đến lĩnh vực này trong bối cảnh tăng trưởng kinh tế.",
-            "Tăng trưởng FDI 46,9% cho thấy môi trường đầu tư đang thu hút thêm dòng vốn nước ngoài, đặc biệt là từ các ngành có giá trị gia tăng cao."
+            "Sản xuất chế biến thu hút hơn 5,6 tỷ USD, chiếm phần lớn dòng vốn FDI, cho thấy nhu cầu thị trường và chi phí lao động cạnh tranh của Việt Nam.",
+            "Đầu tư vào bất động sản đạt khoảng 986,2 triệu USD, phản ánh sự ổn định hoặc tăng trưởng trong lĩnh vực này, có thể ảnh hưởng đến chi phí đầu tư và lựa chọn vị trí xây dựng.",
+            "Tăng trưởng FDI 46,9% so với cùng kỳ năm trước cho thấy môi trường đầu tư đang thu hút thêm các nhà đầu tư nước ngoài, đặc biệt trong ngành công nghiệp chế biến."
           ],
           "cross_border": [
-            "Các nhà đầu tư nước ngoài có xu hướng tập trung vào lĩnh vực sản xuất chế biến, điều này ảnh hưởng đến chuỗi cung ứng khu vực.",
-            "Việc tăng cường đầu tư vào bất động sản có thể dẫn đến sự thay đổi trong chiến lược phát triển đô thị tại các tỉnh phía Bắc và miền Trung.",
-            "Tăng trưởng FDI có thể thúc đẩy hợp tác giữa Việt Nam và các đối tác thương mại lớn, đặc biệt là Trung Quốc."
+            "Các doanh nghiệp nước ngoài có thể cân nhắc mở rộng đầu tư vào lĩnh vực sản xuất chế biến tại Việt Nam nhờ sự tăng trưởng mạnh mẽ của dòng vốn FDI.",
+            "Việc thu hút vốn FDI lớn vào ngành sản xuất chế biến có thể tạo ra cơ hội hợp tác giữa các công ty Việt Nam và nước ngoài trong chuỗi cung ứng.",
+            "Tăng trưởng FDI có thể dẫn đến việc các nhà đầu tư nước ngoài chuyển dịch hoạt động sang Việt Nam từ các quốc gia khác, đặc biệt là những nơi chi phí cao."
           ],
           "watch": [
-            "Sự phân bổ vốn giữa sản xuất chế biến và bất động sản có thể thay đổi theo thời gian, cần theo dõi xu hướng đầu tư mới.",
-            "Tăng trưởng FDI có thể bị ảnh hưởng bởi các chính sách mới của chính phủ hoặc điều kiện kinh tế toàn cầu.",
-            "Sự gia tăng đầu tư vào lĩnh vực bất động sản có thể dẫn đến sự thay đổi trong quy hoạch đô thị và giá đất tại các khu vực trọng điểm."
+            "Sự phân bổ vốn giữa sản xuất chế biến và bất động sản có thể thay đổi theo thời gian, ảnh hưởng đến chiến lược đầu tư của các công ty.",
+            "Nếu dòng vốn FDI tiếp tục tăng mạnh, có thể dẫn đến sự cạnh tranh gia tăng trong việc thu hút các nhà đầu tư nước ngoài.",
+            "Tăng trưởng FDI có thể tác động đến chính sách thuế và quy định đầu tư của Việt Nam, cần theo dõi để đánh giá rủi ro."
           ],
-          "base_case": "FDI tiếp tục tăng trưởng mạnh, đặc biệt trong ngành sản xuất chế biến, với mức tăng 46,9% so với cùng kỳ năm trước.",
-          "upside_case": "Nếu chính sách đầu tư được cải thiện và môi trường kinh doanh được nâng cao, FDI có thể vượt mức hiện tại, đặc biệt trong lĩnh vực công nghệ cao và sản xuất chế biến.",
-          "downside_case": "Nếu các yếu tố kinh tế toàn cầu hoặc chính sách nội địa thay đổi bất lợi, dòng vốn FDI có thể giảm, ảnh hưởng đến ngành sản xuất và bất động sản.",
+          "base_case": "FDI tiếp tục tăng trưởng mạnh, đặc biệt trong ngành sản xuất chế biến, với mức đầu tư ổn định ở lĩnh vực bất động sản.",
+          "upside_case": "Nếu các chính sách thu hút đầu tư được cải thiện và môi trường kinh doanh được nâng cao, dòng vốn FDI có thể tăng mạnh hơn nữa, đặc biệt vào lĩnh vực công nghệ cao.",
+          "downside_case": "Nếu chi phí lao động hoặc quy định đầu tư gia tăng, có thể làm giảm sức hấp dẫn của Việt Nam đối với nhà đầu tư nước ngoài.",
           "seo_description": "FDI Việt Nam tăng 46,9% trong 7 tháng đầu năm 2026, tập trung chủ yếu vào sản xuất chế biến và bất động sản."
         },
         "zh": {
           "title": "2026年前七个月越南FDI增长46.9%",
-          "deck": "加工制造业吸引最多资金，房地产领域也显著增长。",
+          "deck": "加工制造业吸引大量资金，房地产领域也继续获得显著投资。",
           "facts": [
             "该官方页面援引越南统计总局数据称，截至2026年7月20日，相关外商直接投资超过129亿美元。",
             "页面称该指标同比增长46.9%。",
@@ -170,28 +170,28 @@
             "房地产领域约9.862亿美元，占11.3%。"
           ],
           "impact": [
-            "加工制造业吸引超过56亿美元投资，占总资金的大部分，显示制造业投资需求增加。",
-            "房地产领域吸引约9.862亿美元投资，反映投资者对这一领域的兴趣上升。",
-            "FDI同比增长46.9%，表明投资环境正在吸引更多外资，特别是高附加值行业。"
+            "加工制造业吸引超过56亿美元投资，占总资金的大部分，表明市场需求和劳动力成本优势。",
+            "房地产领域投资接约9.862亿美元，反映该领域稳定或增长趋势，可能影响投资成本和选址决策。",
+            "FDI同比增长46.9%，显示外资环境吸引力增强，尤其在制造业领域。"
           ],
           "cross_border": [
-            "外国投资者倾向于集中于制造业，这将影响区域供应链布局。",
-            "房地产投资增加可能促使北部和中部地区城市发展规划调整。",
-            "FDI增长可能推动越南与主要贸易伙伴（尤其是中国）的合作加强。"
+            "外国企业可考虑扩大在越南加工制造业的投资，因FDI增长显著。",
+            "制造业吸引大量资金可能促进越企与外国公司供应链合作。",
+            "FDI增长可能导致外国投资者将业务转移至越南，特别是成本较高的国家。"
           ],
           "watch": [
-            "制造业与房地产之间的资金分配变化需持续观察新投资趋势。",
-            "FDI增长可能受政府政策或全球经济环境影响。",
-            "房地产投资增加可能导致重点区域城市规划和地价变动。"
+            "资金在制造业和房地产之间的分配变化可能影响企业投资策略。",
+            "若FDI持续强劲增长，可能加剧吸引外资的竞争。",
+            "FDI增长可能促使越南调整税收和投资政策，需关注潜在风险。"
           ],
-          "base_case": "FDI继续强劲增长，特别是在加工制造业领域，同比增长46.9%。",
-          "upside_case": "若投资政策改善、营商环境提升，FDI可能进一步增长，尤其在高科技和制造业领域。",
-          "downside_case": "若全球经济或国内政策不利，FDI可能下降，影响制造业和房地产行业。",
-          "seo_description": "2026年前七个月越南FDI增长46.9%，主要集中在加工制造和房地产。"
+          "base_case": "FDI继续强劲增长，尤其在加工制造业，房地产领域保持稳定投资。",
+          "upside_case": "若投资环境改善，FDI可能进一步增长，特别是在高科技领域。",
+          "downside_case": "若劳动力成本或投资法规上升，可能削弱越南对外资的吸引力。",
+          "seo_description": "2026年前七个月越南FDI增长46.9%，主要集中在制造业和房地产。"
         },
         "en": {
           "title": "Vietnam FDI Rises 46.9% in First Seven Months of 2026",
-          "deck": "Manufacturing attracts the largest share, real estate also shows notable growth.",
+          "deck": "Manufacturing attracts the largest share of investment, real estate also continues to receive significant inflows.",
           "facts": [
             "The official page, citing Vietnam's General Statistics Office, said related foreign direct investment exceeded US$12.9 billion as of 20 July 2026.",
             "The page said this measure increased 46.9% year on year.",
@@ -199,23 +199,23 @@
             "Real estate attracted about US$986.2 million, accounting for 11.3%."
           ],
           "impact": [
-            "Processing manufacturing attracted over $5.6 billion, representing the majority of total FDI, indicating rising investment demand in industry.",
-            "Real estate attracted about $986.2 million, reflecting investor interest in this sector amid economic growth.",
-            "A 46.9% increase in FDI shows that the investment environment is attracting more foreign capital, especially in high-value-added industries."
+            "Processing industry attracted over $5.6 billion, the majority of total FDI, indicating strong market demand and competitive labor costs.",
+            "Real estate investment reached about $986.2 million, reflecting stability or growth in this sector, potentially affecting investment costs and location choices.",
+            "FDI growth of 46.9% year-on-year shows an improved investment environment, especially in manufacturing."
           ],
           "cross_border": [
-            "Foreign investors are increasingly focusing on manufacturing, affecting regional supply chain dynamics.",
-            "Growing real estate investment may lead to urban development plan adjustments in northern and central provinces.",
-            "Increased FDI could boost cooperation between Vietnam and major trading partners, especially China."
+            "Foreign companies may consider expanding investments in Vietnam’s manufacturing sector due to strong FDI growth.",
+            "High levels of investment in manufacturing could create opportunities for Vietnamese firms to collaborate with foreign investors in supply chains.",
+            "Increased FDI may lead foreign investors to shift operations from higher-cost countries to Vietnam."
           ],
           "watch": [
-            "Shifts in capital allocation between manufacturing and real estate should be monitored for new investment trends.",
-            "FDI growth may be affected by government policies or global economic conditions.",
-            "Rising real estate investment may cause changes in urban planning and land prices in key areas."
+            "Changes in capital allocation between manufacturing and real estate may affect corporate investment strategies.",
+            "Continued strong FDI growth could intensify competition for attracting foreign investors.",
+            "FDI growth may influence Vietnam’s tax and investment policies, requiring monitoring for potential risks."
           ],
-          "base_case": "FDI continues strong growth, particularly in manufacturing, with a 46.9% increase year-on-year.",
-          "upside_case": "If investment policies improve and business conditions enhance, FDI could exceed current levels, especially in high-tech and manufacturing sectors.",
-          "downside_case": "If global or domestic economic conditions deteriorate, FDI may decline, affecting manufacturing and real estate industries.",
+          "base_case": "FDI continues to grow strongly, especially in manufacturing, with stable investment in real estate.",
+          "upside_case": "If investment conditions improve, FDI could rise further, particularly in high-tech sectors.",
+          "downside_case": "If labor costs or investment regulations increase, Vietnam’s appeal to foreign investors may decline.",
           "seo_description": "Vietnam's FDI rose 46.9% in the first seven months of 2026, mainly driven by manufacturing and real estate."
         }
       }
@@ -242,7 +242,7 @@
       "translations": {
         "vi": {
           "title": "Luật Đầu Tư Việt Nam 2025 có hiệu lực từ 2026",
-          "deck": "Thay đổi trong quy định đầu tư ảnh hưởng đến các dự án công nghiệp và công nghệ cao",
+          "deck": "Thay đổi trong quy định đầu tư ảnh hưởng đến các dự án công nghiệp và công nghệ cao tại Việt Nam",
           "facts": [
             "Luật Đầu tư năm 2025 của Việt Nam có hiệu lực từ ngày 1 tháng 3 năm 2026.",
             "Bản tiếng Anh chính thức đề cập các dự án đầu tư trong khu công nghiệp, khu công nghệ cao và khu công nghệ số tập trung.",
@@ -250,24 +250,24 @@
             "Điều kiện áp dụng cho từng dự án vẫn cần được đối chiếu theo địa điểm, ngành nghề và các quy định triển khai tiếp theo."
           ],
           "impact": [
-            "Các dự án tại khu công nghiệp, khu công nghệ cao và khu vực số tập trung được điều chỉnh theo luật mới, tạo điều kiện cho việc triển khai đầu tư có mục tiêu rõ ràng hơn.",
-            "Điều kiện áp dụng cụ thể cho từng dự án cần được xác minh theo địa điểm, ngành nghề và quy định triển khai chi tiết, ảnh hưởng đến thời điểm thực hiện và lựa chọn vị trí đầu tư.",
-            "Luật mới mở rộng phạm vi điều chỉnh đối với các lĩnh vực công nghệ số, bán dẫn và trung tâm dữ liệu trí tuệ nhân tạo, làm thay đổi cơ cấu đầu tư trong ngành công nghiệp công nghệ."
+            "Các dự án tại khu công nghiệp, khu công nghệ cao và khu vực số tập trung được điều chỉnh theo luật mới, tạo điều kiện cho việc triển khai các dự án công nghệ số và bán dẫn.",
+            "Việc áp dụng luật có thể làm thay đổi chi phí vận hành và quy trình phê duyệt đối với các nhà đầu tư nước ngoài trong lĩnh vực công nghệ thông tin và dữ liệu.",
+            "Các doanh nghiệp cần xem xét lại chiến lược đầu tư tại Việt Nam, đặc biệt là những dự án liên quan đến ngành công nghiệp số và AI, để đảm bảo phù hợp với điều kiện pháp lý mới."
           ],
           "cross_border": [
-            "Các nhà đầu tư Trung Quốc cần chú ý đến sự thay đổi trong quy định pháp lý liên quan đến các dự án công nghệ cao tại Việt Nam, đặc biệt là trong lĩnh vực số hóa và AI.",
-            "Việc điều chỉnh các điều kiện đầu tư có thể làm thay đổi chiến lược đầu tư của các doanh nghiệp Trung Quốc vào khu vực công nghiệp và công nghệ tại Việt Nam.",
-            "Các dự án liên quan đến bán dẫn và trung tâm dữ liệu có thể bị ảnh hưởng bởi sự rõ ràng hơn trong quy định pháp lý, từ đó tác động đến kế hoạch đầu tư dài hạn."
+            "Các nhà đầu tư Trung Quốc có thể thấy tăng cường cơ hội trong lĩnh vực công nghệ số và bán dẫn tại Việt Nam, nhưng cần tuân thủ các quy định cụ thể của từng khu vực.",
+            "Việc điều chỉnh chính sách đầu tư có thể làm thay đổi cách thức hợp tác giữa các doanh nghiệp Trung Quốc và Việt Nam trong lĩnh vực công nghệ cao.",
+            "Các dự án liên quan đến dữ liệu trung tâm AI và công nghệ số có thể bị ảnh hưởng bởi các quy định mới, đặc biệt là khi triển khai tại khu vực số tập trung."
           ],
           "watch": [
-            "Sự xuất hiện của các quy định cụ thể mới trong luật đầu tư có thể dẫn đến việc điều chỉnh các dự án đang triển khai hoặc dự kiến tại các khu công nghiệp.",
-            "Các cơ quan quản lý địa phương có thể ban hành hướng dẫn chi tiết theo từng ngành nghề, ảnh hưởng đến thời điểm và cách thức thực hiện dự án.",
-            "Sự thay đổi trong quy định pháp lý có thể làm thay đổi các điều kiện ưu đãi đầu tư, từ đó tác động đến quyết định của nhà đầu tư Trung Quốc."
+            "Sự thay đổi trong cách thức phê duyệt các dự án công nghệ số và bán dẫn tại Việt Nam sẽ phản ánh qua các quyết định của cơ quan quản lý đầu tư.",
+            "Các doanh nghiệp Trung Quốc có thể điều chỉnh kế hoạch đầu tư vào khu công nghiệp và khu công nghệ cao theo hướng phù hợp với luật mới.",
+            "Sự xuất hiện của các quy định mới trong lĩnh vực số tập trung có thể dẫn đến việc điều chỉnh các chính sách hỗ trợ đầu tư tại các khu vực này."
           ],
-          "base_case": "Luật đầu tư 2025 được áp dụng theo đúng quy định, không có thay đổi lớn trong cách thức thực thi, các dự án công nghệ cao tiếp tục được ưu tiên.",
-          "upside_case": "Các quy định mới tạo điều kiện thuận lợi hơn cho các dự án công nghệ số và AI, thu hút thêm đầu tư từ các nhà đầu tư Trung Quốc vào lĩnh vực này.",
-          "downside_case": "Việc áp dụng chi tiết các quy định mới có thể làm chậm tiến độ thực hiện một số dự án, đặc biệt là những dự án liên quan đến bán dẫn hoặc trung tâm dữ liệu.",
-          "seo_description": "Luật Đầu Tư Việt Nam 2025 có hiệu lực từ 2026, ảnh hưởng đến các dự án công nghiệp và công nghệ cao. Các nhà đầu tư Trung Quốc cần chú ý đến sự thay đổi trong quy định pháp lý."
+          "base_case": "Luật đầu tư 2025 được áp dụng theo đúng quy định, không có thay đổi lớn trong cách thức thực thi đối với các dự án công nghệ số và bán dẫn.",
+          "upside_case": "Các quy định mới tạo điều kiện thuận lợi hơn cho các nhà đầu tư Trung Quốc trong lĩnh vực công nghệ số, từ đó thúc đẩy tăng trưởng đầu tư vào khu công nghiệp và khu công nghệ cao.",
+          "downside_case": "Việc thực thi luật có thể gây khó khăn cho các dự án công nghệ số và bán dẫn nếu không có hướng dẫn cụ thể từ cơ quan quản lý, làm chậm tiến độ triển khai.",
+          "seo_description": "Luật Đầu Tư Việt Nam 2025 có hiệu lực từ 2026, ảnh hưởng đến các dự án công nghiệp và công nghệ cao. Phân tích tác động đối với đầu tư Trung Quốc."
         },
         "zh": {
           "title": "越南《2025年投资法》自2026年起生效",
@@ -279,28 +279,28 @@
             "具体项目适用条件仍需结合项目所在地、行业和后续实施规定逐项核验。"
           ],
           "impact": [
-            "工业园区、高科技园区及集中式数字技术区的投资项目适用新法律，为具体项目的实施提供更明确的指导。",
-            "具体项目适用条件需结合项目所在地、行业和后续实施规定逐项核验，影响投资决策和执行时间点。",
-            "新法扩大了对数字技术、半导体和人工智能数据中心等领域的监管范围，改变相关产业的投资结构。"
+            "工业园区、高科技园区及集中式数字技术区的投资项目受新法律调整，为数字技术和半导体项目提供新的实施框架。",
+            "新法律可能影响外国投资者在信息技术和数据领域的运营成本与审批流程。",
+            "企业需重新评估在越南的投资策略，特别是涉及数字经济和人工智能的项目，以确保符合新法规要求。"
           ],
           "cross_border": [
-            "中国投资者需关注新法律对高科技项目的影响，特别是在数字化和AI领域。",
-            "新法规可能调整中国企业在越南工业区和科技园区的投资策略。",
-            "涉及半导体和数据中心的项目可能因法律明确性增强而影响长期投资计划。"
+            "中国投资者在数字技术、半导体和人工智能数据中心领域可能获得更多投资机会，但需遵守各区域的具体规定。",
+            "新政策可能改变中越企业在高科技领域的合作方式。",
+            "集中式数字区的项目可能因新规影响，导致数据处理和基础设施投资调整。"
           ],
           "watch": [
-            "新投资法的实施可能促使现有或计划中的工业园区项目进行调整。",
-            "地方政府可能根据行业发布具体实施细则，影响项目执行时间和方式。",
-            "法律变化可能影响投资优惠条件，进而影响中国投资者的决策。"
+            "越南投资管理部门对数字技术及半导体项目的审批方式变化将直接影响投资进展。",
+            "中国公司可能根据新法律调整在工业园区和高科技园区的投资计划。",
+            "集中式数字区的新规定可能引发相关投资支持政策的调整。"
           ],
-          "base_case": "《2025年投资法》按原定规定实施，高科技项目继续获得优先支持。",
-          "upside_case": "新法规为数字技术和AI项目提供更优环境，吸引中国投资者增加在该领域的投入。",
-          "downside_case": "实施细则的执行可能延缓部分项目进度，特别是涉及半导体和数据中心的项目。",
-          "seo_description": "越南《2025年投资法》自2026年起生效，影响工业园区与高科技项目。中国投资者需关注法律变化对投资决策的影响。"
+          "base_case": "《2025年投资法》按原定条款执行，对数字经济和半导体项目无重大变化。",
+          "upside_case": "新法规为中资企业在数字经济领域提供更便利的投资环境，推动更多投资进入工业园区和高科技园区。",
+          "downside_case": "若缺乏具体实施细则，新法律可能阻碍数字技术和半导体项目的进展，影响投资落地效率。",
+          "seo_description": "越南《2025年投资法》自2026年起生效，对工业园区和高科技项目产生影响。分析对中国投资者的影响。"
         },
         "en": {
           "title": "Vietnam's 2025 Investment Law Takes Effect in 2026",
-          "deck": "New investment regulations affect industrial and high-tech projects",
+          "deck": "New investment regulations affect industrial and high-tech projects in Vietnam",
           "facts": [
             "Vietnam's 2025 Law on Investment took effect on 1 March 2026.",
             "The official English text covers investment projects in industrial parks, high-tech parks and concentrated digital technology zones.",
@@ -308,24 +308,133 @@
             "The conditions applicable to a specific project still need to be checked against its location, industry and subsequent implementing rules."
           ],
           "impact": [
-            "Projects in industrial parks, high-tech zones, and centralized digital technology areas are now governed by the new law, providing clearer guidelines for implementation.",
-            "Specific project conditions must be verified based on location, industry, and subsequent implementation rules, affecting timing and site selection decisions.",
-            "The updated law expands regulation to digital technology, semiconductors, and AI data centers, reshaping investment patterns in tech industries."
+            "Investments in industrial parks, high-tech zones, and centralized digital technology areas are now governed by the new law, providing a framework for digital and semiconductor projects.",
+            "The law may alter operational costs and approval processes for foreign investors in IT and data-related sectors.",
+            "Companies should reassess investment strategies in Vietnam, especially for projects involving digital industries and AI, to ensure compliance with updated legal requirements."
           ],
           "cross_border": [
-            "Chinese investors should monitor changes in legal requirements for high-tech projects in Vietnam, especially in digital and AI sectors.",
-            "New regulations may alter investment strategies of Chinese firms in Vietnamese industrial and technology zones.",
-            "Projects involving semiconductors and data centers may be affected by clearer legal frameworks, influencing long-term investment plans."
+            "Chinese investors may see increased opportunities in digital technology and semiconductor sectors in Vietnam, but must comply with specific regional regulations.",
+            "The new policy could alter cooperation models between Chinese and Vietnamese companies in high-tech industries.",
+            "Projects involving data centers and AI technologies may be affected by new rules, particularly when implemented in centralized digital zones."
           ],
           "watch": [
-            "Implementation of the new investment law may prompt adjustments to ongoing or planned projects in industrial parks.",
-            "Local authorities may issue detailed guidelines per industry, affecting execution timing and methods.",
-            "Changes in regulations could alter investment incentives, impacting decisions by Chinese investors."
+            "Changes in approval procedures for digital technology and semiconductor projects by Vietnam’s investment authorities will reflect in investment execution timelines.",
+            "Chinese firms may adjust investment plans in industrial and high-tech zones based on the new legal framework.",
+            "New regulations in centralized digital zones may prompt adjustments to existing investment support policies."
           ],
-          "base_case": "The 2025 Investment Law is implemented as intended, with no major changes to enforcement; high-tech projects continue to receive priority support.",
-          "upside_case": "New regulations create a more favorable environment for digital and AI projects, encouraging increased investment from Chinese firms.",
-          "downside_case": "Implementation of detailed rules may delay certain projects, particularly those involving semiconductors or data centers.",
-          "seo_description": "Vietnam's 2025 Investment Law becomes effective in 2026, affecting industrial and high-tech investments. Chinese investors should monitor legal changes impacting investment decisions."
+          "base_case": "The 2025 Investment Law is implemented as intended, with no major changes affecting digital and semiconductor projects.",
+          "upside_case": "The new law creates a more favorable environment for Chinese investors in the digital sector, encouraging increased investment into industrial and high-tech zones.",
+          "downside_case": "Lack of detailed implementation guidelines may hinder progress on digital and semiconductor projects, slowing down investment execution.",
+          "seo_description": "Vietnam's 2025 Investment Law becomes effective in 2026, affecting industrial and high-tech investments. Analysis of impact on Chinese investors."
+        }
+      }
+    },
+    {
+      "slug": "hung-yen-industrial-parks-expansion-2026",
+      "category": "工业地产",
+      "keywords": [
+        "越南工业地产",
+        "兴安省工业园",
+        "越南招商引资",
+        "越南工业集群"
+      ],
+      "source_name": "越南投资评论(VIR)",
+      "source_url": "https://vir.com.vn/hung-yen-expands-space-to-attract-a-new-wave-of-industrial-investment-158955.html",
+      "source_date": "2026-08-19",
+      "verified_facts": [
+        "越南投资评论(VIR)报道，兴安省2026年前7个月工业生产同比增长15.4%，其中制造加工业增长16.05%。",
+        "报道称兴安省新设立Tân Dân、08号、10号三个工业园，并新增四个工业集群。",
+        "报道称截至2026年7月31日，兴安省累计有外商投资项目975个，注册资本合计188亿美元；本地投资项目3230个，注册资本合计332亿美元。",
+        "报道称兴安省一个规划中的高新技术园区面积近500公顷，设八个功能分区，预计投资额约4亿美元。"
+      ],
+      "image": "/assets/news/hung-yen-industrial.svg",
+      "translations": {
+        "vi": {
+          "title": "Mở rộng khu công nghiệp tỉnh Hưng Yên năm 2026",
+          "deck": "Tăng cường không gian sản xuất và thu hút đầu tư mới trong ngành công nghiệp chế biến.",
+          "facts": [
+            "Theo Vietnam Investment Review (VIR), sản xuất công nghiệp của tỉnh Hưng Yên trong 7 tháng đầu năm 2026 tăng 15,4% so với cùng kỳ, trong đó ngành chế biến, chế tạo tăng 16,05%.",
+            "Báo cáo cho biết tỉnh Hưng Yên đã thành lập mới ba khu công nghiệp Tân Dân, số 08 và số 10, đồng thời bổ sung thêm bốn cụm công nghiệp.",
+            "Báo cáo cho biết tính đến ngày 31 tháng 7 năm 2026, tỉnh Hưng Yên có lũy kế 975 dự án đầu tư nước ngoài với tổng vốn đăng ký 18,8 tỷ USD; và 3.230 dự án đầu tư trong nước với tổng vốn đăng ký 33,2 tỷ USD.",
+            "Báo cáo cho biết một khu công nghệ cao đang được quy hoạch tại Hưng Yên có diện tích gần 500 ha, gồm tám phân khu chức năng, với vốn đầu tư dự kiến khoảng 400 triệu USD."
+          ],
+          "impact": [
+            "Nhu cầu về mặt bằng sản xuất tại Hưng Yên tăng lên, tạo điều kiện cho các nhà đầu tư tìm kiếm không gian mới.",
+            "Các khu công nghiệp mới có thể giảm chi phí vận hành và tăng hiệu quả sản xuất nhờ quy hoạch hợp lý.",
+            "Việc mở rộng cơ sở hạ tầng khu công nghiệp thúc đẩy sự phát triển của các ngành công nghiệp chế biến tại địa phương."
+          ],
+          "cross_border": [
+            "Các nhà đầu tư nước ngoài có thể chuyển đổi sang đầu tư vào khu vực Hưng Yên thay vì các tỉnh lân cận.",
+            "Việc mở rộng không gian công nghiệp có thể làm tăng sức cạnh tranh của Việt Nam trong việc thu hút đầu tư từ Trung Quốc.",
+            "Các dự án công nghệ cao tại Hưng Yên có thể tạo ra cơ hội hợp tác với các đối tác Trung Quốc trong lĩnh vực sản xuất."
+          ],
+          "watch": [
+            "Số lượng dự án đầu tư mới tại Hưng Yên có thể tăng theo thời gian, đặc biệt trong ngành công nghiệp chế biến.",
+            "Mức độ hoàn thành các khu công nghiệp mới sẽ ảnh hưởng đến việc thu hút nhà đầu tư trong tương lai.",
+            "Tăng trưởng sản xuất tại Hưng Yên có thể phản ánh sự chuyển dịch của chuỗi cung ứng từ Trung Quốc sang Việt Nam."
+          ],
+          "base_case": "Nếu các khu công nghiệp mới được hoàn thành đúng tiến độ, thì lượng đầu tư vào ngành công nghiệp chế biến tại Hưng Yên sẽ tăng mạnh.",
+          "upside_case": "Nếu các dự án công nghệ cao được triển khai sớm và thu hút được nhà đầu tư lớn, thì khu vực có thể trở thành điểm đến hấp dẫn cho các doanh nghiệp Trung Quốc.",
+          "downside_case": "Nếu việc quy hoạch và phát triển không đạt hiệu quả, thì các nhà đầu tư có thể chuyển sang các tỉnh khác với cơ sở hạ tầng tốt hơn.",
+          "seo_description": "Mở rộng khu công nghiệp Hưng Yên năm 2026: Tăng cường không gian sản xuất, thu hút đầu tư mới trong ngành công nghiệp chế biến."
+        },
+        "zh": {
+          "title": "2026年兴安省工业园区扩建",
+          "deck": "增加制造业生产空间，吸引新的工业投资。",
+          "facts": [
+            "越南投资评论(VIR)报道，兴安省2026年前7个月工业生产同比增长15.4%，其中制造加工业增长16.05%。",
+            "报道称兴安省新设立Tân Dân、08号、10号三个工业园，并新增四个工业集群。",
+            "报道称截至2026年7月31日，兴安省累计有外商投资项目975个，注册资本合计188亿美元；本地投资项目3230个，注册资本合计332亿美元。",
+            "报道称兴安省一个规划中的高新技术园区面积近500公顷，设八个功能分区，预计投资额约4亿美元。"
+          ],
+          "impact": [
+            "兴安省对生产用地的需求上升，为投资者提供了新的选择。",
+            "新建工业园区可能通过合理规划降低运营成本并提高生产效率。",
+            "工业园区基础设施的扩展将促进当地制造业的发展。"
+          ],
+          "cross_border": [
+            "外国投资者可能转向在兴安省投资，而非周边省份。",
+            "工业园区扩建可能增强越南吸引中国投资的能力。",
+            "高科技园区项目可能为中越企业合作提供机会。"
+          ],
+          "watch": [
+            "兴安省新投资项目数量可能随时间增加，尤其是在制造业领域。",
+            "新建工业园区的完成进度将影响未来吸引投资者的效果。",
+            "兴安省的增长趋势可能反映供应链从中国向越南转移的趋势。"
+          ],
+          "base_case": "如果新建工业园区按时完工，则兴安省制造业投资将显著增长。",
+          "upside_case": "如果高科技项目提前启动并吸引大型投资者，该地区可能成为吸引中国企业的重要目的地。",
+          "downside_case": "如果规划和开发未能达到预期效果，投资者可能转向基础设施更完善的其他省份。",
+          "seo_description": "2026年兴安省工业园区扩建：增加生产空间，吸引制造业投资。"
+        },
+        "en": {
+          "title": "Expansion of Industrial Parks in Hung Yen Province, 2026",
+          "deck": "Increased production space and attraction of new industrial investment.",
+          "facts": [
+            "Vietnam Investment Review (VIR) reported that Hung Yen province's industrial production grew 15.4% year-on-year in the first seven months of 2026, with manufacturing and processing up 16.05%.",
+            "The report said Hung Yen newly established three industrial parks — Tan Dan, No. 08 and No. 10 — and added four new industrial clusters.",
+            "The report said that as of 31 July 2026, Hung Yen had 975 cumulative foreign-invested projects with total registered capital of US$18.8 billion, and 3,230 domestic investment projects with total registered capital of US$33.2 billion.",
+            "The report said a planned high-tech park in Hung Yen covers nearly 500 hectares with eight functional zones, with an estimated investment of about US$400 million."
+          ],
+          "impact": [
+            "Demand for production land in Hung Yen is rising, offering investors new options.",
+            "New industrial parks may reduce operating costs and improve production efficiency through better planning.",
+            "Infrastructure expansion in industrial zones will support growth in local manufacturing."
+          ],
+          "cross_border": [
+            "Foreign investors may shift investment to Hung Yen instead of neighboring provinces.",
+            "Expansion of industrial zones could enhance Vietnam's ability to attract Chinese investment.",
+            "High-tech projects may create opportunities for collaboration between Vietnamese and Chinese firms."
+          ],
+          "watch": [
+            "The number of new investment projects in Hung Yen may increase over time, especially in manufacturing.",
+            "Completion progress of new industrial parks will affect future investor attraction efforts.",
+            "Growth trends in Hung Yen may reflect supply chain shifts from China to Vietnam."
+          ],
+          "base_case": "If new industrial zones are completed on schedule, investment in manufacturing in Hung Yen will increase significantly.",
+          "upside_case": "If high-tech projects launch early and attract major investors, the region could become an attractive destination for Chinese companies.",
+          "downside_case": "If planning and development fail to meet expectations, investors may move to other provinces with better infrastructure.",
+          "seo_description": "Expansion of industrial parks in Hung Yen Province, 2026: Increased production space and attraction of new industrial investment."
         }
       }
     }

@@ -1,10 +1,15 @@
 {
-  "edition_date": "2026-08-24",
+  "edition_date": "2026-08-27",
   "items": [
     {
       "slug": "bac-ninh-ngoc-chau-industrial-cluster-2026",
       "category": "工业地产",
-      "keywords": ["越南工业地产", "北宁工业园", "越南厂房", "越南仓库"],
+      "keywords": [
+        "越南工业地产",
+        "北宁工业园",
+        "越南厂房",
+        "越南仓库"
+      ],
       "source_name": "越南政府新闻网",
       "source_url": "https://cms.baochinhphu.vn/khoi-cong-cum-cong-nghiep-ngoc-chau-tai-bac-ninh-102260804154707124.htm",
       "source_date": "2026-08-04",
@@ -19,7 +24,12 @@
     {
       "slug": "vietnam-fdi-first-seven-months-2026",
       "category": "投资观察",
-      "keywords": ["越南投资", "越南FDI", "越南制造业", "越南房地产"],
+      "keywords": [
+        "越南投资",
+        "越南FDI",
+        "越南制造业",
+        "越南房地产"
+      ],
       "source_name": "河内高科技园官方英文信息",
       "source_url": "https://hhtp.gov.vn/en/tin-tuc/fdi-increases-469-in-the-first-seven-months-1401.html",
       "source_date": "2026-08-19",
@@ -34,7 +44,12 @@
     {
       "slug": "vietnam-investment-law-2025-effective-2026",
       "category": "政策解读",
-      "keywords": ["越南投资法", "越南工业园投资", "越南投资政策", "中越贸易"],
+      "keywords": [
+        "越南投资法",
+        "越南工业园投资",
+        "越南投资政策",
+        "中越贸易"
+      ],
       "source_name": "越南政府新闻网英文版",
       "source_url": "https://en.baochinhphu.vn/viet-nams-law-on-investment-2025-111260731145214387.htm",
       "source_date": "2026-07-31",
@@ -45,6 +60,26 @@
         "具体项目适用条件仍需结合项目所在地、行业和后续实施规定逐项核验。"
       ],
       "image": "/assets/news/vietnam-policy.svg"
+    },
+    {
+      "slug": "hung-yen-industrial-parks-expansion-2026",
+      "category": "工业地产",
+      "keywords": [
+        "越南工业地产",
+        "兴安省工业园",
+        "越南招商引资",
+        "越南工业集群"
+      ],
+      "source_name": "越南投资评论(VIR)",
+      "source_url": "https://vir.com.vn/hung-yen-expands-space-to-attract-a-new-wave-of-industrial-investment-158955.html",
+      "source_date": "2026-08-19",
+      "verified_facts": [
+        "越南投资评论(VIR)报道，兴安省2026年前7个月工业生产同比增长15.4%，其中制造加工业增长16.05%。",
+        "报道称兴安省新设立Tân Dân、08号、10号三个工业园，并新增四个工业集群。",
+        "报道称截至2026年7月31日，兴安省累计有外商投资项目975个，注册资本合计188亿美元；本地投资项目3230个，注册资本合计332亿美元。",
+        "报道称兴安省一个规划中的高新技术园区面积近500公顷，设八个功能分区，预计投资额约4亿美元。"
+      ],
+      "image": "/assets/news/hung-yen-industrial.svg"
     }
   ]
 }
