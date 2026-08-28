@@ -19,6 +19,17 @@ export function formatTime(iso) {
   } catch { return iso; }
 }
 
+// 公开可见的展示名（比如帖子作者名）绝不能用邮箱兜底，避免把用户邮箱暴露给其他访客。
+// 只在没有昵称、也没有第三方登录提供的真实姓名时，才生成一个匿名代号。
+function publicDisplayName(user) {
+  const meta = (user && user.user_metadata) || {};
+  if (meta.display_name) return meta.display_name;
+  if (meta.full_name) return meta.full_name;
+  if (meta.name) return meta.name;
+  const uid = (user && user.id) || '';
+  return '访客' + uid.replace(/-/g, '').slice(0, 6);
+}
+
 export async function getSession() {
   const { data: { session } } = await supabase.auth.getSession();
   return session;
@@ -54,7 +65,7 @@ export async function submitPost({ kind, category = null, target = null, title =
   if (!session || !session.user) {
     throw new Error('NEED_LOGIN');
   }
-  const displayName = (session.user.user_metadata && session.user.user_metadata.display_name) || session.user.email;
+  const displayName = publicDisplayName(session.user);
   const { data, error } = await supabase
     .from('posts')
     .insert({
