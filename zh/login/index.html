@@ -74,7 +74,7 @@
         const btn = document.getElementById('step1Btn');
         btn.disabled = true;
         const email = document.getElementById('email').value.trim();
-        const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
+        const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: false, emailRedirectTo: window.location.origin + '/zh/community/' } });
         btn.disabled = false;
         if (error) {
           step1Msg.textContent = '发送失败：' + error.message + '（如果还没注册过，请先去加入社区）';

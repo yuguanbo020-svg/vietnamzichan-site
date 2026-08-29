@@ -79,7 +79,7 @@
         const email = document.getElementById('email').value.trim();
         const { error } = await supabase.auth.signInWithOtp({
           email,
-          options: { shouldCreateUser: true, data: { display_name: displayName } },
+          options: { shouldCreateUser: true, data: { display_name: displayName }, emailRedirectTo: window.location.origin + '/zh/community/' },
         });
         btn.disabled = false;
         if (error) {
