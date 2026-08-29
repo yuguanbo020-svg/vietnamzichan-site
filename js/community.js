@@ -5,6 +5,9 @@
 import { supabase } from '/js/supabase-client.js';
 
 const SITE = 'vietnamzichan'; // <- 每个站点的 vendored 副本改这一行，比如 'soulentropy' / 'vietnamzichan'
+// VietnamZiChan 的社区/登录/注册目前只在 /zh/ 路径下上线（其余站点在根路径），
+// 这个前缀只在这一份vendored副本里设为 '/zh'，其余站点副本保持 ''。
+const AUTH_BASE = '/zh';
 
 export function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({
@@ -52,7 +55,7 @@ export async function renderAuthState(containerId) {
       });
     }
   } else {
-    el.innerHTML = '<a href="/signup/" class="cta-join">加入社区</a> · <a href="/login/">登录</a>';
+    el.innerHTML = `<a href="${AUTH_BASE}/signup/" class="cta-join">加入社区</a> · <a href="${AUTH_BASE}/login/">登录</a>`;
   }
   return session;
 }
