@@ -24,8 +24,8 @@ export function formatTime(iso) {
 function publicDisplayName(user) {
   const meta = (user && user.user_metadata) || {};
   if (meta.display_name) return meta.display_name;
-  if (meta.full_name) return meta.full_name;
-  if (meta.name) return meta.name;
+  // 注意：不要再加 meta.full_name / meta.name 兜底——那是 OAuth 登录商（Google/Apple）自动带来的真实姓名，
+  // 用户从没有主动同意把它公开展示，只有用户自己在本站设置的 display_name 才可信任。
   const uid = (user && user.id) || '';
   return '访客' + uid.replace(/-/g, '').slice(0, 6);
 }
