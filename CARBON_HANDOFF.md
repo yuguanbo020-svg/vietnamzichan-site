@@ -32,3 +32,26 @@ NEXT_ACTION=
 2. Live browser verification of the persistence/redirect logic against the deployed Netlify preview once pushed.
 3. Investigate the generate_site.py Python-version sensitivity as a low-priority hygiene item (confirm Netlify's actual Python version so a future environment change doesn't silently break zh/ builds) — not urgent, not part of this pass's scope.
 SAFE_TO_CONTINUE=yes
+
+---
+## Update 2026-08-29 (same day, follow-up pass)
+Investigated extending to zh-TW/ko/ja per Carbon's priority list. Finding:
+language in this generator is NOT centralized in one place the way
+site_i18n's registry/strings.json pattern is — besides UI{vi,zh,en} and
+LANGS{vi,zh,en}, there are at least 10 more small inline dict literals
+scattered through build_portal.py, each hardcoded to exactly {"vi":...,
+"zh":..., "en":...}[lang] (lines ~390, 391, 399, 409, 425, 427-429, 446,
+469-470, 480, plus HOME_MARKET_CTA/HOME_NEWS_TEASER/CONTACT_QR_HTML).
+Adding a new lang code to LANGS without updating every one of these would
+raise a Python KeyError and break the whole build the moment that locale's
+pages are generated — this is a bigger, more invasive change than "extend
+a language dict" and deserves its own careful pass (ideally: consolidate
+these into one `t(lang, key, table)` helper with the same
+current→en→default fallback chain used by the shared i18n.js runtime,
+THEN add zh-TW/ko/ja once). NOT attempted this pass to avoid shipping a
+half-verified change that could break the live build. Persistence fix from
+the earlier commit today (c6d15e6) is untouched and unaffected.
+NEXT_ACTION (updated): before adding new locales, do the dict-consolidation
+refactor above as its own reviewed commit; only then add zh-TW/ko/ja
+content (good fit for OpenClaw/Qwen once the structure exists). Queued in
+I18N_TRANSLATION_QUEUE.json.
