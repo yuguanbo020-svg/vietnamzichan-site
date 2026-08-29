@@ -10,3 +10,10 @@ SOUL.md
 TOOLS.md
 USER.md
 openclaw-workspace-state.json
+
+CARBON_HANDOFF.md
+CARBON_MASTER_HANDOFF.md
+CARBON_TASK_QUEUE.json
+I18N_TRANSLATION_QUEUE.json
+memory/
+supabase/
