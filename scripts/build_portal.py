@@ -368,12 +368,15 @@ UI = {
 }
 
 def shell(title: str, description: str, body: str, path: str, lang: str = "zh", schema: dict | None = None) -> str:
-    # 五站共享社区底座第一阶段：目前只有 zh 上线了 /zh/community/ /zh/signup/ /zh/login/，
-    # 所以社区入口只在 lang == "zh" 时注入，避免在还没有对应页面的 vi/en 版本上出现死链接。
-    community_nav = '<a href="/zh/community/">社区</a>' if lang == "zh" else ""
-    auth_state_html = '<span class="auth-state" id="authState">加载中…</span>' if lang == "zh" else ""
-    community_css_link = '<link rel="stylesheet" href="/assets/community.css">' if lang == "zh" else ""
-    community_script = "<script type=\"module\">import { renderAuthState } from '/js/community.js'; renderAuthState('authState');</script>" if lang == "zh" else ""
+    # 五站共享社区底座：zh/vi/en 三个语言各自都有自己的 /LANG/community/ /LANG/signup/
+    # /LANG/login/（js/community.js 的 AUTH_BASE 会跟着当前访问路径自动取 /zh /vi /en），
+    # 所以三个语言都注入社区入口；nav 文案按语言翻译，避免死链接或语言不一致。
+    community_label = {"zh": "社区", "vi": "Cộng đồng", "en": "Community"}[lang]
+    auth_loading_label = {"zh": "加载中…", "vi": "Đang tải…", "en": "Loading…"}[lang]
+    community_nav = f'<a href="/{lang}/community/">{community_label}</a>'
+    auth_state_html = f'<span class="auth-state" id="authState">{auth_loading_label}</span>'
+    community_css_link = '<link rel="stylesheet" href="/assets/community.css">'
+    community_script = "<script type=\"module\">import { renderAuthState } from '/js/community.js'; renderAuthState('authState');</script>"
     locale, _ = LANGS[lang]
     canonical = f"{SITE}{path}"
     graph = schema or {"@context":"https://schema.org","@type":"WebPage","name":title,"url":canonical,"description":description,"inLanguage":locale}
