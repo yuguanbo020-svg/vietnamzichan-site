@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community · Rentals, purchases, sales &amp; cooperation | VietnamZiChan</title>
+    <meta name="description" content="VietnamZiChan community: real user posts for want-to-rent/want-to-buy/for-rent/for-sale/factory/industrial land/agriculture/hotel/seeking cooperation/China resource cooperation, with comments and replies." />
+    <link rel="canonical" href="https://vietnamzichan.com/en/community/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://vietnamzichan.com/zh/community/" />
+    <link rel="alternate" hreflang="vi-VN" href="https://vietnamzichan.com/vi/community/" />
+    <link rel="alternate" hreflang="en" href="https://vietnamzichan.com/en/community/" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/">中文</a><a href="/vi/">Tiếng Việt</a><a href="/en/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/en/">VietnamZiChan<small>Vietnam Assets</small></a><div class="links"><a href="/en/categories/factory/">Industrial property</a><a href="/en/cities/">Cities</a><a href="/en/listings/">Listings</a><a href="/en/opportunities/">Cooperation</a><a href="/en/trust/">Trust &amp; verification</a><a href="/en/community/">Community</a></div><span class="auth-state" id="authState">Loading…</span><a class="action" href="/en/contact/">Submit inquiry</a></nav></div>
+    <main>
+      <div class="page-hero">
+        <div class="wrap">
+          <div class="breadcrumb"><a href="/en/">Home</a> / Community</div>
+          <h1>Community</h1>
+          <p>Real posts from real users: want-to-rent, want-to-buy, for-rent, for-sale and cooperation requests. Log in to post, comment, edit or delete your own content.</p>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="search-box"><input type="text" id="communitySearch" placeholder="Search title or content…"></div>
+
+          <div class="category-tabs" id="categoryTabs">
+            <button type="button" data-cat="" class="active">All</button>
+            <button type="button" data-cat="求租">Want to rent</button>
+            <button type="button" data-cat="求购">Want to buy</button>
+            <button type="button" data-cat="出租">For rent</button>
+            <button type="button" data-cat="出售">For sale</button>
+            <button type="button" data-cat="厂房">Factory</button>
+            <button type="button" data-cat="工业地">Industrial land</button>
+            <button type="button" data-cat="农业">Agriculture</button>
+            <button type="button" data-cat="酒店">Hotel</button>
+            <button type="button" data-cat="找合作">Seeking cooperation</button>
+            <button type="button" data-cat="中国资源合作">China resource cooperation</button>
+          </div>
+
+          <div class="head">
+            <div>
+              <h2>Post a listing</h2>
+              <p>Log in to post. Not logged in? You can still browse real posts below.</p>
+            </div>
+          </div>
+          <form class="community-form" id="postForm">
+            <select id="postCategory" required>
+              <option value="">Select a category…</option>
+              <option value="求租">Want to rent</option>
+              <option value="求购">Want to buy</option>
+              <option value="出租">For rent</option>
+              <option value="出售">For sale</option>
+              <option value="厂房">Factory</option>
+              <option value="工业地">Industrial land</option>
+              <option value="农业">Agriculture</option>
+              <option value="酒店">Hotel</option>
+              <option value="找合作">Seeking cooperation</option>
+              <option value="中国资源合作">China resource cooperation</option>
+            </select>
+            <input id="postTitle" type="text" placeholder="Short title, e.g. 'Want 2000m² factory in Binh Duong'" required maxlength="80" />
+            <textarea id="postBody" placeholder="Details: size, city, budget, timeline, how to reach you (Telegram/email/etc.)" required maxlength="3000"></textarea>
+            <input id="postTags" type="text" placeholder="Tags, comma separated, e.g.: Binh Duong,factory,long-term lease (optional)" />
+            <button type="submit">Post</button>
+            <p class="msg" id="postMsg"></p>
+          </form>
+
+          <div class="head" style="margin-top:30px">
+            <div>
+              <h2>What people are posting</h2>
+              <p data-count>Loading…</p>
+            </div>
+          </div>
+          <div class="post-list" id="postList"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap fine">Public information is not transaction, investment or legal advice. Price, ownership, availability and cooperation terms should be re-verified with the poster and a professional advisor. A report button is available under every post.</div>
+    </footer>
+
+    <script type="module">
+      import { renderAuthState, fetchPosts, renderPostList, wirePostForm, submitPost } from '/js/community.js';
+      renderAuthState('authState');
+
+      let currentCategory = '';
+      let currentQuery = '';
+
+      async function refresh() {
+        const posts = await fetchPosts({ kind: 'post', category: currentCategory || null, q: currentQuery || null });
+        const countEl = document.querySelector('[data-count]');
+        countEl.textContent = posts.length ? `${posts.length} posts` : 'No posts yet';
+        renderPostList('postList', posts, { emptyText: 'No posts in this category yet — be the first.', showTitle: true });
+        wireReplies(posts);
+      }
+
+      function wireReplies(posts) {
+        posts.forEach((p) => {
+          const article = document.querySelector(`[data-post-id="${p.id}"]`);
+          if (!article || article.querySelector('.post-replies')) return;
+          const target = `post:${p.id}`;
+          const box = document.createElement('details');
+          box.className = 'post-replies';
+          box.innerHTML = `<summary>Replies</summary>
+            <form class="community-form" id="replyForm-${p.id}">
+              <textarea id="postBody" placeholder="Reply…" required maxlength="1000"></textarea>
+              <button type="submit">Reply</button>
+              <p class="msg" id="replyMsg-${p.id}"></p>
+            </form>
+            <div class="post-list" id="replyList-${p.id}"></div>`;
+          article.appendChild(box);
+          async function refreshReplies() {
+            const replies = await fetchPosts({ kind: 'comment', target });
+            renderPostList(`replyList-${p.id}`, replies, { emptyText: 'No replies yet.' });
+          }
+          wirePostForm({ formId: `replyForm-${p.id}`, msgId: `replyMsg-${p.id}`, kind: 'comment', target, onSuccess: refreshReplies });
+          refreshReplies();
+        });
+      }
+
+      document.getElementById('categoryTabs').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-cat]');
+        if (!btn) return;
+        currentCategory = btn.dataset.cat;
+        document.querySelectorAll('#categoryTabs button').forEach((b) => b.classList.toggle('active', b === btn));
+        refresh();
+      });
+
+      let searchTimer;
+      document.getElementById('communitySearch').addEventListener('input', (e) => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => { currentQuery = e.target.value.trim(); refresh(); }, 300);
+      });
+
+      const postForm = document.getElementById('postForm');
+      const postMsg = document.getElementById('postMsg');
+      postForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        postMsg.textContent = ''; postMsg.className = 'msg';
+        const category = document.getElementById('postCategory').value;
+        const title = document.getElementById('postTitle').value.trim();
+        const body = document.getElementById('postBody').value.trim();
+        const tags = document.getElementById('postTags').value.split(',').map((t) => t.trim()).filter(Boolean);
+        if (!category || !title || !body) return;
+        const btn = postForm.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        try {
+          await submitPost({ kind: 'post', category, title, body, tags });
+          postForm.reset();
+          postMsg.textContent = 'Posted.';
+          postMsg.className = 'msg ok';
+          refresh();
+        } catch (err) {
+          if (err && err.message === 'NEED_LOGIN') {
+            postMsg.textContent = 'Please log in or sign up before posting.';
+          } else {
+            postMsg.textContent = 'Failed to post: ' + (err && err.message ? err.message : String(err));
+          }
+          postMsg.className = 'msg err';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      refresh();
+    </script>
+  </body>
+</html>
