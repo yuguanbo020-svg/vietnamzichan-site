@@ -109,7 +109,7 @@ def render_page(item: dict[str, Any], language: str, translation: Translation, c
 <title>{title} | VietnamZiChan</title><meta name="description" content="{description}">
 <meta name="keywords" content="{html.escape(', '.join(keyphrases), quote=True)}"><link rel="canonical" href="{canonical}">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{canonical}">
-<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False).replace('</', '<\\/')}</script>
+<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False).replace('</', '<' + chr(92) + '/')}</script>
 <style>body{{font:16px/1.7 system-ui;max-width:760px;margin:auto;padding:28px;color:#17211f}}a{{color:#0b6d61}}.meta{{color:#66736f}}.notice{{background:#fff4d8;padding:12px;border-radius:8px}}</style></head>
 <body><nav><a href="/">VietnamZiChan</a></nav><main><h1>{title}</h1>
 <p class="meta">{html.escape(item['city_region'])} · {html.escape(item['category'])} · {html.escape(item['published_at'])}</p>
