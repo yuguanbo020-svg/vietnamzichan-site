@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cộng đồng · Cho thuê, mua bán và hợp tác | VietnamZiChan</title>
+    <meta name="description" content="Cộng đồng VietnamZiChan: tin đăng thật từ người dùng về cần thuê/cần mua/cho thuê/bán/nhà xưởng/đất công nghiệp/nông nghiệp/khách sạn/tìm hợp tác/hợp tác nguồn lực Trung Quốc, có thể bình luận và phản hồi." />
+    <link rel="canonical" href="https://vietnamzichan.com/vi/community/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://vietnamzichan.com/zh/community/" />
+    <link rel="alternate" hreflang="vi-VN" href="https://vietnamzichan.com/vi/community/" />
+    <link rel="alternate" hreflang="en" href="https://vietnamzichan.com/en/community/" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/">中文</a><a href="/vi/">Tiếng Việt</a><a href="/en/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/vi/">VietnamZiChan<small>Tài sản Việt Nam · Vietnam Assets</small></a><div class="links"><a href="/vi/categories/factory/">Bất động sản CN</a><a href="/vi/cities/">Thành phố</a><a href="/vi/listings/">Danh sách tài sản</a><a href="/vi/opportunities/">Cơ hội hợp tác</a><a href="/vi/trust/">Uy tín &amp; xác minh</a><a href="/vi/community/">Cộng đồng</a></div><span class="auth-state" id="authState">Đang tải…</span><a class="action" href="/vi/contact/">Gửi yêu cầu</a></nav></div>
+    <main>
+      <div class="page-hero">
+        <div class="wrap">
+          <div class="breadcrumb"><a href="/vi/">Trang chủ</a> / Cộng đồng</div>
+          <h1>Cộng đồng</h1>
+          <p>Tin đăng thật từ người dùng: cần thuê, cần mua, cho thuê, bán và tìm hợp tác. Sau khi đăng nhập bạn có thể đăng bài, bình luận, sửa hoặc xóa nội dung của mình.</p>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="search-box"><input type="text" id="communitySearch" placeholder="Tìm theo tiêu đề hoặc nội dung…"></div>
+
+          <div class="category-tabs" id="categoryTabs">
+            <button type="button" data-cat="" class="active">Tất cả</button>
+            <button type="button" data-cat="求租">Cần thuê</button>
+            <button type="button" data-cat="求购">Cần mua</button>
+            <button type="button" data-cat="出租">Cho thuê</button>
+            <button type="button" data-cat="出售">Bán</button>
+            <button type="button" data-cat="厂房">Nhà xưởng</button>
+            <button type="button" data-cat="工业地">Đất công nghiệp</button>
+            <button type="button" data-cat="农业">Nông nghiệp</button>
+            <button type="button" data-cat="酒店">Khách sạn</button>
+            <button type="button" data-cat="找合作">Tìm hợp tác</button>
+            <button type="button" data-cat="中国资源合作">Hợp tác nguồn lực Trung Quốc</button>
+          </div>
+
+          <div class="head">
+            <div>
+              <h2>Đăng một tin</h2>
+              <p>Đăng nhập để đăng tin. Chưa đăng nhập vẫn có thể xem tin thật bên dưới.</p>
+            </div>
+          </div>
+          <form class="community-form" id="postForm">
+            <select id="postCategory" required>
+              <option value="">Chọn danh mục…</option>
+              <option value="求租">Cần thuê</option>
+              <option value="求购">Cần mua</option>
+              <option value="出租">Cho thuê</option>
+              <option value="出售">Bán</option>
+              <option value="厂房">Nhà xưởng</option>
+              <option value="工业地">Đất công nghiệp</option>
+              <option value="农业">Nông nghiệp</option>
+              <option value="酒店">Khách sạn</option>
+              <option value="找合作">Tìm hợp tác</option>
+              <option value="中国资源合作">Hợp tác nguồn lực Trung Quốc</option>
+            </select>
+            <input id="postTitle" type="text" placeholder="Tiêu đề ngắn gọn, ví dụ「Cần thuê nhà xưởng 2000m² ở Bình Dương」" required maxlength="80" />
+            <textarea id="postBody" placeholder="Chi tiết: diện tích, thành phố, ngân sách, thời gian, cách liên hệ (Zalo/Telegram/email...)" required maxlength="3000"></textarea>
+            <input id="postTags" type="text" placeholder="Thẻ, cách nhau bằng dấu phẩy, ví dụ: Bình Dương,nhà xưởng,thuê dài hạn（tùy chọn）" />
+            <button type="submit">Đăng</button>
+            <p class="msg" id="postMsg"></p>
+          </form>
+
+          <div class="head" style="margin-top:30px">
+            <div>
+              <h2>Tin đăng của mọi người</h2>
+              <p data-count>Đang tải…</p>
+            </div>
+          </div>
+          <div class="post-list" id="postList"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap fine">Thông tin công khai không phải tư vấn giao dịch, đầu tư hay pháp lý. Giá cả, quyền sở hữu, tình trạng và điều kiện hợp tác cần được xác minh lại với bên đăng tin và chuyên gia tư vấn. Nút báo cáo nằm dưới mỗi tin.</div>
+    </footer>
+
+    <script type="module">
+      import { renderAuthState, fetchPosts, renderPostList, wirePostForm, submitPost } from '/js/community.js';
+      renderAuthState('authState');
+
+      let currentCategory = '';
+      let currentQuery = '';
+
+      async function refresh() {
+        const posts = await fetchPosts({ kind: 'post', category: currentCategory || null, q: currentQuery || null });
+        const countEl = document.querySelector('[data-count]');
+        countEl.textContent = posts.length ? `${posts.length} tin` : 'Chưa có tin nào';
+        renderPostList('postList', posts, { emptyText: 'Danh mục này chưa có tin, hãy đăng tin đầu tiên.', showTitle: true });
+        wireReplies(posts);
+      }
+
+      function wireReplies(posts) {
+        posts.forEach((p) => {
+          const article = document.querySelector(`[data-post-id="${p.id}"]`);
+          if (!article || article.querySelector('.post-replies')) return;
+          const target = `post:${p.id}`;
+          const box = document.createElement('details');
+          box.className = 'post-replies';
+          box.innerHTML = `<summary>Phản hồi</summary>
+            <form class="community-form" id="replyForm-${p.id}">
+              <textarea id="postBody" placeholder="Phản hồi…" required maxlength="1000"></textarea>
+              <button type="submit">Phản hồi</button>
+              <p class="msg" id="replyMsg-${p.id}"></p>
+            </form>
+            <div class="post-list" id="replyList-${p.id}"></div>`;
+          article.appendChild(box);
+          async function refreshReplies() {
+            const replies = await fetchPosts({ kind: 'comment', target });
+            renderPostList(`replyList-${p.id}`, replies, { emptyText: 'Chưa có phản hồi.' });
+          }
+          wirePostForm({ formId: `replyForm-${p.id}`, msgId: `replyMsg-${p.id}`, kind: 'comment', target, onSuccess: refreshReplies });
+          refreshReplies();
+        });
+      }
+
+      document.getElementById('categoryTabs').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-cat]');
+        if (!btn) return;
+        currentCategory = btn.dataset.cat;
+        document.querySelectorAll('#categoryTabs button').forEach((b) => b.classList.toggle('active', b === btn));
+        refresh();
+      });
+
+      let searchTimer;
+      document.getElementById('communitySearch').addEventListener('input', (e) => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => { currentQuery = e.target.value.trim(); refresh(); }, 300);
+      });
+
+      const postForm = document.getElementById('postForm');
+      const postMsg = document.getElementById('postMsg');
+      postForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        postMsg.textContent = ''; postMsg.className = 'msg';
+        const category = document.getElementById('postCategory').value;
+        const title = document.getElementById('postTitle').value.trim();
+        const body = document.getElementById('postBody').value.trim();
+        const tags = document.getElementById('postTags').value.split(',').map((t) => t.trim()).filter(Boolean);
+        if (!category || !title || !body) return;
+        const btn = postForm.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        try {
+          await submitPost({ kind: 'post', category, title, body, tags });
+          postForm.reset();
+          postMsg.textContent = 'Đã đăng.';
+          postMsg.className = 'msg ok';
+          refresh();
+        } catch (err) {
+          if (err && err.message === 'NEED_LOGIN') {
+            postMsg.textContent = 'Vui lòng đăng nhập hoặc đăng ký trước khi đăng tin.';
+          } else {
+            postMsg.textContent = 'Đăng thất bại: ' + (err && err.message ? err.message : String(err));
+          }
+          postMsg.className = 'msg err';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      refresh();
+    </script>
+  </body>
+</html>
