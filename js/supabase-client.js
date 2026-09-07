@@ -4,5 +4,6 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 export const supabase = createClient(
   'https://rpfccljejzfixohgwtpr.supabase.co',
-  'sb_publishable_t5inMT0ym3KrCQqkRLOK4w_HAhS7q3S'
+  'sb_publishable_t5inMT0ym3KrCQqkRLOK4w_HAhS7q3S',
+  { auth: { flowType: 'implicit', detectSessionInUrl: true, persistSession: true, autoRefreshToken: true } }
 );

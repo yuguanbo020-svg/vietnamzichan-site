@@ -18,98 +18,18 @@
   </head>
   <body>
     <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/">中文</a><a href="/vi/">Tiếng Việt</a><a href="/en/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/en/">VietnamZiChan<small>Vietnam Assets</small></a><div class="links"><a href="/en/categories/factory/">Industrial property</a><a href="/en/cities/">Cities</a><a href="/en/listings/">Listings</a><a href="/en/opportunities/">Cooperation</a><a href="/en/trust/">Trust &amp; verification</a><a href="/en/community/">Community</a></div><span class="auth-state" id="authState">Loading…</span><a class="action" href="/en/contact/">Submit inquiry</a></nav></div>
-    <main class="auth">
-      <h1>Join the community</h1>
-      <p class="hint">One-click sign-in with Google / Apple / Facebook, or an emailed one-time code — no password needed, you can join under a nickname.</p>
-
-      <div class="community-form" style="gap:10px">
-        <button type="button" id="oauthGoogle">Continue with Google</button>
-        <button type="button" id="oauthApple">Continue with Apple</button>
-        <button type="button" id="oauthFacebook">Continue with Facebook</button>
-        <p class="msg" id="oauthMsg"></p>
-      </div>
-      <p class="hint" style="text-align:center">Or use an emailed verification code (fallback)</p>
-
-      <form class="community-form" id="step1Form">
-        <label class="hint" for="displayName">Nickname</label>
-        <input id="displayName" name="displayName" type="text" required maxlength="40" />
+    <main class="auth" data-auth-mode="signup" data-auth-lang="en">
+      <h1>Sign up</h1>
+      <p class="hint">Use the link in your email. No password or verification code is needed.</p>
+      <form class="community-form" id="emailAuthForm">
+        <label class="hint" for="displayName">Nickname</label><input id="displayName" name="displayName" required maxlength="40" autocomplete="nickname" />
         <label class="hint" for="email">Email</label>
-        <input id="email" name="email" type="email" required />
-        <button type="submit" id="step1Btn">Send code</button>
-        <p class="msg" id="step1Msg"></p>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+        <button type="submit" id="sendLink">Send confirmation link</button>
+        <p class="msg" id="authMessage" role="status" aria-live="polite"></p>
       </form>
-
-      <form class="community-form" id="step2Form" style="display:none">
-        <p class="hint">A code was sent to your email, valid for 5-10 minutes.</p>
-        <label class="hint" for="code">6-digit code</label>
-        <input id="code" name="code" type="text" inputmode="numeric" required maxlength="8" />
-        <button type="submit" id="step2Btn">Verify &amp; join</button>
-        <p class="msg" id="step2Msg"></p>
-      </form>
-
       <p class="switch">Already have an account? <a href="/en/login/">Log in</a></p>
     </main>
-    <script type="module">
-      import { supabase } from '/js/supabase-client.js';
-      import { renderAuthState } from '/js/community.js';
-      renderAuthState('authState');
-
-      document.getElementById('oauthGoogle').addEventListener('click', () => oauthSignIn('google'));
-      document.getElementById('oauthApple').addEventListener('click', () => oauthSignIn('apple'));
-      document.getElementById('oauthFacebook').addEventListener('click', () => oauthSignIn('facebook'));
-      async function oauthSignIn(provider) {
-        const msg = document.getElementById('oauthMsg');
-        msg.textContent = ''; msg.className = 'msg';
-        const { error } = await supabase.auth.signInWithOAuth({ provider, options: { redirectTo: window.location.origin + '/en/' } });
-        if (error) { msg.textContent = 'Sign-in failed: ' + error.message; msg.className = 'msg err'; }
-      }
-
-      let pendingEmail = '';
-      const step1Form = document.getElementById('step1Form');
-      const step2Form = document.getElementById('step2Form');
-      const step1Msg = document.getElementById('step1Msg');
-      const step2Msg = document.getElementById('step2Msg');
-
-      step1Form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        step1Msg.textContent = ''; step1Msg.className = 'msg';
-        const btn = document.getElementById('step1Btn');
-        btn.disabled = true;
-        const displayName = document.getElementById('displayName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const { error } = await supabase.auth.signInWithOtp({
-          email,
-          options: { shouldCreateUser: true, data: { display_name: displayName }, emailRedirectTo: window.location.origin + '/en/community/' },
-        });
-        btn.disabled = false;
-        if (error) {
-          step1Msg.textContent = 'Failed to send: ' + error.message;
-          step1Msg.className = 'msg err';
-          return;
-        }
-        pendingEmail = email;
-        step1Msg.textContent = 'Code sent, please check your email.';
-        step1Msg.className = 'msg ok';
-        step2Form.style.display = 'grid';
-      });
-
-      step2Form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        step2Msg.textContent = ''; step2Msg.className = 'msg';
-        const btn = document.getElementById('step2Btn');
-        btn.disabled = true;
-        const code = document.getElementById('code').value.trim();
-        const { error } = await supabase.auth.verifyOtp({ email: pendingEmail, token: code, type: 'email' });
-        btn.disabled = false;
-        if (error) {
-          step2Msg.textContent = 'Verification failed: ' + error.message;
-          step2Msg.className = 'msg err';
-          return;
-        }
-        step2Msg.textContent = 'Welcome! Redirecting…';
-        step2Msg.className = 'msg ok';
-        setTimeout(() => { window.location.href = '/en/community/'; }, 800);
-      });
-    </script>
+    <script type="module" src="/js/email-auth.js"></script>
   </body>
 </html>

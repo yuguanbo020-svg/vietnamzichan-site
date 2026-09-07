@@ -18,92 +18,18 @@
   </head>
   <body>
     <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/">中文</a><a href="/vi/">Tiếng Việt</a><a href="/en/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/vi/">VietnamZiChan<small>Tài sản Việt Nam · Vietnam Assets</small></a><div class="links"><a href="/vi/categories/factory/">Bất động sản CN</a><a href="/vi/cities/">Thành phố</a><a href="/vi/listings/">Danh sách tài sản</a><a href="/vi/opportunities/">Cơ hội hợp tác</a><a href="/vi/trust/">Uy tín &amp; xác minh</a><a href="/vi/community/">Cộng đồng</a></div><span class="auth-state" id="authState">Đang tải…</span><a class="action" href="/vi/contact/">Gửi yêu cầu</a></nav></div>
-    <main class="auth">
+    <main class="auth" data-auth-mode="login" data-auth-lang="vi">
       <h1>Đăng nhập</h1>
-      <p class="hint">Đăng nhập nhanh bằng Google / Apple / Facebook, hoặc dùng mã xác nhận qua email — không cần nhớ mật khẩu.</p>
+      <p class="hint">Xác thực bằng liên kết trong email, không cần mật khẩu hoặc mã xác minh.</p>
+      <form class="community-form" id="emailAuthForm">
 
-      <div class="community-form" style="gap:10px">
-        <button type="button" id="oauthGoogle">Tiếp tục với Google</button>
-        <button type="button" id="oauthApple">Tiếp tục với Apple</button>
-        <button type="button" id="oauthFacebook">Tiếp tục với Facebook</button>
-        <p class="msg" id="oauthMsg"></p>
-      </div>
-      <p class="hint" style="text-align:center">Hoặc dùng mã xác nhận qua email (dự phòng)</p>
-
-      <form class="community-form" id="step1Form">
         <label class="hint" for="email">Email</label>
-        <input id="email" name="email" type="email" required />
-        <button type="submit" id="step1Btn">Gửi mã xác nhận</button>
-        <p class="msg" id="step1Msg"></p>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+        <button type="submit" id="sendLink">Gửi liên kết đăng nhập</button>
+        <p class="msg" id="authMessage" role="status" aria-live="polite"></p>
       </form>
-
-      <form class="community-form" id="step2Form" style="display:none">
-        <p class="hint">Mã xác nhận đã được gửi tới email, có hiệu lực trong 5-10 phút.</p>
-        <label class="hint" for="code">Mã xác nhận (6 số)</label>
-        <input id="code" name="code" type="text" inputmode="numeric" required maxlength="8" />
-        <button type="submit" id="step2Btn">Xác nhận &amp; đăng nhập</button>
-        <p class="msg" id="step2Msg"></p>
-      </form>
-
-      <p class="switch">Chưa có tài khoản？<a href="/vi/signup/">Đăng ký</a></p>
+      <p class="switch">Chưa có tài khoản? <a href="/vi/signup/">Đăng ký</a></p>
     </main>
-    <script type="module">
-      import { supabase } from '/js/supabase-client.js';
-      import { renderAuthState } from '/js/community.js';
-      renderAuthState('authState');
-
-      document.getElementById('oauthGoogle').addEventListener('click', () => oauthSignIn('google'));
-      document.getElementById('oauthApple').addEventListener('click', () => oauthSignIn('apple'));
-      document.getElementById('oauthFacebook').addEventListener('click', () => oauthSignIn('facebook'));
-      async function oauthSignIn(provider) {
-        const msg = document.getElementById('oauthMsg');
-        msg.textContent = ''; msg.className = 'msg';
-        const { error } = await supabase.auth.signInWithOAuth({ provider, options: { redirectTo: window.location.origin + '/vi/' } });
-        if (error) { msg.textContent = 'Đăng nhập thất bại: ' + error.message; msg.className = 'msg err'; }
-      }
-
-      let pendingEmail = '';
-      const step1Form = document.getElementById('step1Form');
-      const step2Form = document.getElementById('step2Form');
-      const step1Msg = document.getElementById('step1Msg');
-      const step2Msg = document.getElementById('step2Msg');
-
-      step1Form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        step1Msg.textContent = ''; step1Msg.className = 'msg';
-        const btn = document.getElementById('step1Btn');
-        btn.disabled = true;
-        const email = document.getElementById('email').value.trim();
-        const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: false, emailRedirectTo: window.location.origin + '/vi/community/' } });
-        btn.disabled = false;
-        if (error) {
-          step1Msg.textContent = 'Gửi thất bại: ' + error.message + '（Nếu chưa đăng ký, hãy tham gia cộng đồng trước）';
-          step1Msg.className = 'msg err';
-          return;
-        }
-        pendingEmail = email;
-        step1Msg.textContent = 'Đã gửi mã xác nhận, vui lòng kiểm tra email.';
-        step1Msg.className = 'msg ok';
-        step2Form.style.display = 'grid';
-      });
-
-      step2Form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        step2Msg.textContent = ''; step2Msg.className = 'msg';
-        const btn = document.getElementById('step2Btn');
-        btn.disabled = true;
-        const code = document.getElementById('code').value.trim();
-        const { error } = await supabase.auth.verifyOtp({ email: pendingEmail, token: code, type: 'email' });
-        btn.disabled = false;
-        if (error) {
-          step2Msg.textContent = 'Xác nhận thất bại: ' + error.message;
-          step2Msg.className = 'msg err';
-          return;
-        }
-        step2Msg.textContent = 'Đăng nhập thành công, đang chuyển hướng…';
-        step2Msg.className = 'msg ok';
-        setTimeout(() => { window.location.href = '/vi/community/'; }, 800);
-      });
-    </script>
+    <script type="module" src="/js/email-auth.js"></script>
   </body>
 </html>
