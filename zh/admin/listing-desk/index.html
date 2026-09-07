@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Listing Desk 审核队列 · VietnamZiChan</title>
+    <link rel="canonical" href="https://vietnamzichan.com/zh/admin/listing-desk/" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+    <style>
+      main.review{width:min(60rem,calc(100% - 2rem));margin:32px auto 60px}
+      .queue-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+      .queue-tabs button{padding:6px 14px;border-radius:999px;border:1px solid #d8ddd9;background:#fff;cursor:pointer;font-size:13px}
+      .queue-tabs button.active{background:var(--green2,#0b6d61);color:#fff;border-color:transparent}
+      .card{border:1px solid #e4e8e5;border-radius:10px;padding:16px;margin-bottom:14px;background:#fff}
+      .card h3{margin:0 0 6px;font-size:16px}
+      .card .meta{font-size:12px;color:var(--muted);margin-bottom:10px}
+      .card .raw{white-space:pre-wrap;font-size:14px;background:#f7f9f7;border-radius:8px;padding:10px;margin-bottom:10px}
+      .card .ai{font-size:13px;background:#eef7f4;border-radius:8px;padding:10px;margin-bottom:10px}
+      .card .imgs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+      .card .imgs img{width:80px;height:80px;object-fit:cover;border-radius:6px}
+      .card .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+      .card .actions input[type="text"]{flex:1;min-width:180px;padding:6px 8px;border:1px solid #d8ddd9;border-radius:6px}
+      .card .actions button{padding:7px 14px;border-radius:6px;border:0;cursor:pointer;font-size:13px}
+      .btn-approve{background:#0b6d61;color:#fff}
+      .btn-reject{background:#b3261e;color:#fff}
+      .btn-needinfo{background:#8a5b00;color:#fff}
+      .gate{padding:40px;text-align:center;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>VietnamZiChan · Staff only</span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/zh/">VietnamZiChan<small>Listing Desk 审核</small></a><span class="auth-state" id="authState">加载中…</span></nav></div>
+    <main class="review">
+      <h1>Listing Desk 审核队列</h1>
+      <p style="color:var(--muted);font-size:14px">只有 vietnamzichan 的员工账号能看到内容。审核动作直接受数据库 RLS 保护，前端隐藏不是安全边界。</p>
+
+      <div id="gate" class="gate" style="display:none">无权限查看，或尚未登录。</div>
+
+      <div id="reviewUi" style="display:none">
+        <div class="queue-tabs" id="tabs">
+          <button type="button" data-status="PENDING_REVIEW" class="active">待审核</button>
+          <button type="button" data-status="NEEDS_INFO">需要补充信息</button>
+          <button type="button" data-status="APPROVED">已批准·待发布</button>
+          <button type="button" data-status="PUBLISHED">已发布</button>
+          <button type="button" data-status="REJECTED">已拒绝</button>
+          <button type="button" data-status="RAW">待AI处理</button>
+        </div>
+        <div id="queueList"><p class="msg">加载中…</p></div>
+      </div>
+    </main>
+
+    <script type="module">
+      import { renderAuthState } from '/js/community.js';
+      import { isStaff, fetchQueue, approveSubmission, rejectSubmission, requestInfo, escapeHtml } from '/js/listing-desk.js';
+
+      await renderAuthState('authState');
+      const staff = await isStaff();
+      if (!staff) {
+        document.getElementById('gate').style.display = 'block';
+      } else {
+        document.getElementById('reviewUi').style.display = 'block';
+      }
+
+      let currentStatus = 'PENDING_REVIEW';
+
+      function typeLabel(t) {
+        return { sell: '出售', rent: '出租', buy: '求购', lease: '求租', cooperation: '找合作' }[t] || t;
+      }
+
+      async function refresh() {
+        const list = document.getElementById('queueList');
+        list.innerHTML = '<p class="msg">加载中…</p>';
+        try {
+          const rows = await fetchQueue(currentStatus);
+          if (!rows.length) { list.innerHTML = '<p class="msg">这个状态下没有内容。</p>'; return; }
+          list.innerHTML = rows.map((r) => {
+            const ai = r.ai || null;
+            const imgs = Array.isArray(r.images) ? r.images : [];
+            return `<article class="card" data-id="${r.id}">
+              <h3>${typeLabel(r.listing_type)} · ${escapeHtml(r.city_region || '城市未定')} · ${escapeHtml(r.category || '类别未定')}</h3>
+              <div class="meta">提交者角色：${escapeHtml(r.submitter_role)} · 提交时间：${escapeHtml(r.created_at)} · 价格：${escapeHtml(r.price_text || '-')} · 面积：${escapeHtml(r.area_text || '-')} · 联系：${escapeHtml(r.contact_text || '-')}</div>
+              <div class="raw">${escapeHtml(r.raw_text)}</div>
+              ${ai ? `<div class="ai"><b>AI 整理：</b>${escapeHtml(ai.title_zh || '')}<br>${escapeHtml(ai.summary_zh || '')}${ai.missing_fields && ai.missing_fields.length ? `<br><b>缺字段：</b>${escapeHtml(ai.missing_fields.join('、'))}` : ''}</div>` : '<div class="ai">尚未经过 AI 处理。</div>'}
+              ${imgs.length ? `<div class="imgs">${imgs.map((u) => `<img src="${escapeHtml(u)}">`).join('')}</div>` : ''}
+              <div class="actions">
+                <input type="text" placeholder="备注/拒绝或补充说明的原因" class="noteInput">
+                <button type="button" class="btn-approve" data-act="approve">批准</button>
+                <button type="button" class="btn-needinfo" data-act="needinfo">需要补充信息</button>
+                <button type="button" class="btn-reject" data-act="reject">拒绝</button>
+              </div>
+              <p class="msg"></p>
+            </article>`;
+          }).join('');
+        } catch (err) {
+          list.innerHTML = '<p class="msg err">加载失败：' + escapeHtml(err && err.message ? err.message : String(err)) + '</p>';
+        }
+      }
+
+      document.getElementById('tabs').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-status]');
+        if (!btn) return;
+        currentStatus = btn.dataset.status;
+        document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('active', b === btn));
+        refresh();
+      });
+
+      document.getElementById('queueList').addEventListener('click', async (e) => {
+        const btn = e.target.closest('button[data-act]');
+        if (!btn) return;
+        const card = btn.closest('.card');
+        const id = card.dataset.id;
+        const note = card.querySelector('.noteInput').value.trim();
+        const msg = card.querySelector('.msg');
+        btn.disabled = true;
+        try {
+          if (btn.dataset.act === 'approve') await approveSubmission(id, note || null);
+          else if (btn.dataset.act === 'reject') await rejectSubmission(id, note);
+          else if (btn.dataset.act === 'needinfo') await requestInfo(id, note);
+          msg.textContent = '已处理。';
+          msg.className = 'msg ok';
+          setTimeout(refresh, 400);
+        } catch (err) {
+          msg.textContent = '操作失败：' + (err && err.message ? err.message : String(err));
+          msg.className = 'msg err';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      if (staff) refresh();
+    </script>
+  </body>
+</html>
