@@ -48,10 +48,11 @@ export async function getSession() {
 export async function renderAuthState(containerId) {
   const el = document.getElementById(containerId);
   if (!el) return null;
+  const labels = { '/zh': ['已登录：', '退出', '注册', '登录'], '/vi': ['Đã đăng nhập: ', 'Đăng xuất', 'Đăng ký', 'Đăng nhập'], '/en': ['Logged in: ', 'Log out', 'Sign up', 'Log in'] }[AUTH_BASE];
   const session = await getSession();
   if (session && session.user) {
     const name = (session.user.user_metadata && session.user.user_metadata.display_name) || session.user.email;
-    el.innerHTML = `已登录：${escapeHtml(name)} · <a href="#" id="communityLogoutLink">退出</a>`;
+    el.innerHTML = `${labels[0]}${escapeHtml(name)} · <a href="#" id="communityLogoutLink">${labels[1]}</a>`;
     const logoutLink = document.getElementById('communityLogoutLink');
     if (logoutLink) {
       logoutLink.addEventListener('click', async (e) => {
@@ -61,7 +62,7 @@ export async function renderAuthState(containerId) {
       });
     }
   } else {
-    el.innerHTML = `<a href="${AUTH_BASE}/signup/" class="cta-join">加入社区</a> · <a href="${AUTH_BASE}/login/">登录</a>`;
+    el.innerHTML = `<a href="${AUTH_BASE}/signup/" class="cta-join">${labels[2]}</a> · <a href="${AUTH_BASE}/login/">${labels[3]}</a>`;
   }
   return session;
 }
