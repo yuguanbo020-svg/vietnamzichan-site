@@ -5,9 +5,15 @@
 import { supabase } from '/js/supabase-client.js';
 
 const SITE = 'vietnamzichan'; // <- 每个站点的 vendored 副本改这一行，比如 'soulentropy' / 'vietnamzichan'
-// VietnamZiChan 的社区/登录/注册目前只在 /zh/ 路径下上线（其余站点在根路径），
-// 这个前缀只在这一份vendored副本里设为 '/zh'，其余站点副本保持 ''。
-const AUTH_BASE = '/zh';
+// VietnamZiChan 的社区/登录/注册在 /zh/ /vi/ /en/ 三个语言路径下都各自有一份页面
+// （其余 4 个站点在根路径，AUTH_BASE 固定为 ''）。这一份 vendored 副本需要跟着当前
+// 访问的语言路径走，否则从 /vi/ 或 /en/ 页面点「加入社区/登录」会跳到中文页面。
+// 取当前路径最前面的 /zh /vi /en 段作为前缀；不在这三段下的页面（理论上不会发生在
+// 这个站点）保底退回 '/zh'，不会 404。
+const AUTH_BASE = (function () {
+  const m = (typeof location !== 'undefined' ? location.pathname : '').match(/^\/(zh|vi|en)(\/|$)/);
+  return m ? '/' + m[1] : '/zh';
+})();
 
 export function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({
