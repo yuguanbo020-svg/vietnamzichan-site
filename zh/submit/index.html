@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>发布房源/需求 · Listing Desk · VietnamZiChan</title>
+    <link rel="canonical" href="https://vietnamzichan.com/zh/submit/" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+    <style>
+      main.desk{width:min(38rem,calc(100% - 2rem));margin:32px auto 60px}
+      main.desk h1{margin:0 0 6px;font-size:28px}
+      .desk-hint{color:var(--muted);font-size:14px;margin:0 0 20px}
+      .desk-form{display:grid;gap:12px}
+      .desk-form label{font-size:13px;color:var(--muted);margin-bottom:-6px}
+      .desk-form select,.desk-form input,.desk-form textarea{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid #d8ddd9;border-radius:8px;font-size:16px}
+      .desk-form textarea{min-height:140px;resize:vertical}
+      .desk-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+      @media (max-width:520px){.desk-row{grid-template-columns:1fr}}
+      .desk-form button[type="submit"]{padding:12px;font-size:16px;font-weight:700;border:0;border-radius:8px;background:var(--green2,#0b6d61);color:#fff;cursor:pointer}
+      .desk-form button[type="submit"]:disabled{opacity:.6}
+      .img-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+      .img-preview img{width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid #d8ddd9}
+      .mine{margin-top:36px}
+      .mine table{width:100%;border-collapse:collapse;font-size:14px}
+      .mine th,.mine td{text-align:left;padding:8px 6px;border-bottom:1px solid #eef1ef;vertical-align:top}
+      .status-pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:#eef1ef;color:#3a4441}
+      .status-PUBLISHED{background:#e3f5ec;color:#0b6d61}
+      .status-REJECTED{background:#fdecea;color:#b3261e}
+      .status-NEEDS_INFO{background:#fff4d8;color:#8a5b00}
+      .gate{padding:20px;border:1px dashed #d8ddd9;border-radius:10px;text-align:center;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/submit/">中文</a><a href="/vi/submit/">Tiếng Việt</a><a href="/en/submit/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/zh/">VietnamZiChan<small>越南资产网 · Vietnam Assets</small></a><div class="links"><a href="/zh/categories/factory/">工业地产</a><a href="/zh/cities/">城市</a><a href="/zh/listings/">资产列表</a><a href="/zh/opportunities/">合作机会</a><a href="/zh/trust/">案例与信任</a><a href="/zh/community/">社区</a></div><span class="auth-state" id="authState">加载中…</span><a class="action" href="/zh/contact/">提交询盘</a></nav></div>
+    <main class="desk">
+      <h1>发布房源 / 需求</h1>
+      <p class="desk-hint">出售、出租、求购、求租或找合作，都可以在这里提交。内容可以用中文、越南语或英语写，我们会用私有 AI 整理成三语页面，员工审核通过后正式发布，有公开链接、能被搜索到。</p>
+
+      <div id="loginGate" class="gate" style="display:none">
+        请先<a href="/zh/login/">登录</a>或<a href="/zh/signup/">加入社区</a>后再提交。
+      </div>
+
+      <form class="desk-form community-form" id="deskForm" style="display:none">
+        <label for="listingType">类型</label>
+        <select id="listingType" required>
+          <option value="">选择类型…</option>
+          <option value="sell">出售</option>
+          <option value="rent">出租</option>
+          <option value="buy">求购</option>
+          <option value="lease">求租</option>
+          <option value="cooperation">找合作</option>
+        </select>
+
+        <div class="desk-row">
+          <div>
+            <label for="cityRegion">城市（可选）</label>
+            <select id="cityRegion">
+              <option value="">不确定 / 其他</option>
+              <option value="ho-chi-minh-city">胡志明市</option>
+              <option value="binh-duong">平阳</option>
+              <option value="dong-nai">同奈</option>
+              <option value="hanoi">河内</option>
+              <option value="bac-ninh">北宁</option>
+              <option value="hai-phong">海防</option>
+              <option value="da-nang">岘港</option>
+            </select>
+          </div>
+          <div>
+            <label for="category">类别（可选）</label>
+            <select id="category">
+              <option value="">不确定 / 其他</option>
+              <option value="factory">厂房</option>
+              <option value="industrial-land">工业土地</option>
+              <option value="warehouse">仓库物流</option>
+              <option value="hotel">酒店商业</option>
+              <option value="residential">住宅</option>
+              <option value="agriculture">农业</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="rawText">详细描述</label>
+        <textarea id="rawText" required maxlength="4000" placeholder="面积、位置、价格、产权/合同情况、时间表、联系方式（Telegram/Zalo/WhatsApp/邮箱等）。可以中文、越南语或英语混写，AI 会帮你整理。"></textarea>
+
+        <div class="desk-row">
+          <div>
+            <label for="priceText">价格/预算（可选）</label>
+            <input id="priceText" type="text" maxlength="120" placeholder="比如 3.5 USD/㎡/月，或 面议" />
+          </div>
+          <div>
+            <label for="areaText">面积（可选）</label>
+            <input id="areaText" type="text" maxlength="120" placeholder="比如 5000㎡" />
+          </div>
+        </div>
+
+        <label for="contactText">联系方式（可选，也可以写在描述里）</label>
+        <input id="contactText" type="text" maxlength="200" placeholder="Telegram / Zalo / WhatsApp / 邮箱" />
+
+        <label for="images">图片（可选，最多 6 张，手机可直接拍照）</label>
+        <input id="images" type="file" accept="image/*" multiple capture="environment" />
+        <div class="img-preview" id="imgPreview"></div>
+
+        <button type="submit" id="deskSubmitBtn">提交</button>
+        <p class="msg" id="deskMsg"></p>
+      </form>
+
+      <section class="mine" id="mineSection" style="display:none">
+        <h2>我的提交</h2>
+        <div id="mineList"><p class="msg">加载中…</p></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap fine">提交内容会先经过 AI 整理与员工审核，审核通过后才会正式发布为公开页面。公开信息不构成交易、投资或法律建议。</div>
+    </footer>
+
+    <script type="module">
+      import { renderAuthState } from '/js/community.js';
+      import { submitListing, uploadListingImages, fetchMySubmissions, STATUS_LABELS_ZH, escapeHtml } from '/js/listing-desk.js';
+      import { supabase } from '/js/supabase-client.js';
+
+      const session = await renderAuthState('authState');
+      const loginGate = document.getElementById('loginGate');
+      const deskForm = document.getElementById('deskForm');
+      const mineSection = document.getElementById('mineSection');
+
+      if (session && session.user) {
+        deskForm.style.display = 'grid';
+        mineSection.style.display = 'block';
+        refreshMine();
+      } else {
+        loginGate.style.display = 'block';
+      }
+
+      let pendingFiles = [];
+      const imagesInput = document.getElementById('images');
+      const imgPreview = document.getElementById('imgPreview');
+      imagesInput.addEventListener('change', () => {
+        pendingFiles = Array.from(imagesInput.files || []).slice(0, 6);
+        imgPreview.innerHTML = '';
+        pendingFiles.forEach((f) => {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(f);
+          imgPreview.appendChild(img);
+        });
+      });
+
+      const deskMsg = document.getElementById('deskMsg');
+      deskForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        deskMsg.textContent = ''; deskMsg.className = 'msg';
+        const btn = document.getElementById('deskSubmitBtn');
+        btn.disabled = true;
+        try {
+          let images = [];
+          if (pendingFiles.length) {
+            deskMsg.textContent = '上传图片中…'; deskMsg.className = 'msg';
+            images = await uploadListingImages(pendingFiles);
+          }
+          await submitListing({
+            listingType: document.getElementById('listingType').value,
+            rawText: document.getElementById('rawText').value,
+            cityRegion: document.getElementById('cityRegion').value,
+            category: document.getElementById('category').value,
+            priceText: document.getElementById('priceText').value,
+            areaText: document.getElementById('areaText').value,
+            contactText: document.getElementById('contactText').value,
+            images,
+          });
+          deskForm.reset();
+          pendingFiles = []; imgPreview.innerHTML = '';
+          deskMsg.textContent = '已提交，等待 AI 整理与员工审核。可以在下面「我的提交」查看进度。';
+          deskMsg.className = 'msg ok';
+          refreshMine();
+        } catch (err) {
+          if (err && err.message === 'NEED_LOGIN') {
+            deskMsg.textContent = '请先登录后再提交。';
+          } else {
+            deskMsg.textContent = '提交失败：' + (err && err.message ? err.message : String(err));
+          }
+          deskMsg.className = 'msg err';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      async function refreshMine() {
+        const list = document.getElementById('mineList');
+        try {
+          const rows = await fetchMySubmissions();
+          if (!rows.length) { list.innerHTML = '<p class="msg">还没有提交过。</p>'; return; }
+          list.innerHTML = `<table><thead><tr><th>类型</th><th>摘要</th><th>状态</th><th>说明</th></tr></thead><tbody>${rows.map((r) => `
+            <tr>
+              <td>${escapeHtml(r.listing_type)}</td>
+              <td>${escapeHtml((r.raw_text || '').slice(0, 40))}${(r.raw_text || '').length > 40 ? '…' : ''}</td>
+              <td><span class="status-pill status-${escapeHtml(r.status)}">${escapeHtml(STATUS_LABELS_ZH[r.status] || r.status)}</span></td>
+              <td>${r.status === 'PUBLISHED' && r.published_url ? `<a href="${escapeHtml(r.published_url)}" target="_blank" rel="noopener">查看页面</a>` : escapeHtml(r.reviewer_note || '')}</td>
+            </tr>`).join('')}</tbody></table>`;
+        } catch (err) {
+          list.innerHTML = '<p class="msg err">加载失败：' + escapeHtml(err && err.message ? err.message : String(err)) + '</p>';
+        }
+      }
+    </script>
+  </body>
+</html>

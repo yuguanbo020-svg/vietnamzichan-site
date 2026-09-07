@@ -17,3 +17,7 @@ CARBON_TASK_QUEUE.json
 I18N_TRANSLATION_QUEUE.json
 memory/
 supabase/
+
+# Listing Desk v1 — local secrets and runtime logs, never committed.
+automation/.env
+automation/logs/

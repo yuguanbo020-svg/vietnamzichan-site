@@ -16,3 +16,14 @@ Rules:
 - Payment, identity declaration, OTP/CAPTCHA, biometric and final sensitive submission remain human gates.
 
 Machine-readable queue: `automation/private-site-operator.json`.
+
+## Listing Desk v1
+
+User- and staff-submitted listings (sell/rent/buy/lease/cooperation) flow
+through Supabase (`listing_submissions` table) → `listing_ai_worker.py`
+(local Ollama: classify, detect missing fields, clean up into a canonical
+Chinese title/summary, keywords, alt text, dedupe hint) → staff review at
+`/zh/admin/listing-desk/` → `listing_publisher.py` (reuses
+`scripts/generate_site.py` to build real `/listings/{lang}/{slug}/` pages,
+commits, pushes to `main` with the operator's own git credentials — no
+token created). See `docs/listing-desk-v1.md` for setup and the daily cron.
