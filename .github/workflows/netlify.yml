@@ -1,7 +1,9 @@
-name: Deploy to Netlify
+# Cloudflare Pages 现在是唯一的生产部署目标（2026-09-07 起）。
+# Netlify 账户因用量超限被暂停，且不应再自动触发部署，所以这个工作流改成只能手动触发
+# （Actions 页面里点 Run workflow），不会再跟着 push 到 main 自动跑。
+name: Deploy to Netlify (manual only)
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
