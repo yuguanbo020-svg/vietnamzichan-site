@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="vi-VN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng tin / nhu cầu · Listing Desk · VietnamZiChan</title>
+    <link rel="canonical" href="https://vietnamzichan.com/vi/submit/" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+    <style>
+      main.desk{width:min(38rem,calc(100% - 2rem));margin:32px auto 60px}
+      main.desk h1{margin:0 0 6px;font-size:28px}
+      .desk-hint{color:var(--muted);font-size:14px;margin:0 0 20px}
+      .desk-form{display:grid;gap:12px}
+      .desk-form label{font-size:13px;color:var(--muted);margin-bottom:-6px}
+      .desk-form select,.desk-form input,.desk-form textarea{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid #d8ddd9;border-radius:8px;font-size:16px}
+      .desk-form textarea{min-height:140px;resize:vertical}
+      .desk-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+      @media (max-width:520px){.desk-row{grid-template-columns:1fr}}
+      .desk-form button[type="submit"]{padding:12px;font-size:16px;font-weight:700;border:0;border-radius:8px;background:var(--green2,#0b6d61);color:#fff;cursor:pointer}
+      .desk-form button[type="submit"]:disabled{opacity:.6}
+      .img-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+      .img-preview img{width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid #d8ddd9}
+      .mine{margin-top:36px}
+      .mine table{width:100%;border-collapse:collapse;font-size:14px}
+      .mine th,.mine td{text-align:left;padding:8px 6px;border-bottom:1px solid #eef1ef;vertical-align:top}
+      .status-pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:#eef1ef;color:#3a4441}
+      .status-PUBLISHED{background:#e3f5ec;color:#0b6d61}
+      .status-REJECTED{background:#fdecea;color:#b3261e}
+      .status-NEEDS_INFO{background:#fff4d8;color:#8a5b00}
+      .gate{padding:20px;border:1px dashed #d8ddd9;border-radius:10px;text-align:center;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/submit/">中文</a><a href="/vi/submit/">Tiếng Việt</a><a href="/en/submit/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/vi/">VietnamZiChan<small>VietnamZiChan · Tài sản Việt Nam</small></a><div class="links"><a href="/vi/categories/factory/">Bất động sản CN</a><a href="/vi/cities/">Thành phố</a><a href="/vi/listings/">Danh sách</a><a href="/vi/opportunities/">Cơ hội hợp tác</a><a href="/vi/trust/">Uy tín</a><a href="/vi/community/">Cộng đồng</a></div><span class="auth-state" id="authState">Đang tải…</span><a class="action" href="/vi/contact/">Gửi yêu cầu</a></nav></div>
+    <main class="desk">
+      <h1>Đăng tin / nhu cầu</h1>
+      <p class="desk-hint">Bán, cho thuê, cần mua, cần thuê hoặc tìm hợp tác — đăng tại đây. Có thể viết bằng tiếng Việt, tiếng Trung hoặc tiếng Anh; AI riêng của chúng tôi sẽ biên tập thành 3 ngôn ngữ, sau khi nhân viên duyệt sẽ xuất bản thành trang công khai, có thể tìm thấy trên Google.</p>
+
+      <div id="loginGate" class="gate" style="display:none">
+        Vui lòng <a href="/vi/login/">đăng nhập</a> hoặc <a href="/vi/signup/">tham gia cộng đồng</a> trước khi đăng.
+      </div>
+
+      <form class="desk-form community-form" id="deskForm" style="display:none">
+        <label for="listingType">Loại tin</label>
+        <select id="listingType" required>
+          <option value="">Chọn loại…</option>
+          <option value="sell">Bán</option>
+          <option value="rent">Cho thuê</option>
+          <option value="buy">Cần mua</option>
+          <option value="lease">Cần thuê</option>
+          <option value="cooperation">Tìm hợp tác</option>
+        </select>
+
+        <div class="desk-row">
+          <div>
+            <label for="cityRegion">Thành phố (tùy chọn)</label>
+            <select id="cityRegion">
+              <option value="">Chưa rõ / khác</option>
+              <option value="ho-chi-minh-city">TP. Hồ Chí Minh</option>
+              <option value="binh-duong">Bình Dương</option>
+              <option value="dong-nai">Đồng Nai</option>
+              <option value="hanoi">Hà Nội</option>
+              <option value="bac-ninh">Bắc Ninh</option>
+              <option value="hai-phong">Hải Phòng</option>
+              <option value="da-nang">Đà Nẵng</option>
+            </select>
+          </div>
+          <div>
+            <label for="category">Loại tài sản (tùy chọn)</label>
+            <select id="category">
+              <option value="">Chưa rõ / khác</option>
+              <option value="factory">Nhà xưởng</option>
+              <option value="industrial-land">Đất công nghiệp</option>
+              <option value="warehouse">Kho vận</option>
+              <option value="hotel">Khách sạn & thương mại</option>
+              <option value="residential">Nhà ở</option>
+              <option value="agriculture">Nông nghiệp</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="rawText">Mô tả chi tiết</label>
+        <textarea id="rawText" required maxlength="4000" placeholder="Diện tích, vị trí, giá, tình trạng pháp lý/hợp đồng, thời gian, cách liên hệ (Telegram/Zalo/WhatsApp/email…). Có thể viết tiếng Việt, tiếng Trung hoặc tiếng Anh, AI sẽ giúp biên tập."></textarea>
+
+        <div class="desk-row">
+          <div>
+            <label for="priceText">Giá / ngân sách (tùy chọn)</label>
+            <input id="priceText" type="text" maxlength="120" placeholder="VD: 3.5 USD/m²/tháng, hoặc thỏa thuận" />
+          </div>
+          <div>
+            <label for="areaText">Diện tích (tùy chọn)</label>
+            <input id="areaText" type="text" maxlength="120" placeholder="VD: 5000m²" />
+          </div>
+        </div>
+
+        <label for="contactText">Liên hệ (tùy chọn, có thể ghi trong mô tả)</label>
+        <input id="contactText" type="text" maxlength="200" placeholder="Telegram / Zalo / WhatsApp / email" />
+
+        <label for="images">Hình ảnh (tùy chọn, tối đa 6 ảnh, có thể chụp bằng điện thoại)</label>
+        <input id="images" type="file" accept="image/*" multiple capture="environment" />
+        <div class="img-preview" id="imgPreview"></div>
+
+        <button type="submit" id="deskSubmitBtn">Gửi</button>
+        <p class="msg" id="deskMsg"></p>
+      </form>
+
+      <section class="mine" id="mineSection" style="display:none">
+        <h2>Tin đã đăng của tôi</h2>
+        <div id="mineList"><p class="msg">Đang tải…</p></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap fine">Nội dung đăng sẽ qua AI biên tập và nhân viên duyệt trước khi xuất bản công khai. Thông tin công khai không cấu thành tư vấn giao dịch, đầu tư hay pháp lý.</div>
+    </footer>
+
+    <script type="module">
+      import { renderAuthState } from '/js/community.js';
+      import { submitListing, uploadListingImages, fetchMySubmissions, escapeHtml } from '/js/listing-desk.js';
+
+      const STATUS_LABELS_VI = {
+        RAW: 'Chờ AI xử lý', AI_PROCESSED: 'AI đã xử lý', PENDING_REVIEW: 'Chờ duyệt',
+        APPROVED: 'Đã duyệt · chờ xuất bản', PUBLISHED: 'Đã xuất bản', NEEDS_INFO: 'Cần bổ sung thông tin', REJECTED: 'Đã từ chối',
+      };
+
+      const session = await renderAuthState('authState');
+      const loginGate = document.getElementById('loginGate');
+      const deskForm = document.getElementById('deskForm');
+      const mineSection = document.getElementById('mineSection');
+
+      if (session && session.user) {
+        deskForm.style.display = 'grid';
+        mineSection.style.display = 'block';
+        refreshMine();
+      } else {
+        loginGate.style.display = 'block';
+      }
+
+      let pendingFiles = [];
+      const imagesInput = document.getElementById('images');
+      const imgPreview = document.getElementById('imgPreview');
+      imagesInput.addEventListener('change', () => {
+        pendingFiles = Array.from(imagesInput.files || []).slice(0, 6);
+        imgPreview.innerHTML = '';
+        pendingFiles.forEach((f) => {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(f);
+          imgPreview.appendChild(img);
+        });
+      });
+
+      const deskMsg = document.getElementById('deskMsg');
+      deskForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        deskMsg.textContent = ''; deskMsg.className = 'msg';
+        const btn = document.getElementById('deskSubmitBtn');
+        btn.disabled = true;
+        try {
+          let images = [];
+          if (pendingFiles.length) {
+            deskMsg.textContent = 'Đang tải ảnh lên…'; deskMsg.className = 'msg';
+            images = await uploadListingImages(pendingFiles);
+          }
+          await submitListing({
+            listingType: document.getElementById('listingType').value,
+            rawText: document.getElementById('rawText').value,
+            cityRegion: document.getElementById('cityRegion').value,
+            category: document.getElementById('category').value,
+            priceText: document.getElementById('priceText').value,
+            areaText: document.getElementById('areaText').value,
+            contactText: document.getElementById('contactText').value,
+            images,
+          });
+          deskForm.reset();
+          pendingFiles = []; imgPreview.innerHTML = '';
+          deskMsg.textContent = 'Đã gửi, chờ AI biên tập và nhân viên duyệt. Xem tiến độ ở mục "Tin đã đăng của tôi" bên dưới.';
+          deskMsg.className = 'msg ok';
+          refreshMine();
+        } catch (err) {
+          if (err && err.message === 'NEED_LOGIN') {
+            deskMsg.textContent = 'Vui lòng đăng nhập trước khi gửi.';
+          } else {
+            deskMsg.textContent = 'Gửi thất bại: ' + (err && err.message ? err.message : String(err));
+          }
+          deskMsg.className = 'msg err';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      async function refreshMine() {
+        const list = document.getElementById('mineList');
+        try {
+          const rows = await fetchMySubmissions();
+          if (!rows.length) { list.innerHTML = '<p class="msg">Chưa có tin nào.</p>'; return; }
+          list.innerHTML = `<table><thead><tr><th>Loại</th><th>Tóm tắt</th><th>Trạng thái</th><th>Ghi chú</th></tr></thead><tbody>${rows.map((r) => `
+            <tr>
+              <td>${escapeHtml(r.listing_type)}</td>
+              <td>${escapeHtml((r.raw_text || '').slice(0, 40))}${(r.raw_text || '').length > 40 ? '…' : ''}</td>
+              <td><span class="status-pill status-${escapeHtml(r.status)}">${escapeHtml(STATUS_LABELS_VI[r.status] || r.status)}</span></td>
+              <td>${r.status === 'PUBLISHED' && r.published_url ? `<a href="${escapeHtml(r.published_url)}" target="_blank" rel="noopener">Xem trang</a>` : escapeHtml(r.reviewer_note || '')}</td>
+            </tr>`).join('')}</tbody></table>`;
+        } catch (err) {
+          list.innerHTML = '<p class="msg err">Tải thất bại: ' + escapeHtml(err && err.message ? err.message : String(err)) + '</p>';
+        }
+      }
+    </script>
+  </body>
+</html>
