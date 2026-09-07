@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Submit a Listing / Request · Listing Desk · VietnamZiChan</title>
+    <link rel="canonical" href="https://vietnamzichan.com/en/submit/" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="/assets/community.css" />
+    <style>
+      main.desk{width:min(38rem,calc(100% - 2rem));margin:32px auto 60px}
+      main.desk h1{margin:0 0 6px;font-size:28px}
+      .desk-hint{color:var(--muted);font-size:14px;margin:0 0 20px}
+      .desk-form{display:grid;gap:12px}
+      .desk-form label{font-size:13px;color:var(--muted);margin-bottom:-6px}
+      .desk-form select,.desk-form input,.desk-form textarea{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid #d8ddd9;border-radius:8px;font-size:16px}
+      .desk-form textarea{min-height:140px;resize:vertical}
+      .desk-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+      @media (max-width:520px){.desk-row{grid-template-columns:1fr}}
+      .desk-form button[type="submit"]{padding:12px;font-size:16px;font-weight:700;border:0;border-radius:8px;background:var(--green2,#0b6d61);color:#fff;cursor:pointer}
+      .desk-form button[type="submit"]:disabled{opacity:.6}
+      .img-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+      .img-preview img{width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid #d8ddd9}
+      .mine{margin-top:36px}
+      .mine table{width:100%;border-collapse:collapse;font-size:14px}
+      .mine th,.mine td{text-align:left;padding:8px 6px;border-bottom:1px solid #eef1ef;vertical-align:top}
+      .status-pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:#eef1ef;color:#3a4441}
+      .status-PUBLISHED{background:#e3f5ec;color:#0b6d61}
+      .status-REJECTED{background:#fdecea;color:#b3261e}
+      .status-NEEDS_INFO{background:#fff4d8;color:#8a5b00}
+      .gate{padding:20px;border:1px dashed #d8ddd9;border-radius:10px;text-align:center;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <div class="top"><div class="wrap"><span>Vietnam property intelligence · Sources retained · Verify before transaction</span><span class="lang"><a href="/zh/submit/">中文</a><a href="/vi/submit/">Tiếng Việt</a><a href="/en/submit/">English</a></span></div></div><div class="nav-shell"><nav class="wrap nav"><a class="brand" href="/en/">VietnamZiChan<small>VietnamZiChan · Vietnam Assets</small></a><div class="links"><a href="/en/categories/factory/">Industrial</a><a href="/en/cities/">Cities</a><a href="/en/listings/">Listings</a><a href="/en/opportunities/">Opportunities</a><a href="/en/trust/">Trust</a><a href="/en/community/">Community</a></div><span class="auth-state" id="authState">Loading…</span><a class="action" href="/en/contact/">Enquire</a></nav></div>
+    <main class="desk">
+      <h1>Submit a Listing / Request</h1>
+      <p class="desk-hint">Sell, rent out, want to buy, want to rent, or looking for cooperation — submit here. Write in Chinese, Vietnamese or English; our private AI cleans it up into all three languages, and once staff approve it, it goes live as a public, searchable page.</p>
+
+      <div id="loginGate" class="gate" style="display:none">
+        Please <a href="/en/login/">log in</a> or <a href="/en/signup/">join the community</a> before submitting.
+      </div>
+
+      <form class="desk-form community-form" id="deskForm" style="display:none">
+        <label for="listingType">Type</label>
+        <select id="listingType" required>
+          <option value="">Select type…</option>
+          <option value="sell">For sale</option>
+          <option value="rent">For rent</option>
+          <option value="buy">Wanted to buy</option>
+          <option value="lease">Wanted to lease</option>
+          <option value="cooperation">Looking for cooperation</option>
+        </select>
+
+        <div class="desk-row">
+          <div>
+            <label for="cityRegion">City (optional)</label>
+            <select id="cityRegion">
+              <option value="">Not sure / other</option>
+              <option value="ho-chi-minh-city">Ho Chi Minh City</option>
+              <option value="binh-duong">Binh Duong</option>
+              <option value="dong-nai">Dong Nai</option>
+              <option value="hanoi">Hanoi</option>
+              <option value="bac-ninh">Bac Ninh</option>
+              <option value="hai-phong">Hai Phong</option>
+              <option value="da-nang">Da Nang</option>
+            </select>
+          </div>
+          <div>
+            <label for="category">Category (optional)</label>
+            <select id="category">
+              <option value="">Not sure / other</option>
+              <option value="factory">Factory</option>
+              <option value="industrial-land">Industrial land</option>
+              <option value="warehouse">Warehouse & logistics</option>
+              <option value="hotel">Hotel & commercial</option>
+              <option value="residential">Residential</option>
+              <option value="agriculture">Agriculture</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="rawText">Details</label>
+        <textarea id="rawText" required maxlength="4000" placeholder="Area, location, price, title/contract status, timeline, contact (Telegram/Zalo/WhatsApp/email…). You can mix Chinese, Vietnamese or English — the AI will clean it up."></textarea>
+
+        <div class="desk-row">
+          <div>
+            <label for="priceText">Price / budget (optional)</label>
+            <input id="priceText" type="text" maxlength="120" placeholder="e.g. 3.5 USD/sqm/month, or negotiable" />
+          </div>
+          <div>
+            <label for="areaText">Area (optional)</label>
+            <input id="areaText" type="text" maxlength="120" placeholder="e.g. 5000 sqm" />
+          </div>
+        </div>
+
+        <label for="contactText">Contact (optional, can also be in the description)</label>
+        <input id="contactText" type="text" maxlength="200" placeholder="Telegram / Zalo / WhatsApp / email" />
+
+        <label for="images">Photos (optional, up to 6, camera works on mobile)</label>
+        <input id="images" type="file" accept="image/*" multiple capture="environment" />
+        <div class="img-preview" id="imgPreview"></div>
+
+        <button type="submit" id="deskSubmitBtn">Submit</button>
+        <p class="msg" id="deskMsg"></p>
+      </form>
+
+      <section class="mine" id="mineSection" style="display:none">
+        <h2>My submissions</h2>
+        <div id="mineList"><p class="msg">Loading…</p></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap fine">Submissions go through AI cleanup and staff review before publishing. Public information does not constitute investment, financial or legal advice.</div>
+    </footer>
+
+    <script type="module">
+      import { renderAuthState } from '/js/community.js';
+      import { submitListing, uploadListingImages, fetchMySubmissions, escapeHtml } from '/js/listing-desk.js';
+
+      const STATUS_LABELS_EN = {
+        RAW: 'Queued for AI', AI_PROCESSED: 'AI processed', PENDING_REVIEW: 'Pending review',
+        APPROVED: 'Approved · pending publish', PUBLISHED: 'Published', NEEDS_INFO: 'Needs more info', REJECTED: 'Rejected',
+      };
+
+      const session = await renderAuthState('authState');
+      const loginGate = document.getElementById('loginGate');
+      const deskForm = document.getElementById('deskForm');
+      const mineSection = document.getElementById('mineSection');
+
+      if (session && session.user) {
+        deskForm.style.display = 'grid';
+        mineSection.style.display = 'block';
+        refreshMine();
+      } else {
+        loginGate.style.display = 'block';
+      }
+
+      let pendingFiles = [];
+      const imagesInput = document.getElementById('images');
+      const imgPreview = document.getElementById('imgPreview');
+      imagesInput.addEventListener('change', () => {
+        pendingFiles = Array.from(imagesInput.files || []).slice(0, 6);
+        imgPreview.innerHTML = '';
+        pendingFiles.forEach((f) => {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(f);
+          imgPreview.appendChild(img);
+        });
+      });
+
+      const deskMsg = document.getElementById('deskMsg');
+      deskForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        deskMsg.textContent = ''; deskMsg.className = 'msg';
+        const btn = document.getElementById('deskSubmitBtn');
+        btn.disabled = true;
+        try {
+          let images = [];
+          if (pendingFiles.length) {
+            deskMsg.textContent = 'Uploading photos…'; deskMsg.className = 'msg';
+            images = await uploadListingImages(pendingFiles);
+          }
+          await submitListing({
+            listingType: document.getElementById('listingType').value,
+            rawText: document.getElementById('rawText').value,
+            cityRegion: document.getElementById('cityRegion').value,
+            category: document.getElementById('category').value,
+            priceText: document.getElementById('priceText').value,
+            areaText: document.getElementById('areaText').value,
+            contactText: document.getElementById('contactText').value,
+            images,
+          });
+          deskForm.reset();
+          pendingFiles = []; imgPreview.innerHTML = '';
+          deskMsg.textContent = 'Submitted. Waiting for AI cleanup and staff review — check progress under "My submissions" below.';
+          deskMsg.className = 'msg ok';
+          refreshMine();
+        } catch (err) {
+          if (err && err.message === 'NEED_LOGIN') {
+            deskMsg.textContent = 'Please log in before submitting.';
+          } else {
+            deskMsg.textContent = 'Submit failed: ' + (err && err.message ? err.message : String(err));
+          }
+          deskMsg.className = 'msg err';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      async function refreshMine() {
+        const list = document.getElementById('mineList');
+        try {
+          const rows = await fetchMySubmissions();
+          if (!rows.length) { list.innerHTML = '<p class="msg">No submissions yet.</p>'; return; }
+          list.innerHTML = `<table><thead><tr><th>Type</th><th>Summary</th><th>Status</th><th>Note</th></tr></thead><tbody>${rows.map((r) => `
+            <tr>
+              <td>${escapeHtml(r.listing_type)}</td>
+              <td>${escapeHtml((r.raw_text || '').slice(0, 40))}${(r.raw_text || '').length > 40 ? '…' : ''}</td>
+              <td><span class="status-pill status-${escapeHtml(r.status)}">${escapeHtml(STATUS_LABELS_EN[r.status] || r.status)}</span></td>
+              <td>${r.status === 'PUBLISHED' && r.published_url ? `<a href="${escapeHtml(r.published_url)}" target="_blank" rel="noopener">View page</a>` : escapeHtml(r.reviewer_note || '')}</td>
+            </tr>`).join('')}</tbody></table>`;
+        } catch (err) {
+          list.innerHTML = '<p class="msg err">Load failed: ' + escapeHtml(err && err.message ? err.message : String(err)) + '</p>';
+        }
+      }
+    </script>
+  </body>
+</html>
