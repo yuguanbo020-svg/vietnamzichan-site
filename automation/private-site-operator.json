@@ -15,7 +15,10 @@
     {"id":"SITE-002","priority":2,"task":"expand verified city/category landing pages from keyword matrix","acceptance":"no fake listings; each page has title description canonical schema FAQ and inquiry CTA"},
     {"id":"SITE-003","priority":3,"task":"ingest verified feed items and generate listing/detail pages","acceptance":"source retained; duplicate rejected; hidden by default until gate"},
     {"id":"SITE-004","priority":4,"task":"collect search indexing traffic click and inquiry metrics","acceptance":"daily local metrics snapshot and 7-day comparison"},
-    {"id":"SITE-005","priority":5,"task":"improve pages based on real metrics rather than model self-rating","acceptance":"changes record reason before/after metric and rollback reference"}
+    {"id":"SITE-005","priority":5,"task":"improve pages based on real metrics rather than model self-rating","acceptance":"changes record reason before/after metric and rollback reference"},
+    {"id":"LISTING-DESK-001","priority":2,"task":"run listing_ai_worker.py + listing_publisher.py on the 10:00/17:00 cron and watch automation/logs/","acceptance":"RAW submissions reach PENDING_REVIEW or NEEDS_INFO same day; APPROVED items are PUBLISHED with a live 200 URL same run"},
+    {"id":"LISTING-DESK-002","priority":3,"task":"tune ollama_translate.py / listing_ai_worker.py prompts against the actually-pulled local model","acceptance":"vi/en pages read naturally, no leftover JSON or explanation text"},
+    {"id":"LISTING-DESK-003","priority":4,"task":"bring generated /listings/{lang}/{slug}/ pages to the same site.css chrome as the rest of the site","acceptance":"nav/footer/lang-switcher match; no visual regression on existing pages"}
   ],
   "human_gates":["payment","identity_declaration","otp","captcha","biometric","final_sensitive_submit"],
   "failure_policy":"record_real_failure_and_requeue",
