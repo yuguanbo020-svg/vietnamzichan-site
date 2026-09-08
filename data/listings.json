@@ -1,12 +1,32 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-08-04T10:37:00+07:00",
+  "updated_at": "2026-09-08T01:03:40+00:00",
   "task": {
     "run_id": "bootstrap-empty-feed",
     "stage": "normalized",
     "human_gate": "required_before_commit_or_deploy"
   },
-  "count": 0,
+  "count": 1,
   "rejected_count": 0,
-  "items": []
+  "items": [
+    {
+      "id": "ld-e98481f49d",
+      "country": "越南",
+      "city_region": "北宁",
+      "category": "厂房",
+      "direction": "出租",
+      "title_zh": "北宁工业区厂房出租 5000㎡ 面议",
+      "summary_zh": "北宁工业区钢结构厂房出租，面积5000平米。层高8米，配备三相电380V，靠近18号公路。可分割出租，具体价格面议。",
+      "source_platform": "VietnamZiChan Listing Desk",
+      "source_url": "https://vietnamzichan.com/listings/zh/ld-e98481f49d/",
+      "published_at": "2026-09-08T01:03:40+00:00",
+      "collected_at": "2026-09-07T15:39:06.537891+00:00",
+      "verification_status": "用户自报，员工已审核通过",
+      "score": "B",
+      "confidence": 0.75,
+      "section": "property",
+      "publish_status": "published",
+      "_submission_id": "e98481f4-9db6-4dd3-8256-a45ff3e499a5"
+    }
+  ]
 }
