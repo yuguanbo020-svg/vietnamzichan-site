@@ -120,7 +120,7 @@ def build_feed_item(row: dict, site_url: str) -> dict:
     category = row.get("category") or "other"
     slug = slug_for(row)
     staff = row.get("submitter_role") == "staff"
-    zh_url = f"{site_url}/listings/zh/{slug}/"
+    zh_url = f"{site_url}/zh/listings/{slug}/"
     return {
         "id": slug,
         "country": "越南",
@@ -167,7 +167,7 @@ def keep_deploy_manifest_zh_only() -> None:
     if not manifest_path.is_file():
         return
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    manifest["paths"] = [p for p in manifest.get("paths", []) if p.startswith("listings/zh/")]
+    manifest["paths"] = [p for p in manifest.get("paths", []) if p.startswith("zh/listings/")]
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
@@ -257,7 +257,7 @@ def main() -> int:
     if do_push:
         for row in rows:
             slug = slugs_by_submission[row["id"]]
-            urls = {lang: f"{site_url}/listings/{lang}/{slug}/" for lang in ("zh", "vi", "en")}
+            urls = {lang: f"{site_url}/{lang}/listings/{slug}/" for lang in ("zh", "vi", "en")}
             try:
                 sb.update(row["id"], {
                     "status": "PUBLISHED",

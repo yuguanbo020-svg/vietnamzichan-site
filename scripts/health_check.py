@@ -32,7 +32,10 @@ def check(root: Path = ROOT) -> list[str]:
         for item in feed.get("items", []):
             if item.get("publish_status") == "published":
                 marker = f"/{item['id'].casefold()}/index.html"
-                if not any(marker in str(path).casefold() for path in (root / "listings").glob("*/*/index.html")):
+                candidates = list((root / "listings").glob("*/*/index.html"))
+                for lang in ("zh", "vi", "en"):
+                    candidates.extend((root / lang / "listings").glob("*/index.html"))
+                if not any(marker in str(path).casefold() for path in candidates):
                     failures.append(f"missing_page:{item['id']}")
     except (OSError, json.JSONDecodeError, TypeError, KeyError) as exc:
         failures.append(f"invalid_feed:{type(exc).__name__}:{exc}")

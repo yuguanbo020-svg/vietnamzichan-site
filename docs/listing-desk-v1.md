@@ -25,7 +25,7 @@ status = APPROVED
         │  → git commit + git push to main  (your own git credentials — no token created)
         │  → Cloudflare Pages auto-deploys main
         ▼
-status = PUBLISHED, published_url = https://vietnamzichan.com/listings/{lang}/{slug}/
+status = PUBLISHED, published_url = https://vietnamzichan.com/{lang}/listings/{slug}/
 ```
 
 ## One-time setup (on your Mac, next to Ollama)

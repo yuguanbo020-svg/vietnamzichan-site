@@ -22,7 +22,7 @@ class GenerateTests(unittest.TestCase):
             (root / "index.html").write_text("home", encoding="utf-8")
             report = generate(feed, root, ["zh"], Translator(None))
             self.assertEqual(report["generated_pages"], 1)
-            page = next((root / "listings/zh").glob("*/index.html")).read_text(encoding="utf-8")
+            page = next((root / "zh" / "listings").glob("*/index.html")).read_text(encoding="utf-8")
             self.assertIn('"FAQPage"', page)
             self.assertIn('"Article"', page)
             self.assertIn("translation_provider=source-fallback", page)

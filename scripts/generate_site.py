@@ -137,10 +137,10 @@ def generate(feed: dict[str, Any], output: Path, languages: list[str], translato
         slug = slugify(item["id"])
         for language in languages:
             translated = translator.translate(item, language)
-            relative = Path("listings") / language / slug / "index.html"
+            relative = Path(language) / "listings" / slug / "index.html"
             target = output / relative
             target.parent.mkdir(parents=True, exist_ok=True)
-            url = f"{SITE_URL}/{relative.parent.as_posix()}/"
+            url = f"{SITE_URL}/{language}/listings/{slug}/"
             target.write_text(render_page(item, language, translated, url) + "\n", encoding="utf-8")
             written.append(str(relative)); urls.append(url)
             log("page_generated", item_id=item["id"], language=language, path=str(relative),
@@ -154,10 +154,10 @@ def generate(feed: dict[str, Any], output: Path, languages: list[str], translato
               "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in all_urls) + "\n</urlset>\n"
     sitemap_path.write_text(sitemap, encoding="utf-8")
     (output / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+    listing_prefixes = tuple(f"{lang}/listings/" for lang in LANGUAGES)
     for relative in sorted(set(previous) - set(written)):
         candidate = (output / relative).resolve()
-        listings_root = (output / "listings").resolve()
-        if candidate.name == "index.html" and listings_root in candidate.parents and candidate.is_file():
+        if candidate.name == "index.html" and relative.startswith(listing_prefixes) and candidate.is_file():
             candidate.unlink()
             log("stale_page_removed", path=relative)
     manifest_path.write_text(json.dumps({"schema_version": "0.1", "paths": written},
