@@ -145,13 +145,24 @@ def generate(feed: dict[str, Any], output: Path, languages: list[str], translato
             written.append(str(relative)); urls.append(url)
             log("page_generated", item_id=item["id"], language=language, path=str(relative),
                 provider=translated.provider)
+    # Keep committed locale pages (e.g. vi/en listing pages produced by the local
+    # publisher) in the sitemap even when this build cannot translate them.
+    discovered_urls: list[str] = []
+    for item in feed["items"]:
+        if item.get("publish_status") != "published":
+            continue
+        slug = slugify(item["id"])
+        for language in LANGUAGES:
+            page = output / language / "listings" / slug / "index.html"
+            if page.is_file():
+                discovered_urls.append(f"{SITE_URL}/{language}/listings/{slug}/")
     sitemap_path = output / "sitemap.xml"
     portal_urls = []
     if sitemap_path.exists():
         portal_urls = re.findall(r"<loc>([^<]+)</loc>", sitemap_path.read_text(encoding="utf-8"))
-    current_listing_urls = {u for u in urls if u.startswith(SITE_URL + "/")}
+    current_listing_urls = {u for u in urls if u.startswith(SITE_URL + "/")} | set(discovered_urls)
     all_urls = []
-    for url in dict.fromkeys(portal_urls + urls):
+    for url in dict.fromkeys(portal_urls + urls + discovered_urls):
         if not url.startswith(SITE_URL + "/"):
             all_urls.append(url)
             continue
