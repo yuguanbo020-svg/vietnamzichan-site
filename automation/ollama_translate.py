@@ -39,7 +39,7 @@ def load_dotenv(path: Path) -> None:
         os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
-def ollama_chat(host: str, model: str, prompt: str, timeout: int = 90) -> str:
+def ollama_chat(host: str, model: str, prompt: str, timeout: int = 240) -> str:
     url = host.rstrip("/") + "/api/chat"
     body = {
         "model": model,

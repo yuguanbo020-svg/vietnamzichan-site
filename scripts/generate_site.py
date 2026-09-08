@@ -43,7 +43,7 @@ class Translation:
 class Translator:
     """Local-model adapter. The command receives JSON on stdin and returns JSON."""
 
-    def __init__(self, command: str | None, retries: int = 2, timeout: int = 45):
+    def __init__(self, command: str | None, retries: int = 2, timeout: int = 240):
         self.command = shlex.split(command) if command else None
         self.retries = retries
         self.timeout = timeout
