@@ -149,7 +149,25 @@ def generate(feed: dict[str, Any], output: Path, languages: list[str], translato
     portal_urls = []
     if sitemap_path.exists():
         portal_urls = re.findall(r"<loc>([^<]+)</loc>", sitemap_path.read_text(encoding="utf-8"))
-    all_urls = list(dict.fromkeys(portal_urls + urls))
+    current_listing_urls = {u for u in urls if u.startswith(SITE_URL + "/")}
+    all_urls = []
+    for url in dict.fromkeys(portal_urls + urls):
+        if not url.startswith(SITE_URL + "/"):
+            all_urls.append(url)
+            continue
+        segments = url[len(SITE_URL) + 1:].rstrip("/").split("/")
+        listing_detail = (
+            len(segments) >= 3
+            and segments[1] == "listings"
+            and segments[0] in LANGUAGES
+        ) or (
+            len(segments) >= 3
+            and segments[0] == "listings"
+            and segments[1] in LANGUAGES
+        )
+        if listing_detail and url not in current_listing_urls:
+            continue
+        all_urls.append(url)
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
               "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in all_urls) + "\n</urlset>\n"
     sitemap_path.write_text(sitemap, encoding="utf-8")
