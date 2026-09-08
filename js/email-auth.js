@@ -1,6 +1,6 @@
 import { supabase } from '/js/supabase-client.js';
 import { renderAuthState } from '/js/community.js?v=auth-v1';
-const messages = {"zh": {"signup": "注册", "login": "登录", "hint": "通过邮件中的链接完成验证，无需密码或验证码。", "name": "昵称", "email": "邮箱", "signupButton": "发送确认链接", "loginButton": "发送登录链接", "signupSent": "确认链接已发送，请查收邮件并点击链接完成注册。", "loginSent": "登录链接已发送，请查收邮件并点击链接登录。", "failed": "发送失败，请稍后重试。", "new": "还没有账号？", "existing": "已经有账号？"}, "vi": {"signup": "Đăng ký", "login": "Đăng nhập", "hint": "Xác thực bằng liên kết trong email, không cần mật khẩu hoặc mã xác minh.", "name": "Biệt danh", "email": "Email", "signupButton": "Gửi liên kết xác nhận", "loginButton": "Gửi liên kết đăng nhập", "signupSent": "Đã gửi liên kết xác nhận. Hãy mở email và nhấp vào liên kết để đăng ký.", "loginSent": "Đã gửi liên kết đăng nhập. Hãy mở email và nhấp vào liên kết để đăng nhập.", "failed": "Không thể gửi. Vui lòng thử lại sau.", "new": "Chưa có tài khoản?", "existing": "Đã có tài khoản?"}, "en": {"signup": "Sign up", "login": "Log in", "hint": "Use the link in your email. No password or verification code is needed.", "name": "Nickname", "email": "Email", "signupButton": "Send confirmation link", "loginButton": "Send login link", "signupSent": "Confirmation link sent. Open your email and click the link to complete signup.", "loginSent": "Login link sent. Open your email and click the link to log in.", "failed": "Unable to send. Please try again later.", "new": "No account yet?", "existing": "Already have an account?"}};
+const messages = {"zh": {"signup": "注册", "login": "登录", "hint": "通过邮件中的链接完成验证，无需密码或验证码。", "name": "昵称", "email": "邮箱", "signupButton": "发送确认链接", "loginButton": "发送登录链接", "signupSent": "确认链接已发送，请查收邮件并点击链接完成注册。", "loginSent": "登录链接已发送，请查收邮件并点击链接登录。", "failed": "发送失败，请稍后重试。", "googleFailed": "Google 登录失败，请稍后重试。", "new": "还没有账号？", "existing": "已经有账号？"}, "vi": {"signup": "Đăng ký", "login": "Đăng nhập", "hint": "Xác thực bằng liên kết trong email, không cần mật khẩu hoặc mã xác minh.", "name": "Biệt danh", "email": "Email", "signupButton": "Gửi liên kết xác nhận", "loginButton": "Gửi liên kết đăng nhập", "signupSent": "Đã gửi liên kết xác nhận. Hãy mở email và nhấp vào liên kết để đăng ký.", "loginSent": "Đã gửi liên kết đăng nhập. Hãy mở email và nhấp vào liên kết để đăng nhập.", "failed": "Không thể gửi. Vui lòng thử lại sau.", "googleFailed": "Đăng nhập Google thất bại. Vui lòng thử lại.", "new": "Chưa có tài khoản?", "existing": "Đã có tài khoản?"}, "en": {"signup": "Sign up", "login": "Log in", "hint": "Use the link in your email. No password or verification code is needed.", "name": "Nickname", "email": "Email", "signupButton": "Send confirmation link", "loginButton": "Send login link", "signupSent": "Confirmation link sent. Open your email and click the link to complete signup.", "loginSent": "Login link sent. Open your email and click the link to log in.", "failed": "Unable to send. Please try again later.", "googleFailed": "Google sign-in failed. Please try again.", "new": "No account yet?", "existing": "Already have an account?"}};
 const main = document.querySelector('[data-auth-mode]');
 const lang = main.dataset.authLang;
 const mode = main.dataset.authMode;
@@ -9,6 +9,27 @@ const form = document.getElementById('emailAuthForm');
 const message = document.getElementById('authMessage');
 const button = document.getElementById('sendLink');
 renderAuthState('authState');
+
+// Google OAuth（Supabase provider 已启用；员工账号通常以 Google 身份登录）。
+const googleButton = document.getElementById('oauthGoogle');
+const googleMessage = document.getElementById('oauthMsg');
+if (googleButton) {
+  googleButton.addEventListener('click', async () => {
+    if (googleMessage) { googleMessage.textContent = ''; googleMessage.className = 'msg'; }
+    googleButton.disabled = true;
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin + '/' + lang + '/community/' },
+    });
+    if (error) {
+      if (googleMessage) {
+        googleMessage.textContent = (messages[lang] && messages[lang].googleFailed) || 'Google sign-in failed.';
+        googleMessage.className = 'msg err';
+      }
+      googleButton.disabled = false;
+    }
+  });
+}
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   button.disabled = true;
