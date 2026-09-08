@@ -1,8 +1,6 @@
 {
   "schema_version": "0.1",
   "paths": [
-    "listings/zh/ld-e98481f49d/index.html",
-    "listings/vi/ld-e98481f49d/index.html",
-    "listings/en/ld-e98481f49d/index.html"
+    "listings/zh/ld-e98481f49d/index.html"
   ]
 }

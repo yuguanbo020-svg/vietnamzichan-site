@@ -154,6 +154,23 @@ def save_feed(feed: dict) -> None:
     FEED_PATH.write_text(json.dumps(feed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def keep_deploy_manifest_zh_only() -> None:
+    """Keep .factory-generated.json limited to zh pages before committing.
+
+    Cloudflare Pages rebuilds this static site without local Ollama and therefore
+    regenerates listing pages only for zh (mirroring the factory workflow). If the
+    committed manifest also listed vi/en pages, that zh-only rebuild would treat the
+    committed vi/en pages as stale and delete them from the deployment. vi/en pages
+    are committed artifacts and must be preserved as-is.
+    """
+    manifest_path = ROOT / ".factory-generated.json"
+    if not manifest_path.is_file():
+        return
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["paths"] = [p for p in manifest.get("paths", []) if p.startswith("listings/zh/")]
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def run(cmd: list[str], **kw) -> subprocess.CompletedProcess:
     log("run", cmd=" ".join(cmd))
     return subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, check=False, **kw)
@@ -209,6 +226,7 @@ def main() -> int:
         log("health_check_failed", detail=health.stdout.strip())
         return 1
 
+    keep_deploy_manifest_zh_only()
     paths_to_add = ["data/listings.json", "sitemap.xml", "robots.txt"]
     if (ROOT / ".factory-generated.json").is_file():
         paths_to_add.append(".factory-generated.json")
